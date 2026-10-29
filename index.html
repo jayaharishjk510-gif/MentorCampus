@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentor Campus — Learn from people who are building the real world</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes mcMarquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-33.333%); }
+    }
+    @keyframes mcMarqueeReverse {
+      0% { transform: translateX(-33.333%); }
+      100% { transform: translateX(0%); }
+    }
+    .animate-mc-marquee {
+      display: flex;
+      width: max-content;
+      animation: mcMarquee 42s linear infinite;
+    }
+    .animate-mc-marquee-reverse {
+      display: flex;
+      width: max-content;
+      animation: mcMarqueeReverse 46s linear infinite;
+    }
+    .is-paused {
+      animation-play-state: paused !important;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-[#FBFBFD] text-slate-800 antialiased font-sans selection:bg-blue-600 selection:text-white relative overflow-x-hidden min-h-screen">
+
+  <!-- Ambient Glow -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[720px] h-[480px] bg-gradient-to-b from-blue-100/70 via-indigo-100/40 to-transparent rounded-full blur-3xl opacity-80"></div>
+    <div class="absolute top-[35%] -right-40 w-[500px] h-[500px] bg-blue-50/70 rounded-full blur-3xl opacity-60"></div>
+    <div class="absolute top-[65%] -left-40 w-[500px] h-[500px] bg-indigo-50/70 rounded-full blur-3xl opacity-60"></div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <header class="sticky top-0 z-40 w-full backdrop-blur-xl bg-white/80 border-b border-black/[0.06]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="flex items-center justify-center w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-700 via-blue-600 to-indigo-600 text-white shadow-sm shadow-blue-500/20">
+          <svg viewBox="0 0 32 32" class="w-5 h-5 fill-current">
+            <circle cx="16" cy="7" r="2.75" />
+            <path d="M7 25V15.5C7 14.12 8.12 13 9.5 13H11V25H7Z" />
+            <path d="M21 25V13H22.5C23.88 13 25 14.12 25 15.5V25H21Z" />
+            <path d="M13 25V11.5C13 10.67 13.67 10 14.5 10H17.5C18.33 10 19 10.67 19 11.5V25H13Z" />
+          </svg>
+        </div>
+        <div class="flex flex-col text-left leading-none">
+          <span class="font-extrabold tracking-tight text-[15px] text-slate-900 uppercase">
+            Mentor<span class="text-blue-600 ml-1">Campus</span>
+          </span>
+          <span class="text-[10px] tracking-wider text-slate-400 font-medium lowercase">mentorcampus.in</span>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-8 text-[13px] font-medium text-slate-600">
+        <a href="#about" class="hover:text-blue-600 transition-colors">About</a>
+        <a href="#sessions" class="hover:text-blue-600 transition-colors">How It Works</a>
+        <a href="#mentors" class="hover:text-blue-600 transition-colors">Mentors</a>
+        <a href="#partners" class="hover:text-blue-600 transition-colors">Partners</a>
+        <a href="#testimonials" class="hover:text-blue-600 transition-colors">Testimonials</a>
+        <a href="#campus-clubs" class="hover:text-blue-600 transition-colors">Campus Clubs</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="https://mentorcampus.in" target="_blank" class="hidden sm:block text-xs font-medium text-slate-500 hover:text-slate-800 px-3 py-1.5 transition-colors">
+          mentorcampus.in ↗
+        </a>
+        <button onclick="openModal()" class="px-4 py-2 rounded-full text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 active:scale-95 shadow-sm shadow-blue-500/25 transition-all">
+          Bring to Your College
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative z-10 pt-16 pb-20 sm:pt-24 sm:pb-28 max-w-5xl mx-auto px-4 text-center">
+    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50/90 border border-blue-100 text-blue-700 text-xs font-semibold mb-8 shadow-xs">
+      <span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
+      <span>Redefining College Industry Exposure</span>
+      <span class="text-blue-300">|</span>
+      <span class="text-slate-500 font-normal">Beyond Textbook Lectures</span>
+    </div>
+
+    <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.08] mb-6">
+      Learn from people who are <br class="hidden sm:block"/>
+      <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-600">
+        building the real world.
+      </span>
+    </h1>
+
+    <p class="max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed font-normal mb-10">
+      Mentor Campus brings senior industry leaders directly into colleges for expert talks and interactive sessions — engineers and AI leads, founders, policymakers, clinicians, journalists and athletes speaking candidly about their work, instead of another textbook lecture.
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+      <button onclick="openModal()" class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm shadow-md shadow-blue-500/25 active:scale-95 transition-all flex items-center justify-center gap-2">
+        <span>Bring Mentor Campus to your college</span>
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
+      </button>
+      <a href="#mentors" class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-medium text-sm shadow-xs transition-all">
+        Explore 100+ Mentors
+      </a>
+    </div>
+
+    <!-- Active tracks pills -->
+    <div class="flex flex-wrap items-center justify-center gap-2 max-w-4xl mx-auto">
+      <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-white/80 border border-slate-200 text-slate-700 shadow-xs">Technology & AI</span>
+      <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-white/80 border border-slate-200 text-slate-700 shadow-xs">Business & Startups</span>
+      <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-white/80 border border-slate-200 text-slate-700 shadow-xs">Government & Policy</span>
+      <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-white/80 border border-slate-200 text-slate-700 shadow-xs">Healthcare</span>
+      <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-white/80 border border-slate-200 text-slate-700 shadow-xs">Media & Arts</span>
+      <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-white/80 border border-slate-200 text-slate-700 shadow-xs">Sports</span>
+      <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-white/80 border border-slate-200 text-slate-700 shadow-xs">IoT & Cybersecurity</span>
+      <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-white/80 border border-slate-200 text-slate-700 shadow-xs">Human Resources</span>
+    </div>
+  </section>
+
+  <!-- TRUSTED PARTNERS -->
+  <section id="partners" class="relative z-10 py-12 border-y border-slate-200/80 bg-white/60">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p class="text-[11px] font-semibold tracking-wider text-slate-400 uppercase mb-8">
+        Industry leaders & mentors participating from global organizations
+      </p>
+      <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-6 items-center justify-center opacity-70 grayscale hover:grayscale-0 transition-all font-bold text-slate-800 text-sm">
+        <span class="py-1">Ford</span>
+        <span class="py-1">Verizon</span>
+        <span class="py-1">Capgemini</span>
+        <span class="py-1">Deloitte.</span>
+        <span class="py-1">IBM</span>
+        <span class="py-1">Flipkart</span>
+        <span class="py-1">accenture</span>
+        <span class="py-1">PayPal</span>
+        <span class="py-1">TATA TCS</span>
+        <span class="py-1">wipro</span>
+        <span class="py-1">HCLTech</span>
+        <span class="py-1">AstraZeneca</span>
+        <span class="py-1">StartupTN</span>
+        <span class="py-1">ELCOT</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCROLLING-ANIMATED MENTOR DIRECTORY -->
+  <section id="mentors" class="relative z-10 py-20 bg-slate-50/60 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 text-center mb-10">
+      <span class="text-xs font-semibold text-blue-600 uppercase tracking-wider">Featured Track Directory</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-1">
+        Meet the leaders mentoring on campus
+      </h2>
+      <p class="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto mt-3">
+        Real industry practitioners taking candid sessions through Mentor Campus — from enterprise AI architects to venture founders and public policy leaders.
+      </p>
+
+      <!-- Track Switcher -->
+      <div class="flex items-center justify-center gap-1.5 flex-wrap mt-8 p-1.5 bg-slate-200/70 rounded-2xl max-w-fit mx-auto border border-slate-300/60" id="track-buttons">
+        <button onclick="filterTrack('all')" data-track="all" class="track-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white text-slate-900 shadow-xs">
+          All Mentors
+        </button>
+        <button onclick="filterTrack('ai')" data-track="ai" class="track-btn px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900">
+          Artificial Intelligence
+        </button>
+        <button onclick="filterTrack('hr')" data-track="hr" class="track-btn px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900">
+          Human Resources
+        </button>
+        <button onclick="filterTrack('entrepreneur')" data-track="entrepreneur" class="track-btn px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900">
+          Founders & CXOs
+        </button>
+        <button onclick="filterTrack('gov')" data-track="gov" class="track-btn px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900">
+          Gov & Angel Investors
+        </button>
+        <button onclick="filterTrack('cyber')" data-track="cyber" class="track-btn px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900">
+          IoT & Cybersecurity
+        </button>
+      </div>
+
+      <div class="mt-4 flex items-center justify-center gap-3 text-xs text-slate-400">
+        <button onclick="toggleScroll()" id="pause-btn" class="px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 transition-colors shadow-2xs">
+          ⏸ Pause Auto-Scroll
+        </button>
+        <span>• Hover any card to inspect details</span>
+      </div>
+    </div>
+
+    <!-- Scrolling Row 1 (Left) -->
+    <div class="relative w-full overflow-hidden py-3" onmouseenter="setHoverPause(true)" onmouseleave="setHoverPause(false)">
+      <div class="absolute left-0 inset-y-0 w-24 bg-gradient-to-r from-[#FBFBFD] to-transparent z-10 pointer-events-none"></div>
+      <div class="absolute right-0 inset-y-0 w-24 bg-gradient-to-l from-[#FBFBFD] to-transparent z-10 pointer-events-none"></div>
+      <div id="marquee-row-1" class="animate-mc-marquee gap-5">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- Scrolling Row 2 (Right) -->
+    <div class="relative w-full overflow-hidden py-3 mt-1" onmouseenter="setHoverPause(true)" onmouseleave="setHoverPause(false)">
+      <div class="absolute left-0 inset-y-0 w-24 bg-gradient-to-r from-[#FBFBFD] to-transparent z-10 pointer-events-none"></div>
+      <div class="absolute right-0 inset-y-0 w-24 bg-gradient-to-l from-[#FBFBFD] to-transparent z-10 pointer-events-none"></div>
+      <div id="marquee-row-2" class="animate-mc-marquee-reverse gap-5">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- 3 Big Numbers (From PDF) -->
+    <div class="max-w-4xl mx-auto px-4 mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 text-center shadow-xs">
+        <div class="text-3xl sm:text-4xl font-extrabold text-blue-600">100+</div>
+        <p class="text-xs font-bold text-slate-800 uppercase tracking-wide mt-1">Leaders On This Track</p>
+        <p class="text-xs text-slate-500 mt-0.5">Enterprise directors, architects & VPs</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 text-center shadow-xs">
+        <div class="text-3xl sm:text-4xl font-extrabold text-slate-900">10+</div>
+        <p class="text-xs font-bold text-slate-800 uppercase tracking-wide mt-1">Industry Tracks Overall</p>
+        <p class="text-xs text-slate-500 mt-0.5">AI, Startups, HR, Policy, Cyber & more</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 text-center shadow-xs">
+        <div class="text-3xl sm:text-4xl font-extrabold text-slate-900">3</div>
+        <p class="text-xs font-bold text-slate-800 uppercase tracking-wide mt-1">Session Formats</p>
+        <p class="text-xs text-slate-500 mt-0.5">Designed for deep student engagement</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW THE SESSIONS WORK -->
+  <section id="sessions" class="relative z-10 py-20 max-w-7xl mx-auto px-4">
+    <div class="text-center max-w-3xl mx-auto mb-14">
+      <span class="text-xs font-bold uppercase tracking-wider text-blue-600">How The Sessions Work</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-1">
+        Three formats designed for honesty & impact
+      </h2>
+      <p class="text-slate-600 text-sm sm:text-base mt-3">
+        Replacing boring lecture halls with active, candid interactions where students get real answers.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-3xl p-8 border border-slate-200/90 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] transition-all flex flex-col justify-between">
+        <div>
+          <span class="inline-block text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-full mb-4">High Impact</span>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">Expert talks</h3>
+          <p class="text-sm text-slate-600 leading-relaxed mb-4">
+            A senior leader visits your college for a single focused session, followed by open Q&A with students.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-slate-100 text-xs text-slate-500 space-y-2">
+          <p>• Director & VP tier practitioners</p>
+          <p>• 45+ minutes open audience Q&A</p>
+          <p>• Real workplace case studies</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-3xl p-8 border border-slate-200/90 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] transition-all flex flex-col justify-between">
+        <div>
+          <span class="inline-block text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-full mb-4">Multi-Perspective</span>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">Panel discussions</h3>
+          <p class="text-sm text-slate-600 leading-relaxed mb-4">
+            Multiple experts discuss a shared theme, moderated for students in an interactive format.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-slate-100 text-xs text-slate-500 space-y-2">
+          <p>• 3 to 4 cross-sector leaders</p>
+          <p>• Candid debates on future job market</p>
+          <p>• Multi-industry pathways</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-3xl p-8 border border-slate-200/90 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] transition-all flex flex-col justify-between">
+        <div>
+          <span class="inline-block text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-full mb-4">Hands-on</span>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">Interactive workshops</h3>
+          <p class="text-sm text-slate-600 leading-relaxed mb-4">
+            Smaller, hands-on sessions that go deep on one specific skill or topic.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-slate-100 text-xs text-slate-500 space-y-2">
+          <p>• Direct tooling & code walkthroughs</p>
+          <p>• Practical portfolio & resume reviews</p>
+          <p>• Small cohort focus</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Official PDF Quote Block -->
+    <div class="mt-14 rounded-3xl bg-[#091528] text-white p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+      <span class="text-blue-400 text-xs font-bold uppercase tracking-wider">Mentor Campus • Program Philosophy</span>
+      <blockquote class="text-xl sm:text-2xl md:text-3xl font-medium tracking-tight text-slate-100 mt-2 mb-3 leading-snug">
+        &ldquo;Students don&apos;t need another lecture about the industry — they need someone already in it, willing to answer the honest questions.&rdquo;
+      </blockquote>
+      <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Unfiltered practitioner dialogues</p>
+    </div>
+  </section>
+
+  <!-- ABOUT & CAMPUS CLUB MODEL -->
+  <section id="about" class="relative z-10 py-20 bg-white border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div>
+        <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">About Mentor Campus</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-1 mb-4 leading-tight">
+          Connecting campus classrooms with real-world industry leaders.
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-4">
+          MentorCampus (<a href="https://mentorcampus.in" target="_blank" class="text-blue-600 underline">mentorcampus.in</a>) solves the isolation between college academic curricula and real industry expectations. Instead of rare, formal guest lectures, we institutionalize ongoing access to the people driving modern technology, startups, and institutions.
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+          Through student-led chapters, faculties and student core teams host recurring monthly themes, giving students a head start on real workplace readiness.
+        </p>
+
+        <div class="space-y-4">
+          <div class="flex items-start gap-3.5">
+            <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">✓</span>
+            <div>
+              <p class="text-sm font-bold text-slate-900">Zero Corporate PR Filters</p>
+              <p class="text-xs text-slate-500 mt-0.5">Mentors speak candidly about career mistakes, real hiring demands, and day-to-day work.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3.5">
+            <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">✓</span>
+            <div>
+              <p class="text-sm font-bold text-slate-900">Student-Led Campus Clubs</p>
+              <p class="text-xs text-slate-500 mt-0.5">Autonomous student core teams backed by faculty advisors host continuous masterclasses.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Campus Club Card -->
+      <div id="campus-clubs" class="bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950 text-white rounded-3xl p-8 sm:p-10 shadow-2xl">
+        <div class="flex items-center justify-between pb-6 border-b border-white/10">
+          <div>
+            <h3 class="text-lg font-bold">The Campus Club Framework</h3>
+            <p class="text-xs text-slate-400">Sustainable industry culture on your campus</p>
+          </div>
+          <span class="text-xs bg-blue-600/50 text-blue-200 border border-blue-400/30 px-3 py-1 rounded-full font-semibold">Student-Led</span>
+        </div>
+
+        <div class="mt-6 space-y-4">
+          <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+            <p class="text-xs font-bold text-white">01. Faculty Coordinator & Student Core Team</p>
+            <p class="text-xs text-slate-300 mt-0.5">Empowers students with leadership experience managing events and guest hospitality.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+            <p class="text-xs font-bold text-white">02. Monthly Focus Tracks</p>
+            <p class="text-xs text-slate-300 mt-0.5">Deep dives into AI & Data, Founder Journeys, HR Interviews, and Cybersecurity.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+            <p class="text-xs font-bold text-white">03. Direct Mentorship & Referrals</p>
+            <p class="text-xs text-slate-300 mt-0.5">Build relationships with senior practitioners who can review portfolios and advise on careers.</p>
+          </div>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
+          <span class="text-xs text-slate-300">Start a chapter at your college</span>
+          <button onclick="openModal()" class="px-4 py-2 rounded-xl bg-white text-slate-900 text-xs font-bold hover:bg-slate-100 transition-colors">
+            Start a Chapter
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="relative z-10 py-20 bg-slate-50/70 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center max-w-xl mx-auto mb-14">
+        <span class="text-xs font-bold uppercase tracking-wider text-blue-600">Testimonials</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-1">
+          What students & colleges say
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-3xl p-7 border border-slate-200 shadow-xs flex flex-col justify-between">
+          <div>
+            <div class="text-amber-400 text-xs mb-3">★★★★★</div>
+            <p class="text-sm text-slate-700 italic leading-relaxed">
+              &ldquo;Instead of another textbook lecture, having the Chief AI Architect from Ford break down how real ML pipelines run in production completely transformed our students' approach to projects.&rdquo;
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+            <div>
+              <p class="font-bold text-slate-900 text-sm">Dr. S. Sundararajan</p>
+              <p class="text-slate-500">Dean of Industry Relations, PSG Tech</p>
+            </div>
+            <span class="text-blue-600 font-semibold bg-blue-50 px-2.5 py-1 rounded">Faculty Dean</span>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-3xl p-7 border border-slate-200 shadow-xs flex flex-col justify-between">
+          <div>
+            <div class="text-amber-400 text-xs mb-3">★★★★★</div>
+            <p class="text-sm text-slate-700 italic leading-relaxed">
+              &ldquo;I asked directly about how resumes get screened at Flipkart and ADP. The mentors answered without holding anything back. That 90-minute session gave me more clarity than two full semesters.&rdquo;
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+            <div>
+              <p class="font-bold text-slate-900 text-sm">Ananya Mehra</p>
+              <p class="text-slate-500">Final Year B.Tech, Campus Club Lead</p>
+            </div>
+            <span class="text-blue-600 font-semibold bg-blue-50 px-2.5 py-1 rounded">Student Lead</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="relative z-10 py-16 px-4 max-w-6xl mx-auto">
+    <div class="bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 rounded-3xl p-8 sm:p-14 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="max-w-xl text-center md:text-left">
+        <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">Bring Mentor Campus to your college</h2>
+        <p class="text-sm sm:text-base text-blue-100 mt-2">
+          Set up expert talks, panel discussions, and workshops for your students in any of our specialized industry tracks.
+        </p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+        <button onclick="openModal()" class="px-6 py-3.5 rounded-full bg-white text-blue-700 font-bold text-xs sm:text-sm hover:bg-blue-50 active:scale-95 shadow-md transition-all text-center">
+          Request a Session
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-200 bg-white py-12 text-xs text-slate-500 text-center">
+    <p>© 2026 Mentor Campus (<a href="https://mentorcampus.in" target="_blank" class="text-blue-600 hover:underline">mentorcampus.in</a>). All rights reserved.</p>
+    <p class="mt-1 text-slate-400">Soft Apple UI Design with authentic mentor tracks.</p>
+  </footer>
+
+  <!-- MODAL -->
+  <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md">
+    <div class="relative w-full max-w-md bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-200">
+      <button onclick="closeModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:text-slate-900 flex items-center justify-center text-xs font-bold">
+        ✕
+      </button>
+      <div id="modal-content">
+        <span class="text-xs font-bold text-blue-600 uppercase">Partner With Us</span>
+        <h3 class="text-xl font-bold text-slate-900 mt-1 mb-1">Bring Mentor Campus to Your College</h3>
+        <p class="text-xs text-slate-500 mb-4">Connect your campus with senior industry practitioners.</p>
+
+        <form onsubmit="handleForm(event)" class="space-y-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">College Name</label>
+            <input type="text" required placeholder="e.g. National Institute of Technology" class="w-full px-3 py-2 rounded-xl text-xs bg-slate-50 border border-slate-200 focus:outline-none focus:border-blue-600" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Coordinator Name</label>
+            <input type="text" required placeholder="Prof. / Student Representative" class="w-full px-3 py-2 rounded-xl text-xs bg-slate-50 border border-slate-200 focus:outline-none focus:border-blue-600" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Work / College Email</label>
+            <input type="email" required placeholder="coordinator@college.edu.in" class="w-full px-3 py-2 rounded-xl text-xs bg-slate-50 border border-slate-200 focus:outline-none focus:border-blue-600" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Preferred Track</label>
+            <select class="w-full px-3 py-2 rounded-xl text-xs bg-slate-50 border border-slate-200 text-slate-700">
+              <option>Technology & AI</option>
+              <option>Human Resources</option>
+              <option>Entrepreneur & Founders</option>
+              <option>Government & Angel Investors</option>
+              <option>IoT & Cybersecurity</option>
+            </select>
+          </div>
+          <button type="submit" class="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md transition-all mt-2">
+            Submit College Request
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT DATA & LOGIC -->
+  <script>
+    const MENTORS = [
+      // AI
+      { name: 'Senthilkumar Viswanathan', role: 'Chief Technical AI Architect', company: 'Ford Motor Company', track: 'ai', initials: 'SV', color: 'from-blue-600 to-indigo-600', highlight: 'Enterprise AI & Architecture' },
+      { name: 'Bharathi Ravindran', role: 'Director, AI Science', company: 'Verizon', track: 'ai', initials: 'BR', color: 'from-sky-500 to-blue-600', highlight: 'Applied AI & ML Science' },
+      { name: 'Senthilvel Kasirajan', role: 'Director, Gen AI & Data Science', company: 'Capgemini', track: 'ai', initials: 'SK', color: 'from-indigo-500 to-blue-700', highlight: 'Generative AI & Cloud Data' },
+      { name: 'Ramesh Babu', role: 'Director, Data & AI', company: 'Metayb', track: 'ai', initials: 'RB', color: 'from-cyan-600 to-blue-600', highlight: 'Big Data Strategy' },
+      { name: 'Raj Arun', role: 'Director, AI Engineering', company: 'Fractal', track: 'ai', initials: 'RA', color: 'from-blue-500 to-cyan-500', highlight: 'AI Engineering & Production' },
+      { name: 'Kishan S', role: 'Assistant Vice President, Data & AI', company: 'EXL', track: 'ai', initials: 'KS', color: 'from-indigo-600 to-violet-600', highlight: 'Enterprise Operations' },
+      { name: 'Karthick Nethaji Kaleeswaran', role: 'Director of AI Product Management', company: 'HCLTech', track: 'ai', initials: 'KK', color: 'from-blue-600 to-slate-700', highlight: 'AI Product Strategy' },
+      { name: 'Amudha Murugesan', role: 'Director, AI Managed Services', company: 'Vendasta', track: 'ai', initials: 'AM', color: 'from-sky-600 to-indigo-600', highlight: 'AI Scaling' },
+      { name: 'Edward Satish C', role: 'Head of Digital Tech & Automation AI', company: 'WPP Production', track: 'ai', initials: 'EC', color: 'from-slate-700 to-blue-800', highlight: 'Automation Tech' },
+      // HR
+      { name: 'Keerthana Arul', role: 'Senior HR Business Analyst', company: 'Deloitte', track: 'hr', initials: 'KA', color: 'from-teal-500 to-emerald-600', highlight: 'HR Analytics' },
+      { name: 'Vignesh U', role: 'Senior Talent Acquisition Partner', company: 'ADP', track: 'hr', initials: 'VU', color: 'from-blue-500 to-teal-600', highlight: 'Talent Acquisition' },
+      { name: 'Vasanth M', role: 'Cluster HR Business Partner', company: 'Flipkart', track: 'hr', initials: 'VM', color: 'from-amber-500 to-orange-600', highlight: 'E-commerce HRBP' },
+      { name: 'Reshma Subash', role: 'Senior Talent Acquisition Specialist', company: 'IBM', track: 'hr', initials: 'RS', color: 'from-blue-700 to-indigo-700', highlight: 'Tech Hiring' },
+      { name: 'Pavithran Sivakumar', role: 'Senior Talent Acquisition Specialist', company: 'Accenture', track: 'hr', initials: 'PS', color: 'from-violet-600 to-purple-600', highlight: 'Campus to Corporate' },
+      { name: 'Shaffiullah S', role: 'HR Business Partner', company: 'TCS', track: 'hr', initials: 'SS', color: 'from-blue-600 to-cyan-700', highlight: 'Workforce Planning' },
+      // Entrepreneur
+      { name: 'Rakesh R', role: 'Co-Founder and CEO', company: 'Aptahire', track: 'entrepreneur', initials: 'RR', color: 'from-rose-500 to-pink-600', highlight: 'Venture Building' },
+      { name: 'Nithya Rajasekar', role: 'Founder & CEO', company: 'Unitive Technologies', track: 'entrepreneur', initials: 'NR', color: 'from-fuchsia-600 to-purple-600', highlight: 'Tech Startups' },
+      { name: 'Balachander G', role: 'Founder & Director', company: 'BookWater', track: 'entrepreneur', initials: 'BG', color: 'from-blue-500 to-teal-500', highlight: 'CleanTech SaaS' },
+      { name: 'Sudarsan Babu', role: 'Founder & CEO', company: 'Pauket', track: 'entrepreneur', initials: 'SB', color: 'from-purple-600 to-indigo-600', highlight: 'Consumer Apps' },
+      // Gov & Angel
+      { name: 'Rakesh R', role: 'VP, Promotions & Facilitation', company: 'ELCOT', track: 'gov', initials: 'RR', color: 'from-emerald-600 to-green-700', highlight: 'State IT Ecosystem' },
+      { name: 'Nithya Rajasekar', role: 'Vice President & Chief of Staff', company: 'StartupTN', track: 'gov', initials: 'NR', color: 'from-blue-600 to-teal-600', highlight: 'Incubation & Policy' },
+      { name: 'Dharanidharan Sivasamy', role: 'Foreign Direct Investment Officer', company: 'hub.brussels', track: 'gov', initials: 'DS', color: 'from-indigo-600 to-blue-700', highlight: 'Global Trade' },
+      { name: 'Rajan BL', role: 'VP — Startup & AI Ecosystem', company: 'StartupTN', track: 'gov', initials: 'RB', color: 'from-cyan-600 to-blue-700', highlight: 'Regional Innovation' },
+      // Cyber
+      { name: 'Prasath Jayasundar', role: 'Senior Cybersecurity Engineer', company: 'PayPal', track: 'cyber', initials: 'PJ', color: 'from-blue-600 to-indigo-600', highlight: 'Fintech Security' },
+      { name: 'Vinod Kumar', role: 'Senior Application Developer', company: 'UPS', track: 'cyber', initials: 'VK', color: 'from-amber-700 to-stone-800', highlight: 'IoT & Logistics' },
+      { name: 'Arivukkarasan Raja', role: 'Director', company: 'AstraZeneca', track: 'cyber', initials: 'AR', color: 'from-teal-600 to-cyan-700', highlight: 'Pharma Infrastructure' },
+      { name: 'Muhamadu Mansur R', role: 'Technology Lead', company: 'Infosys', track: 'cyber', initials: 'MM', color: 'from-sky-600 to-blue-700', highlight: 'Cloud Defense' }
+    ];
+
+    let currentTrack = 'all';
+    let isPaused = false;
+
+    function renderCards() {
+      const filtered = currentTrack === 'all' ? MENTORS : MENTORS.filter(m => m.track === currentTrack);
+      const half = Math.ceil(filtered.length / 2);
+      const r1 = filtered.slice(0, half);
+      const r2 = filtered.slice(half).length ? filtered.slice(half) : filtered;
+
+      const row1Data = [...r1, ...r1, ...r1];
+      const row2Data = [...r2, ...r2, ...r2];
+
+      const createCard = (m) => `
+        <div class="w-[300px] sm:w-[320px] flex-shrink-0 bg-white rounded-2xl p-5 border border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_32px_rgba(37,99,235,0.08)] hover:border-blue-300 transition-all group select-none">
+          <div class="flex items-start gap-3.5 mb-3.5">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center text-white font-semibold text-sm bg-gradient-to-br ${m.color} flex-shrink-0 shadow-inner">
+              ${m.initials}
+            </div>
+            <div class="min-w-0 flex-1">
+              <h4 class="font-semibold text-slate-900 text-sm truncate group-hover:text-blue-600 transition-colors">${m.name}</h4>
+              <p class="text-[12px] text-slate-500 line-clamp-1 mt-0.5">${m.role}</p>
+            </div>
+          </div>
+          <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+            <span class="font-medium text-slate-800 bg-slate-100/90 px-2 py-0.5 rounded text-[11px] truncate max-w-[150px]">${m.company}</span>
+            <span class="text-blue-600 font-medium text-[11px]">${m.highlight}</span>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('marquee-row-1').innerHTML = row1Data.map(createCard).join('');
+      document.getElementById('marquee-row-2').innerHTML = row2Data.map(createCard).join('');
+    }
+
+    function filterTrack(trackId) {
+      currentTrack = trackId;
+      document.querySelectorAll('.track-btn').forEach(btn => {
+        if (btn.getAttribute('data-track') === trackId) {
+          btn.className = 'track-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white text-slate-900 shadow-xs';
+        } else {
+          btn.className = 'track-btn px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900';
+        }
+      });
+      renderCards();
+    }
+
+    function toggleScroll() {
+      isPaused = !isPaused;
+      const r1 = document.getElementById('marquee-row-1');
+      const r2 = document.getElementById('marquee-row-2');
+      const btn = document.getElementById('pause-btn');
+      if (isPaused) {
+        r1.classList.add('is-paused');
+        r2.classList.add('is-paused');
+        btn.innerText = '▶ Resume Scrolling';
+      } else {
+        r1.classList.remove('is-paused');
+        r2.classList.remove('is-paused');
+        btn.innerText = '⏸ Pause Auto-Scroll';
+      }
+    }
+
+    function setHoverPause(pause) {
+      if (!isPaused) {
+        const r1 = document.getElementById('marquee-row-1');
+        const r2 = document.getElementById('marquee-row-2');
+        if (pause) {
+          r1.classList.add('is-paused');
+          r2.classList.add('is-paused');
+        } else {
+          r1.classList.remove('is-paused');
+          r2.classList.remove('is-paused');
+        }
+      }
+    }
+
+    function openModal() {
+      const modal = document.getElementById('modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function handleForm(e) {
+      e.preventDefault();
+      document.getElementById('modal-content').innerHTML = `
+        <div class="py-8 text-center">
+          <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 text-xl font-bold">✓</div>
+          <h3 class="text-lg font-bold text-slate-900">Inquiry Submitted!</h3>
+          <p class="text-xs text-slate-500 mt-1">Our campus coordinator team will contact you within 24 hours.</p>
+        </div>
+      `;
+      setTimeout(closeModal, 2000);
+    }
+
+    renderCards();
+  </script>
+</body>
+</html>
+

@@ -1095,9 +1095,9 @@ function MentorCampusLanding() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-sans antialiased selection:bg-[#eff5ff] selection:text-[#1961e6] relative overflow-x-hidden">
+    <div className="min-h-screen bg-white text-gray-900 font-sans antialiased selection:bg-[#eff5ff] selection:text-[#1961e6] relative">
       {/* 1. STICKY HEADER NAVIGATION */}
-      <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-xl border-b border-gray-100 shadow-[0_2px_12px_rgba(0,0,0,0.03)] transition-all">
+      <header className="fixed top-0 left-0 right-0 z-50 w-full bg-white/95 backdrop-blur-xl border-b border-gray-100 shadow-[0_2px_12px_rgba(0,0,0,0.04)] transition-all">
         <div className="w-full max-w-[1400px] mx-auto px-6 sm:px-10 md:px-16 flex items-center justify-between py-3.5">
           {/* Left: Brand Handshake Logo + Text */}
           <a
@@ -1174,7 +1174,7 @@ function MentorCampusLanding() {
       {/* ==================================================================== */}
       {/* 2. HERO SECTION: PROPERLY SPACED AVATAR NETWORK WITH REAL PHOTOS     */}
       {/* ==================================================================== */}
-      <main id="home" className="relative pt-6 sm:pt-10 pb-16 md:pb-24 overflow-hidden bg-white">
+      <main id="home" className="relative pt-24 sm:pt-28 md:pt-32 pb-16 md:pb-24 overflow-hidden bg-white">
         <div className="w-full max-w-[1300px] mx-auto px-4 sm:px-6 md:px-12">
           
           {/* --- TOP: PROPERLY SPACED AVATAR NETWORK WITH REAL IMAGES --- */}

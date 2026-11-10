@@ -1,8 +1,9 @@
+
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import './MentorCampusLanding.css';
 
 // ============================================================================
-// DATA SETS: AUTHENTIC MENTOR CAMPUS DIRECTORY & CONTENT
+// DATA SETS: AUTHENTIC MENTOR CAMPUS DIRECTORY & BRAND CATEGORIES
 // ============================================================================
 
 const TRACK_CATEGORIES = [
@@ -12,37 +13,6 @@ const TRACK_CATEGORIES = [
   { id: 'entrepreneur', label: 'Founders & Startups', count: '100+' },
   { id: 'gov', label: 'Gov & Angel Investors', count: '100+' },
   { id: 'cyber', label: 'IoT & Cybersecurity', count: '100+' },
-];
-
-const HERO_PILLS = [
-  {
-    id: 'creators',
-    title: 'Creators',
-    subtitle: 'Ideas & media',
-    filterTrack: 'all',
-    type: 'dot',
-  },
-  {
-    id: 'founders',
-    title: 'Founders',
-    subtitle: 'Entrepreneurs',
-    filterTrack: 'entrepreneur',
-    type: 'arrow',
-  },
-  {
-    id: 'leaders',
-    title: 'Leaders',
-    subtitle: 'Community leaders',
-    filterTrack: 'gov',
-    type: 'dot',
-  },
-  {
-    id: 'professionals',
-    title: 'Professionals',
-    subtitle: 'Career builders',
-    filterTrack: 'ai',
-    type: 'grid',
-  },
 ];
 
 const MENTORS_DATA = [
@@ -59,7 +29,7 @@ const MENTORS_DATA = [
     bio: 'Pioneering large-scale enterprise AI infrastructure and autonomous vehicle machine learning systems at Ford.',
     topics: ['Production ML Deployment', 'Autonomous Systems Architecture', 'AI Engineering Roadmaps'],
     sessionsTaken: 14,
-    color: 'from-blue-600 to-indigo-600',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/senthilkumar-viswanathan.png',
   },
   {
@@ -74,7 +44,7 @@ const MENTORS_DATA = [
     bio: 'Directs applied data science and deep learning research teams scaling telecommunications intelligence.',
     topics: ['Applied AI in Telecom', 'From Research to Production', 'Data Science Career Ladders'],
     sessionsTaken: 9,
-    color: 'from-sky-500 to-blue-600',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/bharathi-ravindran.png',
   },
   {
@@ -89,7 +59,7 @@ const MENTORS_DATA = [
     bio: 'Oversees GCP AI Center of Excellence, helping enterprises architect generative AI and LLM solutions.',
     topics: ['Enterprise Generative AI', 'Cloud Foundation Models', 'Agentic Workflows'],
     sessionsTaken: 11,
-    color: 'from-indigo-500 to-blue-700',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/senthilvel-kasirajan.png',
   },
   {
@@ -104,7 +74,7 @@ const MENTORS_DATA = [
     bio: 'Architecting big data pipelines and distributed analytics systems for global clients.',
     topics: ['Big Data at Scale', 'Data Engineering vs Data Science', 'Real-time Streaming'],
     sessionsTaken: 7,
-    color: 'from-cyan-600 to-blue-600',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/ramesh-babu.png',
   },
   {
@@ -119,7 +89,7 @@ const MENTORS_DATA = [
     bio: 'Driving engineering excellence and AI model monitoring for Fortune 500 analytics implementations.',
     topics: ['MLOps Best Practices', 'Scaling Model Observability', 'AI Consulting Dynamics'],
     sessionsTaken: 8,
-    color: 'from-blue-500 to-cyan-500',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/raj-arun.png',
   },
   {
@@ -134,7 +104,7 @@ const MENTORS_DATA = [
     bio: 'Guiding global analytics transformation, financial data modeling, and enterprise risk intelligence.',
     topics: ['Fintech AI Applications', 'Executive Data Strategy', 'Consulting Readiness'],
     sessionsTaken: 12,
-    color: 'from-indigo-600 to-violet-600',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/kishan-s.png',
   },
   {
@@ -149,7 +119,7 @@ const MENTORS_DATA = [
     bio: 'Spearheading product vision for enterprise cognitive solutions and applied AI software suites.',
     topics: ['Product Management for AI', 'Validating AI Business Value', 'Product Roadmapping'],
     sessionsTaken: 6,
-    color: 'from-blue-600 to-slate-700',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/karthick-nethaji-kaleeswaran.png',
   },
   {
@@ -164,7 +134,7 @@ const MENTORS_DATA = [
     bio: 'Leads AI service delivery and customer enablement for high-growth SaaS ecosystems.',
     topics: ['SaaS Scale-up with AI', 'Operational AI Excellence', 'Customer Experience Automation'],
     sessionsTaken: 5,
-    color: 'from-sky-600 to-indigo-600',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/amudha-murugesan.png',
   },
   {
@@ -179,7 +149,7 @@ const MENTORS_DATA = [
     bio: 'Bridging creative agency automation with bleeding-edge generative media and digital technology.',
     topics: ['Generative Media Tech', 'Creative Automation', 'Next-Gen Content Engines'],
     sessionsTaken: 8,
-    color: 'from-slate-700 to-blue-800',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/edward-satish-c.png',
   },
 
@@ -196,7 +166,7 @@ const MENTORS_DATA = [
     bio: 'Specializes in talent supply-chain analytics and modern hiring intelligence frameworks.',
     topics: ['Cracking Campus Placements', 'What Recruiters Screen For', 'Resume Decoders'],
     sessionsTaken: 16,
-    color: 'from-teal-500 to-emerald-600',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/keerthana-arul.png',
   },
   {
@@ -211,7 +181,7 @@ const MENTORS_DATA = [
     bio: 'Recruiter with over a decade hiring engineers, engineering managers, and cloud architects.',
     topics: ['Technical Interview Prep', 'Navigating Salary Negotiations', 'Engineering Culture'],
     sessionsTaken: 13,
-    color: 'from-blue-500 to-teal-600',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/vignesh-u.png',
   },
   {
@@ -226,7 +196,7 @@ const MENTORS_DATA = [
     bio: 'Manages high-volume talent development and leadership scaling for India premier e-commerce ecosystem.',
     topics: ['High-Growth Culture', 'First 90 Days at Work', 'Leadership Transitions'],
     sessionsTaken: 10,
-    color: 'from-amber-500 to-orange-600',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/vasanth-m.png',
   },
   {
@@ -241,7 +211,7 @@ const MENTORS_DATA = [
     bio: 'Sourcing and onboarding talent for IBM cloud, consulting, and cybersecurity divisions.',
     topics: ['Global Enterprise Sourcing', 'LinkedIn Profile Optimization', 'Behavioral Interviews'],
     sessionsTaken: 12,
-    color: 'from-blue-700 to-indigo-700',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/reshma-subash.png',
   },
   {
@@ -256,7 +226,7 @@ const MENTORS_DATA = [
     bio: 'Driving HR business partnerships, talent metrics, and executive performance coaching.',
     topics: ['People Operations Scaling', 'Competency Mapping', 'HR in Multinational Firms'],
     sessionsTaken: 8,
-    color: 'from-purple-500 to-indigo-600',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/ayush-ranjan-hr.png',
   },
   {
@@ -271,7 +241,7 @@ const MENTORS_DATA = [
     bio: 'Dedicated to helping campus students understand corporate communication and onboarding standards.',
     topics: ['Campus to Corporate Shift', 'Overcoming Imposter Syndrome', 'Interview Do’s & Don’ts'],
     sessionsTaken: 15,
-    color: 'from-violet-600 to-purple-600',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/pavithran-sivakumar.png',
   },
   {
@@ -286,7 +256,7 @@ const MENTORS_DATA = [
     bio: 'Guiding thousands of young engineers through structured capability building and mentorship.',
     topics: ['Career Pathing in Large IT', 'Continuous Upskilling', 'Performance Evaluations'],
     sessionsTaken: 9,
-    color: 'from-blue-600 to-cyan-700',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/shaffiullah-s.png',
   },
   {
@@ -301,7 +271,7 @@ const MENTORS_DATA = [
     bio: 'Specialist in early-career engineering recruitment, skill-matrix assessments, and hiring operations.',
     topics: ['Acing Coding Interviews', 'Soft Skills for Engineers', 'Campus Selection Process'],
     sessionsTaken: 11,
-    color: 'from-emerald-600 to-teal-700',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/roshini-karunakaran.png',
   },
   {
@@ -316,7 +286,7 @@ const MENTORS_DATA = [
     bio: 'Leads digital tech sourcing and lateral hiring strategies for cloud and enterprise software engineering.',
     topics: ['Lateral vs Freshers Hiring', 'Tech Stack Demands', 'Building Professional Networks'],
     sessionsTaken: 14,
-    color: 'from-indigo-600 to-blue-700',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/saravana-kumar.png',
   },
 
@@ -333,7 +303,7 @@ const MENTORS_DATA = [
     bio: 'Bootstrapped and scaled hiring tech platforms serving rapid-growth startups across India.',
     topics: ['Finding Product-Market Fit', 'Bootstrapping vs VC Funding', 'First 10 Hires'],
     sessionsTaken: 18,
-    color: 'from-rose-500 to-pink-600',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/rakesh-r-aptahire.png',
   },
   {
@@ -348,7 +318,7 @@ const MENTORS_DATA = [
     bio: 'Serial entrepreneur building developer tooling and enterprise SaaS products.',
     topics: ['Validating SaaS Ideas', 'Building in Public', 'Sales for Introverted Engineers'],
     sessionsTaken: 11,
-    color: 'from-fuchsia-600 to-purple-600',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/nithya-rajasekar-unitive.png',
   },
   {
@@ -363,7 +333,7 @@ const MENTORS_DATA = [
     bio: 'Building IoT-enabled water delivery networks and sustainable urban utility hardware.',
     topics: ['Hardware & IoT Startups', 'Sustainability Ventures', 'Managing Supply Chains'],
     sessionsTaken: 7,
-    color: 'from-blue-500 to-teal-500',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/balachander-g.png',
   },
   {
@@ -378,7 +348,7 @@ const MENTORS_DATA = [
     bio: 'Building urban mobility solutions and decentralized fintech payment integration models.',
     topics: ['Mobility Tech Platforms', 'Fintech Unit Economics', 'Customer Acquisition Cost'],
     sessionsTaken: 8,
-    color: 'from-amber-600 to-orange-600',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/pinku-b.png',
   },
   {
@@ -393,7 +363,7 @@ const MENTORS_DATA = [
     bio: 'Educator and entrepreneur scaling student enablement programs and experiential learning.',
     topics: ['EdTech Business Models', 'Student Entrepreneurship', 'Scaling Offline-Online Hybrids'],
     sessionsTaken: 10,
-    color: 'from-purple-500 to-indigo-600',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/ayush-ranjan-vibrant.png',
   },
   {
@@ -408,7 +378,7 @@ const MENTORS_DATA = [
     bio: 'Active early-stage angel investor and startup operator guiding scaling ventures.',
     topics: ['Growth Playbooks', 'Evaluating Startup Traction', 'Fundraising Realities'],
     sessionsTaken: 12,
-    color: 'from-emerald-600 to-teal-600',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/senthil-k-chinnasamy.png',
   },
   {
@@ -423,7 +393,7 @@ const MENTORS_DATA = [
     bio: 'Consultant and enterprise mentor advising early-stage founders on corporate governance and market entry.',
     topics: ['Go-to-Market Strategy', 'Navigating Regulatory Frameworks', 'Founder Resilience'],
     sessionsTaken: 9,
-    color: 'from-cyan-600 to-blue-700',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/siraj-m-k.png',
   },
   {
@@ -438,7 +408,7 @@ const MENTORS_DATA = [
     bio: 'Creating viral consumer mobile apps and social micro-commerce platforms.',
     topics: ['Consumer Growth Hacking', 'UI/UX That Converts', 'From College Hackathon to Startup'],
     sessionsTaken: 14,
-    color: 'from-purple-600 to-indigo-600',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/sudarsan-babu.png',
   },
   {
@@ -453,7 +423,7 @@ const MENTORS_DATA = [
     bio: 'Co-founder blending digital platforms with cultural commerce and decentralized creator networks.',
     topics: ['Niche Market Penetration', 'Building Mission-Driven Brands', 'Community-Led Growth'],
     sessionsTaken: 7,
-    color: 'from-sky-600 to-blue-700',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/selventhiran-kathiresan.png',
   },
 
@@ -470,7 +440,7 @@ const MENTORS_DATA = [
     bio: 'Fosters state-level technology policy, IT corridors, and academic incubation centers.',
     topics: ['State Incubation Grants', 'Public Policy in Tech', 'Tier-2/3 City Opportunities'],
     sessionsTaken: 8,
-    color: 'from-emerald-600 to-green-700',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/rakesh-r-elcot.png',
   },
   {
@@ -485,7 +455,7 @@ const MENTORS_DATA = [
     bio: 'Spearheading state government initiatives to fund and support student founders across 500+ colleges.',
     topics: ['Government Grants for Students', 'Incubator Access', 'State Innovation Ecosystem'],
     sessionsTaken: 19,
-    color: 'from-blue-600 to-teal-600',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/nithya-rajasekar-startuptn.png',
   },
   {
@@ -500,7 +470,7 @@ const MENTORS_DATA = [
     bio: 'Advising European and Indian trade delegations on international startup expansion.',
     topics: ['Global Mobility for Engineers', 'International Market Entry', 'Diplomacy in Tech'],
     sessionsTaken: 6,
-    color: 'from-indigo-600 to-blue-700',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/dharanidharan-sivasamy.png',
   },
   {
@@ -515,7 +485,7 @@ const MENTORS_DATA = [
     bio: 'Directing statewide AI innovation corridors and public-private industry accelerator programs.',
     topics: ['State Startup Grants', 'Emerging Tech Public Policy', 'Incubator Networks'],
     sessionsTaken: 13,
-    color: 'from-teal-600 to-cyan-700',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/rajan-bl.png',
   },
   {
@@ -530,7 +500,7 @@ const MENTORS_DATA = [
     bio: 'Evaluating early-stage grant applications and student founder incubation readiness.',
     topics: ['Writing Winning Grant Proposals', 'Government Seed Funds', 'Campus Pitch Competitions'],
     sessionsTaken: 11,
-    color: 'from-blue-600 to-slate-700',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/nikunj-panchal.png',
   },
   {
@@ -545,7 +515,7 @@ const MENTORS_DATA = [
     bio: 'Facilitating student entrepreneurship awareness drives across higher education institutions.',
     topics: ['Student Innovation Hubs', 'Accessing State Labs', 'College Startup Cells'],
     sessionsTaken: 9,
-    color: 'from-sky-600 to-indigo-600',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/rajsekar-sivasamy.png',
   },
   {
@@ -560,7 +530,7 @@ const MENTORS_DATA = [
     bio: 'Angel investor backing high-conviction founders solving enterprise SaaS and digital logistics problems.',
     topics: ['What Angels Look For in First Pitches', 'Cap Table Essentials', 'Market Validation'],
     sessionsTaken: 10,
-    color: 'from-amber-600 to-orange-600',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/raghavender-r.png',
   },
   {
@@ -575,7 +545,7 @@ const MENTORS_DATA = [
     bio: 'Active angel investor with 25+ portfolio bets across healthcare, AI, and developer tools.',
     topics: ['How Angels Read Pitch Decks', 'Cap Table Hygiene', 'Valuation Realities'],
     sessionsTaken: 15,
-    color: 'from-amber-600 to-orange-600',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/dr-prabhu-venugopal.png',
   },
   {
@@ -590,7 +560,7 @@ const MENTORS_DATA = [
     bio: 'Angel syndicate member supporting tech-enabled founders during pre-seed and angel rounds.',
     topics: ['Preparing for Due Diligence', 'Term Sheets 101', 'Founder-Investor Relationships'],
     sessionsTaken: 8,
-    color: 'from-purple-600 to-pink-600',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/tarun-billa.png',
   },
 
@@ -607,7 +577,7 @@ const MENTORS_DATA = [
     bio: 'Building enterprise tracking networks and resilient supply-chain IoT edge infrastructure.',
     topics: ['Edge Computing & IoT', 'Supply Chain Telemetry', 'Embedded Systems Engineering'],
     sessionsTaken: 7,
-    color: 'from-amber-700 to-stone-800',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/vinod-kumar.png',
   },
   {
@@ -622,7 +592,7 @@ const MENTORS_DATA = [
     bio: 'Leading enterprise cloud compliance and medical device connectivity for life sciences.',
     topics: ['HealthTech Security', 'Regulatory Compliance & GxP', 'Enterprise Architecture'],
     sessionsTaken: 10,
-    color: 'from-teal-600 to-cyan-700',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/arivukkarasan-raja.png',
   },
   {
@@ -637,7 +607,7 @@ const MENTORS_DATA = [
     bio: 'Leading vulnerability assessments, secure firmware development, and IoT device hardening.',
     topics: ['Embedded System Security', 'Penetration Testing Essentials', 'Securing Connected Devices'],
     sessionsTaken: 8,
-    color: 'from-blue-600 to-slate-700',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/abishek-r.png',
   },
   {
@@ -652,7 +622,7 @@ const MENTORS_DATA = [
     bio: 'Protects critical financial rails from sophisticated multi-vector attacks and breach threats.',
     topics: ['Fintech Security Standards', 'Ethical Hacking & Bug Bounties', 'SOC Analyst Careers'],
     sessionsTaken: 12,
-    color: 'from-blue-600 to-indigo-600',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/prasath-jayasundar.png',
   },
   {
@@ -667,7 +637,7 @@ const MENTORS_DATA = [
     bio: 'Managing cybersecurity operations, incident response, and cloud perimeter defense for critical platforms.',
     topics: ['Incident Response In Action', 'Threat Hunting Techniques', 'Certifications (CEH, OSCP, CISSP)'],
     sessionsTaken: 9,
-    color: 'from-indigo-600 to-purple-600',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/aravindh-raj.png',
   },
   {
@@ -682,204 +652,74 @@ const MENTORS_DATA = [
     bio: 'Hands-on architect designing cloud perimeter defense and identity systems for global banks.',
     topics: ['Cloud Security Posture (CSPM)', 'Zero-Trust Architecture', 'Security Certifications'],
     sessionsTaken: 11,
-    color: 'from-sky-600 to-blue-700',
+    color: 'bg-[#1961e6]',
     image: './images/mentors/muhamadu-mansur-r.png',
   },
 ];
 
-const TRUSTED_COMPANIES = [
-  { name: 'Ford', logoText: 'Ford', mentorsCount: '8+ Mentors' },
-  { name: 'Verizon', logoText: 'verizon', mentorsCount: '6+ Mentors' },
-  { name: 'Capgemini', logoText: 'Capgemini', mentorsCount: '12+ Mentors' },
-  { name: 'Deloitte', logoText: 'Deloitte.', mentorsCount: '9+ Mentors' },
-  { name: 'IBM', logoText: 'IBM', mentorsCount: '7+ Mentors' },
-  { name: 'Flipkart', logoText: 'Flipkart', mentorsCount: '5+ Mentors' },
-  { name: 'Accenture', logoText: 'accenture', mentorsCount: '14+ Mentors' },
-  { name: 'PayPal', logoText: 'PayPal', mentorsCount: '6+ Mentors' },
-  { name: 'TCS', logoText: 'TATA TCS', mentorsCount: '15+ Mentors' },
-  { name: 'Wipro', logoText: 'wipro', mentorsCount: '8+ Mentors' },
-  { name: 'HCLTech', logoText: 'HCLTech', mentorsCount: '10+ Mentors' },
-  { name: 'AstraZeneca', logoText: 'AstraZeneca', mentorsCount: '4+ Mentors' },
-  { name: 'StartupTN', logoText: 'StartupTN', mentorsCount: 'State Partner' },
-  { name: 'ELCOT', logoText: 'ELCOT', mentorsCount: 'Gov Partner' },
-];
-
-const SESSION_FORMATS = [
-  {
-    id: 'expert-talks',
-    title: 'Expert talks',
-    badge: 'High Impact',
-    desc: 'A senior leader visits your college for a single, focused session, followed by open and uncensored Q&A with students.',
-    duration: '90 Minutes',
-    highlights: ['Direct access to VP/Director level leaders', 'Audience-driven 45-min open Q&A', 'Real workplace case studies & metrics'],
-    stats: '150+ Talks Hosted',
-  },
-  {
-    id: 'panel-discussions',
-    title: 'Panel discussions',
-    badge: 'Multi-Perspective',
-    desc: 'Multiple experts discuss a shared emerging theme, moderated specifically for students in an engaging, interactive format.',
-    duration: '120 Minutes',
-    highlights: ['3 to 4 cross-sector practitioners', 'Healthy debates on industry shifts', 'Diverse career trajectory roadmaps'],
-    stats: '60+ Panels Curated',
-  },
-  {
-    id: 'interactive-workshops',
-    title: 'Interactive workshops',
-    badge: 'Hands-on Mastery',
-    desc: 'Smaller, hands-on masterclasses that go deep on one specific skill, practical toolstack, or industry workflow.',
-    duration: 'Half-Day / Full-Day',
-    highlights: ['Intimate cohort size for direct feedback', 'Live tooling, code reviews & resume audits', 'Zero abstract theories'],
-    stats: '85+ Masterclasses Run',
-  },
-];
-
-const TESTIMONIALS = [
-  {
-    quote:
-      'Instead of another generic motivation lecture, our students were listening to the Chief AI Architect from Ford break down how production models are deployed. The candid Q&A changed how students view their engineering projects.',
-    author: 'Dr. S. Sundararajan',
-    role: 'Dean of Academic & Industry Relations',
-    institution: 'PSG College of Technology',
-    tag: 'Institutional Leader',
-    category: 'dean',
-    rating: 5,
-  },
-  {
-    quote:
-      'I got to ask direct questions about what hiring managers actually look for in portfolio projects versus resume keywords. That 90-minute session was more actionable than 3 years of classroom theory.',
-    author: 'Ananya Mehra',
-    role: 'Final Year B.Tech Student & Club Lead',
-    institution: 'Mentor Campus Club Member',
-    tag: 'Student Perspective',
-    category: 'student',
-    rating: 5,
-  },
-  {
-    quote:
-      'Giving back through Mentor Campus is deeply fulfilling because there are zero PR scripts or artificial barriers. Students ask real, difficult questions about the industry, and we give them honest, grounded answers.',
-    author: 'Bharathi Ravindran',
-    role: 'Director, AI Science',
-    institution: 'Verizon & Mentor Campus Contributor',
-    tag: 'Industry Mentor',
-    category: 'mentor',
-    rating: 5,
-  },
-  {
-    quote:
-      'Setting up a student-led Mentor Campus Club on our campus has created an ongoing buzz. Sessions happen every month across AI, Startups, and HR, making industry exposure a regular part of campus life.',
-    author: 'Prof. K. Venkatesh',
-    role: 'Faculty Coordinator, Innovation Cell',
-    institution: 'Anna University Affiliated Campus',
-    tag: 'Campus Coordinator',
-    category: 'dean',
-    rating: 5,
-  },
-];
-
 // ============================================================================
-// SUBCOMPONENTS
+// SVG AVATAR SILHOUETTE COMPONENT (Clean, Scalable Silhouette for Template Cards)
 // ============================================================================
-
-// Handshake Logo using the official Mentor Campus Handshake Logo
-const MentorCampusLogo = ({ className = 'h-11 sm:h-12' }) => (
-  <div className="flex items-center gap-2.5">
-    <img
-      src="./Mentor Campus Handshake Logo.png"
-      alt="Mentor Campus"
-      className={`w-auto object-contain transition-transform duration-200 hover:scale-[1.02] ${className}`}
-      onError={(e) => {
-        if (!e.target.dataset.triedFallback) {
-          e.target.dataset.triedFallback = 'true';
-          e.target.src = './images/Mentor Campus Handshake Logo.png';
-        }
-      }}
-    />
-  </div>
-);
-
-// Individual Mentor Marquee Card
-const MentorMarqueeCard = ({ mentor, onSelect }) => {
+function AvatarSilhouette({ 
+  className = "w-full h-full", 
+  hairColor = "#1e293b", 
+  faceColor = "#cbd5e1", 
+  shirtColor = "#64748b",
+  hasDetail = false
+}) {
   return (
-    <div
-      onClick={() => onSelect(mentor)}
-      className="w-[300px] sm:w-[325px] flex-shrink-0 bg-white/95 rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_36px_rgba(33,96,220,0.12)] hover:border-blue-400 transition-all duration-300 group cursor-pointer select-none card-sheen"
-    >
-      <div className="flex items-start gap-3.5 mb-3">
-        <div className="w-12 h-12 rounded-xl overflow-hidden bg-slate-100 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform duration-300 shrink-0 border border-slate-200/60">
-          {mentor.image ? (
-            <img
-              src={mentor.image}
-              alt={mentor.name}
-              className="w-full h-full object-cover object-top"
-              onError={(e) => {
-                e.target.style.display = 'none';
-                if (e.target.nextSibling) e.target.nextSibling.style.display = 'flex';
-              }}
-            />
-          ) : null}
-          <div
-            className={`w-full h-full items-center justify-center text-white font-bold text-sm bg-gradient-to-br ${mentor.color} ${mentor.image ? 'hidden' : 'flex'}`}
-          >
-            {mentor.initials}
-          </div>
-        </div>
-        <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-1.5">
-            <h4 className="font-bold text-gray-900 text-sm truncate group-hover:text-[#2160dc] transition-colors">
-              {mentor.name}
-            </h4>
-            <span className="inline-flex text-[#2160dc]" title="Verified Mentor">
-              <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20">
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </span>
-          </div>
-          <p className="text-[12px] text-gray-500 truncate mt-0.5">{mentor.role}</p>
-        </div>
-      </div>
+    <svg className={className} viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Hair / Cap: Smooth rounded dome */}
+      <path d="M26 42C26 26 36 14 50 14C64 14 74 26 74 42C74 45 73 47.5 71.5 49H28.5C27 47.5 26 45 26 42Z" fill={hairColor} />
+      {/* Face oval */}
+      <ellipse cx="50" cy="51" rx="19" ry="21" fill={faceColor} />
+      {/* Detail circle/ear accent for hero card */}
+      {hasDetail && (
+        <circle cx="50" cy="54" r="8" stroke="#1961e6" strokeWidth="1.5" strokeOpacity="0.8" fill="none" />
+      )}
+      {/* Neck */}
+      <rect x="44" y="67" width="12" height="12" rx="3" fill={faceColor} />
+      {/* Shoulders / Torso curve */}
+      <path d="M10 118C10 92 26 80 50 80C74 80 90 92 90 118V120H10V118Z" fill={shirtColor} />
+    </svg>
+  );
+}
 
-      <div className="space-y-2 pt-2.5 border-t border-slate-100 text-xs">
-        <div className="flex items-center justify-between">
-          <span className="text-gray-400 font-medium">Organization</span>
-          <span className="font-semibold text-gray-800 bg-[#eceef1] px-2 py-0.5 rounded-md text-[11px] truncate max-w-[160px]">
-            {mentor.company}
-          </span>
-        </div>
-        <div className="flex items-center justify-between">
-          <span className="text-gray-400 font-medium">Domain</span>
-          <span className="text-[#2160dc] font-semibold text-[11px] truncate max-w-[170px]">{mentor.highlight}</span>
-        </div>
-      </div>
-
-      <div className="mt-3 flex items-center justify-between text-[11px] text-gray-400 pt-2 border-t border-slate-50">
-        <span className="text-emerald-600 font-medium flex items-center gap-1">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-          {mentor.sessionsTaken} sessions completed
-        </span>
-        <span className="text-[#2160dc] font-semibold group-hover:translate-x-0.5 transition-transform">
-          View Profile →
-        </span>
-      </div>
+// ============================================================================
+// LOGO COMPONENT (Handshake Icon + Clean Brand Typography)
+// ============================================================================
+function MentorCampusLogo({ className = "h-8 sm:h-9" }) {
+  return (
+    <div className="flex items-center gap-2.5">
+      <img
+        src="./Mentor Campus Handshake Logo.png"
+        alt="MentorCampus"
+        className={`${className} w-auto object-contain transition-transform duration-200 hover:scale-105`}
+        onError={(e) => {
+          if (!e.target.dataset.triedFallback) {
+            e.target.dataset.triedFallback = 'true';
+            e.target.src = './images/Mentor Campus Handshake Logo.png';
+          }
+        }}
+      />
+      <span className="font-extrabold text-lg sm:text-xl tracking-tight text-[#0b192c]">
+        Mentor<span className="text-[#1961e6]">Campus</span>
+      </span>
     </div>
   );
-};
+}
 
 // ============================================================================
-// ANIMATED HEADER NAV PILLS COMPONENT
+// ANIMATED NAVIGATION PILLS (Exact Sub-Pixel Precision & Sliding Capsule)
 // ============================================================================
-const AnimatedNavPills = ({ activeNav, onNavClick, onJoinClick }) => {
+function AnimatedNavPills({ activeNav, onNavClick }) {
   const navItems = [
     { label: 'Home', section: 'home' },
-    { label: 'About us', section: 'about' },
-    { label: 'Mentors', section: 'mentors' },
-    { label: 'Testimonials', section: 'testimonials' },
-    { label: 'Contact us', section: 'contact' },
-    { label: 'Join us', action: onJoinClick },
+    { label: 'About', section: 'about' },
+    { label: 'How it works', section: 'how-it-works' },
+    { label: 'Benefits', section: 'benefits' },
+    { label: 'What is MentorCampus', section: 'what-is-mentorcampus' },
+    { label: 'How to join', section: 'how-to-join' },
   ];
 
   const containerRef = useRef(null);
@@ -932,9 +772,9 @@ const AnimatedNavPills = ({ activeNav, onNavClick, onJoinClick }) => {
     <nav
       ref={containerRef}
       aria-label="Main Navigation"
-      className="relative hidden md:flex items-center bg-[#eaecef] p-1 rounded-full text-xs font-semibold text-gray-600 shadow-inner px-1.5"
+      className="relative hidden lg:flex items-center bg-[#eaecef] p-1 rounded-full text-xs font-semibold text-gray-600 shadow-inner px-1.5"
     >
-      {/* Smooth Sliding Pill Indicator with Apple Spring Physics */}
+      {/* Sliding Active Pill Indicator */}
       <span
         className="absolute top-0 left-0 rounded-full bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08),0_1px_2px_rgba(0,0,0,0.04)] pointer-events-none nav-pill-indicator"
         style={{
@@ -955,14 +795,8 @@ const AnimatedNavPills = ({ activeNav, onNavClick, onJoinClick }) => {
           <button
             key={item.label}
             ref={(el) => (btnRefs.current[item.label] = el)}
-            onClick={() => {
-              if (item.action) {
-                item.action();
-              } else {
-                onNavClick(item.label, item.section);
-              }
-            }}
-            className={`relative z-10 px-4 py-1.5 rounded-full transition-colors duration-250 cursor-pointer select-none ${
+            onClick={() => onNavClick(item.label, item.section)}
+            className={`relative z-10 px-3.5 sm:px-4 py-1.5 rounded-full transition-colors duration-200 cursor-pointer select-none text-[12px] whitespace-nowrap ${
               isActive
                 ? 'text-gray-950 font-bold'
                 : 'text-gray-600 hover:text-gray-950 font-medium'
@@ -974,87 +808,106 @@ const AnimatedNavPills = ({ activeNav, onNavClick, onJoinClick }) => {
       })}
     </nav>
   );
-};
+}
 
 // ============================================================================
-// MAIN COMPONENT
+// MARQUEE MENTOR CARD (Strictly Brand Blue & Pure White, No Non-Brand Colors)
 // ============================================================================
-export default function MentorCampusLanding() {
-  // Navigation & Active section state
+function MentorMarqueeCard({ mentor, onSelect }) {
+  return (
+    <div
+      onClick={() => onSelect(mentor)}
+      className="w-[300px] sm:w-[325px] flex-shrink-0 bg-white rounded-2xl p-4 sm:p-5 border border-gray-200 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_36px_rgba(25,97,230,0.12)] hover:border-[#1961e6]/60 transition-all duration-300 group cursor-pointer select-none card-sheen"
+    >
+      <div className="flex items-start gap-3.5 mb-3">
+        {mentor.image ? (
+          <img
+            src={mentor.image}
+            alt={mentor.name}
+            className="w-13 h-13 sm:w-14 sm:h-14 rounded-full object-cover border-2 border-[#1961e6]/30 shadow-sm flex-shrink-0 bg-gray-50"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = './images/mentors/mentor-campus-logo.png';
+            }}
+          />
+        ) : (
+          <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#eff5ff] border-2 border-[#1961e6]/30 flex items-center justify-center font-bold text-[#1961e6] text-base flex-shrink-0">
+            {mentor.initials}
+          </div>
+        )}
+        <div className="min-w-0 flex-1">
+          <h4 className="font-bold text-gray-950 text-sm sm:text-base leading-snug truncate group-hover:text-[#1961e6] transition-colors">
+            {mentor.name}
+          </h4>
+          <p className="text-xs font-semibold text-gray-600 truncate mt-0.5">{mentor.role}</p>
+          <p className="text-xs text-[#1961e6] font-semibold truncate flex items-center gap-1 mt-0.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1961e6] inline-block"></span>
+            {mentor.company}
+          </p>
+        </div>
+      </div>
+
+      <p className="text-xs text-gray-600 leading-relaxed line-clamp-2 mb-3.5">
+        {mentor.bio}
+      </p>
+
+      <div className="flex items-center justify-between pt-3 border-t border-gray-100 text-xs">
+        <span className="px-2.5 py-1 rounded-full bg-[#eff5ff] text-[#1961e6] font-semibold text-[11px] border border-[#1961e6]/20">
+          {mentor.trackLabel}
+        </span>
+        <span className="text-[#1961e6] font-bold text-[11px] flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+          {mentor.sessionsTaken}+ sessions · View Profile →
+        </span>
+      </div>
+    </div>
+  );
+}
+
+// ============================================================================
+// MAIN APPLICATION COMPONENT
+// ============================================================================
+function MentorCampusLanding() {
   const [activeNav, setActiveNav] = useState('Home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  // Marquee filtering
   const [selectedTrack, setSelectedTrack] = useState('all');
-
-  // Modals state
   const [selectedMentor, setSelectedMentor] = useState(null);
   const [showSignInModal, setShowSignInModal] = useState(false);
-  const [signInTab, setSignInTab] = useState('student'); // 'student' | 'college' | 'mentor'
+  const [signInTab, setSignInTab] = useState('student');
   const [showJoinModal, setShowJoinModal] = useState(false);
   const [joinSubmitted, setJoinSubmitted] = useState(false);
-  const [joinRole, setJoinRole] = useState('college'); // 'student' | 'college' | 'mentor'
-
-  // Interactive Content Tabs
+  const [joinRole, setJoinRole] = useState('college');
   const [activeSessionTab, setActiveSessionTab] = useState('expert-talks');
   const [activeTestimonialTab, setActiveTestimonialTab] = useState('all');
 
-  // Join form fields
   const [joinFormData, setJoinFormData] = useState({
     name: '',
     institution: '',
     email: '',
     phone: '',
     preferredTrack: 'Technology & AI',
-    notes: '',
   });
 
-  // Filtered Mentors
+  const isClickScrollingRef = useRef(false);
+
+  // Filtered mentors for Marquee
   const filteredMentors = useMemo(() => {
     if (selectedTrack === 'all') return MENTORS_DATA;
     return MENTORS_DATA.filter((m) => m.track === selectedTrack);
   }, [selectedTrack]);
 
-  // Infinite Marquee data split
   const row1Mentors = useMemo(() => {
     const list = filteredMentors.slice(0, Math.ceil(filteredMentors.length / 2));
-    const effective = list.length > 0 ? list : filteredMentors;
-    return [...effective, ...effective, ...effective, ...effective];
+    const eff = list.length > 0 ? list : filteredMentors;
+    return [...eff, ...eff, ...eff, ...eff];
   }, [filteredMentors]);
 
   const row2Mentors = useMemo(() => {
     const list = filteredMentors.slice(Math.ceil(filteredMentors.length / 2));
-    const effective = list.length > 0 ? list : filteredMentors;
-    return [...effective, ...effective, ...effective, ...effective];
+    const eff = list.length > 0 ? list : filteredMentors;
+    return [...eff, ...eff, ...eff, ...eff];
   }, [filteredMentors]);
 
-  // Filtered Testimonials
-  const filteredTestimonials = useMemo(() => {
-    if (activeTestimonialTab === 'all') return TESTIMONIALS;
-    return TESTIMONIALS.filter((t) => t.category === activeTestimonialTab);
-  }, [activeTestimonialTab]);
-
-  // Handle Join Form
-  const handleJoinSubmit = (e) => {
-    e.preventDefault();
-    setJoinSubmitted(true);
-    setTimeout(() => {
-      setJoinSubmitted(false);
-      setShowJoinModal(false);
-      setJoinFormData({
-        name: '',
-        institution: '',
-        email: '',
-        phone: '',
-        preferredTrack: 'Technology & AI',
-        notes: '',
-      });
-    }, 2400);
-  };
-
-  const isClickScrollingRef = useRef(false);
-
-  // Nav click smooth scroll helper
+  // Smooth scroll handler
   const handleNavClick = (navItem, sectionId) => {
     setActiveNav(navItem);
     setMobileMenuOpen(false);
@@ -1076,14 +929,15 @@ export default function MentorCampusLanding() {
     }
   };
 
-  // Scroll Spy: Keep activeNav and animated pill synchronized with scroll position
+  // Scroll Spy synchronized to the 6 sections
   useEffect(() => {
     const sections = [
       { id: 'home', label: 'Home' },
-      { id: 'about', label: 'About us' },
-      { id: 'mentors', label: 'Mentors' },
-      { id: 'testimonials', label: 'Testimonials' },
-      { id: 'contact', label: 'Contact us' },
+      { id: 'about', label: 'About' },
+      { id: 'how-it-works', label: 'How it works' },
+      { id: 'benefits', label: 'Benefits' },
+      { id: 'what-is-mentorcampus', label: 'What is MentorCampus' },
+      { id: 'how-to-join', label: 'How to join' },
     ];
 
     const handleScroll = () => {
@@ -1103,539 +957,666 @@ export default function MentorCampusLanding() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  return (
-    <div className="min-h-screen bg-[#FBFBFD] text-gray-900 font-sans antialiased selection:bg-blue-100 selection:text-[#2160dc] relative overflow-x-hidden">
-      {/* Background Ambient Glows */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute -top-36 left-1/2 -translate-x-1/2 w-[760px] h-[520px] bg-gradient-to-b from-blue-100/70 via-indigo-100/30 to-transparent rounded-full blur-3xl opacity-80" />
-        <div className="absolute top-[38%] -right-32 w-[520px] h-[520px] bg-blue-50/70 rounded-full blur-3xl opacity-60" />
-        <div className="absolute top-[70%] -left-32 w-[520px] h-[520px] bg-indigo-50/60 rounded-full blur-3xl opacity-60" />
-      </div>
+  const handleJoinSubmit = (e) => {
+    e.preventDefault();
+    setJoinSubmitted(true);
+    setTimeout(() => {
+      setJoinSubmitted(false);
+      setShowJoinModal(false);
+      setJoinFormData({
+        name: '',
+        institution: '',
+        email: '',
+        phone: '',
+        preferredTrack: 'Technology & AI',
+      });
+    }, 1800);
+  };
 
-      {/* ==================================================================== */}
-      {/* 1. MAIN HEADER / PERSISTENT STATIC TOOLBAR */}
-      {/* ==================================================================== */}
-      <header className="sticky top-0 z-50 w-full bg-[#FBFBFD]/90 backdrop-blur-xl border-b border-gray-200/70 shadow-[0_2px_12px_rgba(0,0,0,0.03)] transition-all">
+  return (
+    <div className="min-h-screen bg-white text-gray-900 font-sans antialiased selection:bg-[#eff5ff] selection:text-[#1961e6] relative overflow-x-hidden">
+      {/* 1. STICKY HEADER NAVIGATION */}
+      <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-xl border-b border-gray-100 shadow-[0_2px_12px_rgba(0,0,0,0.03)] transition-all">
         <div className="w-full max-w-[1400px] mx-auto px-6 sm:px-10 md:px-16 flex items-center justify-between py-3.5">
-          {/* Brand Logo */}
+          {/* Left: Brand Handshake Logo + Text */}
           <a
             href="#"
             onClick={(e) => {
               e.preventDefault();
               handleNavClick('Home', 'home');
             }}
-            className="flex items-center gap-2.5 focus:outline-none"
+            className="flex items-center gap-2 focus:outline-none group"
           >
             <MentorCampusLogo />
           </a>
 
-          {/* Center Navigation Pill Container with Smooth Sliding Animation */}
+          {/* Center Pill Nav Bar with Animated Sliding Indicator */}
           <AnimatedNavPills
             activeNav={activeNav}
             onNavClick={handleNavClick}
-            onJoinClick={() => {
-              setActiveNav('Join us');
-              setShowJoinModal(true);
-            }}
           />
 
-          {/* Right Header Sign In Action (From reference) */}
+          {/* Right Header: + Sign In Action */}
           <div className="flex items-center gap-3">
             <button
               onClick={() => setShowSignInModal(true)}
-              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-[#1961e6] text-xs font-bold text-gray-800 hover:bg-blue-50/70 transition-all shadow-sm active:scale-95 cursor-pointer bg-white"
+              className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-1.5 rounded-full border border-[#1961e6] text-xs font-bold text-gray-900 hover:bg-[#eff5ff] transition-all shadow-sm active:scale-95 cursor-pointer bg-white"
             >
               <span className="text-[#1961e6] font-bold text-sm leading-none">+</span>
               <span>Sign In</span>
             </button>
 
-            {/* Mobile menu toggle */}
+            {/* Mobile menu toggle button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-gray-600 hover:text-gray-900 rounded-lg hover:bg-slate-100"
-              aria-label="Toggle Navigation"
+              className="lg:hidden p-2 rounded-lg text-gray-600 hover:text-gray-950 hover:bg-gray-100 focus:outline-none"
+              aria-label="Toggle mobile menu"
             >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {mobileMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                 )}
               </svg>
             </button>
           </div>
         </div>
 
-        {/* Mobile Nav Dropdown */}
+        {/* Mobile Navigation Dropdown */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-gray-200 px-6 py-4 shadow-xl space-y-2">
-            {['Home', 'About us', 'Mentors', 'Testimonials', 'Contact us'].map((lbl) => (
+          <div className="lg:hidden bg-white border-b border-gray-100 px-6 py-4 space-y-2">
+            {[
+              { label: 'Home', section: 'home' },
+              { label: 'About', section: 'about' },
+              { label: 'How it works', section: 'how-it-works' },
+              { label: 'Benefits', section: 'benefits' },
+              { label: 'What is MentorCampus', section: 'what-is-mentorcampus' },
+              { label: 'How to join', section: 'how-to-join' },
+            ].map((item) => (
               <button
-                key={lbl}
-                onClick={() => handleNavClick(lbl, lbl.toLowerCase().replace(' ', ''))}
-                className="block w-full text-left py-2 text-sm font-medium text-gray-700 hover:text-[#2160dc]"
+                key={item.label}
+                onClick={() => handleNavClick(item.label, item.section)}
+                className={`block w-full text-left px-4 py-2 text-sm rounded-lg font-semibold transition-colors ${
+                  activeNav === item.label
+                    ? 'bg-[#eff5ff] text-[#1961e6]'
+                    : 'text-gray-700 hover:bg-gray-50'
+                }`}
               >
-                {lbl}
+                {item.label}
               </button>
             ))}
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                setShowJoinModal(true);
-              }}
-              className="w-full mt-2 py-2.5 rounded-full bg-[#2160dc] text-white font-bold text-xs shadow-md"
-            >
-              Join MentorCampus
-            </button>
           </div>
         )}
       </header>
 
       {/* ==================================================================== */}
-      {/* 2. HERO SECTION & FLOATING AVATAR NETWORK (Landing_page (1).html) */}
+      {/* 2. HERO SECTION: TEMPLATE AVATAR CLUSTER + HEADLINE + CTA            */}
       {/* ==================================================================== */}
-      <main id="home" className="w-full max-w-[1400px] mx-auto px-6 sm:px-12 md:px-16 flex flex-col items-center pt-2 relative z-10">
-        {/* Floating Avatar Composition & Category Badges from reference */}
-        <div className="w-full max-w-6xl mx-auto py-6 select-none flex flex-col items-center justify-center gap-7">
-          {/* Top Category Badges Row */}
-          <div className="w-full max-w-4xl flex items-center justify-center md:justify-between gap-3 sm:gap-4 md:gap-8 flex-wrap px-4">
-            {HERO_PILLS.map((pill) => (
+      <main id="home" className="relative pt-6 sm:pt-10 pb-16 md:pb-24 overflow-hidden bg-white">
+        <div className="w-full max-w-[1300px] mx-auto px-4 sm:px-6 md:px-12">
+          
+          {/* --- TOP: AVATAR CLUSTER (Faithfully Replicating Template) --- */}
+          <div className="relative w-full max-w-[860px] h-[320px] sm:h-[380px] md:h-[430px] mx-auto mb-4 select-none">
+            
+            {/* Decorative Floating Blue Plus Signs */}
+            <span className="absolute left-[27%] top-[14%] text-[#1961e6] font-bold text-sm pointer-events-none opacity-80">+</span>
+            <span className="absolute left-[16%] top-[46%] text-[#1961e6] font-bold text-sm pointer-events-none opacity-80">+</span>
+            <span className="absolute left-[37%] top-[36%] text-[#1961e6] font-bold text-sm pointer-events-none opacity-80">+</span>
+            <span className="absolute left-[32%] top-[60%] text-[#1961e6] font-bold text-sm pointer-events-none opacity-80">+</span>
+            <span className="absolute left-[54%] top-[29%] text-[#1961e6] font-bold text-sm pointer-events-none opacity-80">+</span>
+            <span className="absolute left-[61%] top-[56%] text-[#1961e6] font-bold text-sm pointer-events-none opacity-80">+</span>
+            <span className="absolute left-[81%] top-[45%] text-[#1961e6] font-bold text-sm pointer-events-none opacity-80">+</span>
+
+            {/* --- AVATAR CARD 1: CENTER FRONT (Hero - Dominant Card) --- */}
+            <div 
+              onClick={() => setSelectedMentor(MENTORS_DATA[0])}
+              className="absolute left-[51%] top-[54%] -translate-x-1/2 -translate-y-1/2 w-28 h-36 sm:w-36 sm:h-46 md:w-44 md:h-54 bg-[#dce0e6] rounded-2xl sm:rounded-3xl border-2 sm:border-[3px] border-white shadow-[0_12px_32px_rgba(0,0,0,0.08)] z-30 cursor-pointer overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_18px_40px_rgba(25,97,230,0.18)] float-card-1 group"
+              title="Click to view mentor credentials"
+            >
+              <AvatarSilhouette className="w-full h-full object-cover" hairColor="#1e293b" faceColor="#cbd5e1" shirtColor="#64748b" hasDetail={true} />
+              {/* Blue + badge */}
+              <div className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 rounded-full bg-[#1961e6] border-2 border-white flex items-center justify-center text-white shadow-sm z-10">
+                <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 stroke-[3]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </div>
+            </div>
+
+            {/* --- AVATAR CARD 2: CENTER TOP (Behind Hero Card) --- */}
+            <div 
+              onClick={() => setSelectedMentor(MENTORS_DATA[1])}
+              className="absolute left-[46%] top-[29%] -translate-x-1/2 -translate-y-1/2 w-24 h-32 sm:w-30 sm:h-40 md:w-36 md:h-46 bg-[#dce0e6] rounded-2xl sm:rounded-3xl border-2 border-white shadow-md z-10 cursor-pointer overflow-hidden transition-all duration-300 hover:scale-105 float-card-2 group"
+            >
+              <AvatarSilhouette className="w-full h-full object-cover" hairColor="#2d3748" faceColor="#cbd5e1" shirtColor="#475569" />
+              <div className="absolute bottom-1.5 left-1.5 sm:bottom-2 sm:left-2 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 rounded-full bg-[#1961e6] border-2 border-white flex items-center justify-center text-white shadow-sm z-10">
+                <svg className="w-2 h-2 sm:w-2.5 sm:h-2.5 stroke-[3]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </div>
+            </div>
+
+            {/* --- AVATAR CARD 3: LEFT MIDDLE --- */}
+            <div 
+              onClick={() => setSelectedMentor(MENTORS_DATA[2])}
+              className="absolute left-[30%] top-[40%] -translate-x-1/2 -translate-y-1/2 w-22 h-28 sm:w-28 sm:h-36 md:w-32 md:h-42 bg-[#dce0e6] rounded-2xl sm:rounded-3xl border-2 border-white shadow-md z-20 cursor-pointer overflow-hidden transition-all duration-300 hover:scale-105 float-card-3 group"
+            >
+              <AvatarSilhouette className="w-full h-full object-cover" hairColor="#1e293b" faceColor="#cbd5e1" shirtColor="#334155" />
+              <div className="absolute bottom-1.5 left-1.5 sm:bottom-2 sm:left-2 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 rounded-full bg-[#1961e6] border-2 border-white flex items-center justify-center text-white shadow-sm z-10">
+                <svg className="w-2 h-2 sm:w-2.5 sm:h-2.5 stroke-[3]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </div>
+            </div>
+
+            {/* --- AVATAR CARD 4: LEFT LOWER --- */}
+            <div 
+              onClick={() => setSelectedMentor(MENTORS_DATA[3])}
+              className="absolute left-[38%] top-[66%] -translate-x-1/2 -translate-y-1/2 w-18 h-24 sm:w-22 sm:h-30 md:w-26 md:h-34 bg-[#dce0e6] rounded-2xl sm:rounded-3xl border-2 border-white shadow-md z-25 cursor-pointer overflow-hidden transition-all duration-300 hover:scale-105 float-card-1 group"
+            >
+              <AvatarSilhouette className="w-full h-full object-cover" hairColor="#2d3748" faceColor="#cbd5e1" shirtColor="#475569" />
+              <div className="absolute bottom-1.5 left-1.5 sm:bottom-2 sm:left-2 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#1961e6] border-2 border-white flex items-center justify-center text-white shadow-sm z-10">
+                <svg className="w-2 h-2 stroke-[3]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </div>
+            </div>
+
+            {/* --- AVATAR CARD 5: FAR LEFT UPPER --- */}
+            <div 
+              onClick={() => setSelectedMentor(MENTORS_DATA[4])}
+              className="absolute left-[19%] top-[30%] -translate-x-1/2 -translate-y-1/2 w-14 h-18 sm:w-16 sm:h-22 md:w-18 md:h-26 bg-[#dce0e6] rounded-xl sm:rounded-2xl border-2 border-white shadow-sm z-10 cursor-pointer overflow-hidden transition-all duration-300 hover:scale-105 float-card-2 group"
+            >
+              <AvatarSilhouette className="w-full h-full object-cover" hairColor="#1e293b" faceColor="#cbd5e1" shirtColor="#64748b" />
+              <div className="absolute bottom-1 left-1 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-[#1961e6] border border-white flex items-center justify-center text-white shadow-sm z-10">
+                <svg className="w-1.5 h-1.5 stroke-[3]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </div>
+            </div>
+
+            {/* --- AVATAR CARD 6: RIGHT MIDDLE --- */}
+            <div 
+              onClick={() => setSelectedMentor(MENTORS_DATA[5])}
+              className="absolute left-[65%] top-[39%] -translate-x-1/2 -translate-y-1/2 w-22 h-28 sm:w-28 sm:h-36 md:w-32 md:h-42 bg-[#dce0e6] rounded-2xl sm:rounded-3xl border-2 border-white shadow-md z-20 cursor-pointer overflow-hidden transition-all duration-300 hover:scale-105 float-card-2 group"
+            >
+              <AvatarSilhouette className="w-full h-full object-cover" hairColor="#1e293b" faceColor="#cbd5e1" shirtColor="#334155" />
+              <div className="absolute bottom-1.5 left-1.5 sm:bottom-2 sm:left-2 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 rounded-full bg-[#1961e6] border-2 border-white flex items-center justify-center text-white shadow-sm z-10">
+                <svg className="w-2 h-2 sm:w-2.5 sm:h-2.5 stroke-[3]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </div>
+            </div>
+
+            {/* --- AVATAR CARD 7: RIGHT LOWER --- */}
+            <div 
+              onClick={() => setSelectedMentor(MENTORS_DATA[6])}
+              className="absolute left-[73%] top-[57%] -translate-x-1/2 -translate-y-1/2 w-20 h-26 sm:w-24 sm:h-32 md:w-28 md:h-36 bg-[#dce0e6] rounded-2xl sm:rounded-3xl border-2 border-white shadow-md z-20 cursor-pointer overflow-hidden transition-all duration-300 hover:scale-105 float-card-3 group"
+            >
+              <AvatarSilhouette className="w-full h-full object-cover" hairColor="#2d3748" faceColor="#cbd5e1" shirtColor="#475569" />
+              <div className="absolute bottom-1.5 left-1.5 sm:bottom-2 sm:left-2 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#1961e6] border-2 border-white flex items-center justify-center text-white shadow-sm z-10">
+                <svg className="w-2 h-2 stroke-[3]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </div>
+            </div>
+
+            {/* --- AVATAR CARD 8: RIGHT UPPER INNER --- */}
+            <div 
+              onClick={() => setSelectedMentor(MENTORS_DATA[7])}
+              className="absolute left-[72%] top-[30%] -translate-x-1/2 -translate-y-1/2 w-16 h-22 sm:w-20 sm:h-28 md:w-22 md:h-30 bg-[#dce0e6] rounded-2xl border-2 border-white shadow-sm z-15 cursor-pointer overflow-hidden transition-all duration-300 hover:scale-105 float-card-1 group"
+            >
+              <AvatarSilhouette className="w-full h-full object-cover" hairColor="#1e293b" faceColor="#cbd5e1" shirtColor="#334155" />
+              <div className="absolute bottom-1 left-1 sm:bottom-1.5 sm:left-1.5 w-4 h-4 sm:w-4.5 sm:h-4.5 rounded-full bg-[#1961e6] border border-white flex items-center justify-center text-white shadow-sm z-10">
+                <svg className="w-2 h-2 stroke-[3]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </div>
+            </div>
+
+            {/* --- AVATAR CARD 9: FAR RIGHT UPPER --- */}
+            <div 
+              onClick={() => setSelectedMentor(MENTORS_DATA[8])}
+              className="absolute left-[80%] top-[31%] -translate-x-1/2 -translate-y-1/2 w-13 h-17 sm:w-15 sm:h-20 md:w-16 md:h-22 bg-[#dce0e6] rounded-xl sm:rounded-2xl border-2 border-white shadow-sm z-10 cursor-pointer overflow-hidden transition-all duration-300 hover:scale-105 float-card-2 group"
+            >
+              <AvatarSilhouette className="w-full h-full object-cover" hairColor="#2d3748" faceColor="#cbd5e1" shirtColor="#64748b" />
+              <div className="absolute bottom-1 left-1 w-3.5 h-3.5 rounded-full bg-[#1961e6] border border-white flex items-center justify-center text-white shadow-sm z-10">
+                <svg className="w-1.5 h-1.5 stroke-[3]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </div>
+            </div>
+
+            {/* ================================================================= */}
+            {/* 4 FLOATING CATEGORY BADGES (Matching Template)                    */}
+            {/* ================================================================= */}
+
+            {/* 1. CREATORS BADGE (Top-Left) */}
+            <div 
+              onClick={() => handleNavClick('What is MentorCampus', 'what-is-mentorcampus')}
+              className="absolute left-[36%] top-[20%] -translate-x-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-md rounded-2xl shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-gray-100 p-2 sm:p-2.5 px-3 sm:px-3.5 flex items-center gap-2.5 z-40 float-badge-1 cursor-pointer transition-transform hover:scale-105"
+            >
+              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full border-[3.5px] border-[#1961e6] flex-shrink-0" />
+              <div className="text-left">
+                <div className="text-[11px] sm:text-xs font-bold text-gray-950 leading-tight">Creators</div>
+                <div className="text-[9px] sm:text-[10px] text-gray-500 font-medium">Ideas, media & innovation</div>
+              </div>
+            </div>
+
+            {/* 2. FOUNDERS BADGE (Top-Right) */}
+            <div 
+              onClick={() => handleNavClick('What is MentorCampus', 'what-is-mentorcampus')}
+              className="absolute left-[64%] top-[22%] -translate-x-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-md rounded-2xl shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-gray-100 p-2 sm:p-2.5 px-3 sm:px-3.5 flex items-center gap-2.5 z-40 float-badge-2 cursor-pointer transition-transform hover:scale-105"
+            >
+              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-[#1961e6] text-white flex items-center justify-center flex-shrink-0">
+                <svg className="w-3.5 h-3.5 stroke-[2.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </div>
+              <div className="text-left">
+                <div className="text-[11px] sm:text-xs font-bold text-gray-950 leading-tight">Founders</div>
+                <div className="text-[9px] sm:text-[10px] text-gray-500 font-medium">Builders & Entrepreneurs</div>
+              </div>
+            </div>
+
+            {/* 3. LEADERS BADGE (Bottom-Left) */}
+            <div 
+              onClick={() => handleNavClick('What is MentorCampus', 'what-is-mentorcampus')}
+              className="absolute left-[21%] top-[64%] -translate-x-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-md rounded-2xl shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-gray-100 p-2 sm:p-2.5 px-3 sm:px-3.5 flex items-center gap-2.5 z-40 float-badge-2 cursor-pointer transition-transform hover:scale-105"
+            >
+              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full border-[3.5px] border-[#1961e6] flex-shrink-0" />
+              <div className="text-left">
+                <div className="text-[11px] sm:text-xs font-bold text-gray-950 leading-tight">Leaders</div>
+                <div className="text-[9px] sm:text-[10px] text-gray-500 font-medium">Public & community leaders</div>
+              </div>
+            </div>
+
+            {/* 4. PROFESSIONALS BADGE (Bottom-Right) */}
+            <div 
+              onClick={() => handleNavClick('What is MentorCampus', 'what-is-mentorcampus')}
+              className="absolute left-[81%] top-[65%] -translate-x-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-md rounded-2xl shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-gray-100 p-2 sm:p-2.5 px-3 sm:px-3.5 flex items-center gap-2.5 z-40 float-badge-1 cursor-pointer transition-transform hover:scale-105"
+            >
+              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-[#1961e6] text-white flex items-center justify-center flex-shrink-0">
+                <svg className="w-3.5 h-3.5 stroke-[2.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <rect x="8" y="8" width="8" height="8"></rect>
+                </svg>
+              </div>
+              <div className="text-left">
+                <div className="text-[11px] sm:text-xs font-bold text-gray-950 leading-tight">Professionals</div>
+                <div className="text-[9px] sm:text-[10px] text-gray-500 font-medium">People building careers</div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* --- BOTTOM: EYEBROW + HEADLINE + SUBTITLE + CTA (Matching Template) --- */}
+          <div className="text-center max-w-3xl mx-auto px-4 mt-2 sm:mt-4">
+            
+            {/* Eyebrow: WITH A VISION */}
+            <p className="text-[11px] sm:text-xs font-bold text-[#1961e6] tracking-[0.25em] uppercase mb-2 sm:mb-3">
+              WITH A VISION
+            </p>
+
+            {/* Main Headline */}
+            <h1 className="text-4xl sm:text-5xl md:text-[62px] font-extrabold text-gray-950 tracking-tight leading-[1.08]">
+              The world is bigger than{' '}
+              <span className="font-handwritten text-[#1961e6] text-5xl sm:text-6xl md:text-[76px] font-bold block sm:inline-block -mt-1 sm:-mt-2">
+                your classroom.
+              </span>
+            </h1>
+
+            {/* Subtitle Paragraph */}
+            <p className="mt-4 sm:mt-5 text-gray-600 text-sm sm:text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+              Mentor Campus connects students with real people, real conversations and real-world exposure beyond the classroom.
+            </p>
+
+            {/* Primary Action Button */}
+            <div className="mt-7 flex justify-center">
               <button
-                key={pill.id}
-                onClick={() => {
-                  setSelectedTrack(pill.filterTrack);
-                  const el = document.getElementById('mentors');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="flex items-center gap-2.5 bg-white px-4 py-2 rounded-full shadow-sm border border-gray-200/70 hover:border-blue-400 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-pointer group"
-                title={`Filter by ${pill.title}`}
+                onClick={() => setShowJoinModal(true)}
+                className="inline-flex items-center justify-center gap-2.5 px-8 sm:px-9 py-3.5 sm:py-4 rounded-full bg-[#1961e6] hover:bg-[#1550c0] text-white font-bold text-xs sm:text-sm tracking-wider uppercase shadow-[0_8px_20px_rgba(25,97,230,0.32)] hover:shadow-[0_12px_28px_rgba(25,97,230,0.42)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
               >
-                {pill.type === 'dot' && (
-                  <div className="w-5 h-5 rounded-full border-2 border-[#1961e6] flex items-center justify-center shrink-0">
-                    <div className="w-1.5 h-1.5 bg-[#1961e6] rounded-full group-hover:scale-125 transition-transform" />
-                  </div>
-                )}
-                {pill.type === 'arrow' && (
-                  <div className="w-5 h-5 rounded-lg bg-[#1961e6] flex items-center justify-center text-white shrink-0 group-hover:rotate-45 transition-transform">
-                    <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                      <path d="M7 17L17 7M17 7H9M17 7V15" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                )}
-                {pill.type === 'grid' && (
-                  <div className="w-5 h-5 rounded-lg bg-[#1961e6] flex items-center justify-center text-white shrink-0">
-                    <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <rect height="16" rx="2" width="16" x="4" y="4" />
-                      <rect fill="currentColor" height="8" rx="1" width="8" x="8" y="8" />
-                    </svg>
-                  </div>
-                )}
-                <div className="leading-tight text-left">
-                  <p className="text-xs font-bold text-gray-900 group-hover:text-[#2160dc] transition-colors">
-                    {pill.title}
-                  </p>
-                  <p className="text-[10px] text-gray-500 font-medium">{pill.subtitle}</p>
-                </div>
+                <span>JOIN MENTORCAMPUS</span>
+                <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
               </button>
-            ))}
+            </div>
+
           </div>
 
-          {/* 5 Tiered Organic Mentor Avatars with Real Brochure Photos */}
-          <div className="flex items-end justify-center gap-3 sm:gap-6 md:gap-9 flex-nowrap pt-2">
-            {/* Avatar 1: Dr Prabhu Venugopal */}
-            <div
-              onClick={() => setSelectedMentor(MENTORS_DATA.find((m) => m.id === 'm-gov-8'))}
-              className="relative w-16 h-20 bg-slate-100 rounded-2xl overflow-hidden shadow-sm flex flex-col items-center justify-center shrink-0 float-avatar-1 cursor-pointer group hover:scale-105 transition-transform border border-slate-200/80"
-              title="Dr Prabhu Venugopal • Angel Investor"
-            >
-              <img
-                src="./images/mentors/dr-prabhu-venugopal.png"
-                alt="Dr Prabhu Venugopal"
-                className="w-full h-full object-cover object-top"
-              />
-            </div>
-
-            {/* Avatar 2: Nithya Rajasekar */}
-            <div
-              onClick={() => setSelectedMentor(MENTORS_DATA.find((m) => m.id === 'm-gov-2'))}
-              className="relative w-24 h-28 bg-slate-100 rounded-2xl overflow-hidden shadow-sm flex flex-col items-center justify-center shrink-0 float-avatar-2 cursor-pointer group hover:scale-105 transition-transform border border-slate-200/80"
-              title="Nithya Rajasekar • VP, StartupTN"
-            >
-              <img
-                src="./images/mentors/nithya-rajasekar-startuptn.png"
-                alt="Nithya Rajasekar"
-                className="w-full h-full object-cover object-top"
-              />
-            </div>
-
-            {/* Avatar 3 - Featured Center: Senthilkumar Viswanathan */}
-            <div
-              onClick={() => setSelectedMentor(MENTORS_DATA.find((m) => m.id === 'm-ai-1'))}
-              className="relative w-32 h-36 bg-slate-100 rounded-3xl overflow-hidden shadow-md border border-gray-200/60 flex flex-col items-center justify-center shrink-0 ring-4 ring-blue-500/20 z-10 float-avatar-3 cursor-pointer group hover:scale-105 transition-transform"
-              title="Senthilkumar Viswanathan • Ford Chief AI Architect"
-            >
-              <img
-                src="./images/mentors/senthilkumar-viswanathan.png"
-                alt="Senthilkumar Viswanathan"
-                className="w-full h-full object-cover object-top"
-              />
-            </div>
-
-            {/* Avatar 4: Bharathi Ravindran */}
-            <div
-              onClick={() => setSelectedMentor(MENTORS_DATA.find((m) => m.id === 'm-ai-2'))}
-              className="relative w-24 h-28 bg-slate-100 rounded-2xl overflow-hidden shadow-sm flex flex-col items-center justify-center shrink-0 float-avatar-4 cursor-pointer group hover:scale-105 transition-transform border border-slate-200/80"
-              title="Bharathi Ravindran • Director AI Science, Verizon"
-            >
-              <img
-                src="./images/mentors/bharathi-ravindran.png"
-                alt="Bharathi Ravindran"
-                className="w-full h-full object-cover object-top"
-              />
-            </div>
-
-            {/* Avatar 5: Keerthana Arul */}
-            <div
-              onClick={() => setSelectedMentor(MENTORS_DATA.find((m) => m.id === 'm-hr-1'))}
-              className="relative w-16 h-20 bg-slate-100 rounded-2xl overflow-hidden shadow-sm flex flex-col items-center justify-center shrink-0 float-avatar-5 cursor-pointer group hover:scale-105 transition-transform border border-slate-200/80"
-              title="Keerthana Arul • Senior HR Analyst, Deloitte"
-            >
-              <img
-                src="./images/mentors/keerthana-arul.png"
-                alt="Keerthana Arul"
-                className="w-full h-full object-cover object-top"
-              />
-            </div>
-          </div>
-          <p className="text-[11px] text-gray-400 font-medium -mt-2">
-            Click any avatar or badge to preview verified mentors
-          </p>
-        </div>
-
-        {/* Hero Copy (Exact typography & layout from Landing_page (1).html) */}
-        <div className="text-center max-w-5xl mx-auto flex flex-col items-center mt-2 px-4">
-          {/* Eyebrow Tag */}
-          <p className="text-sm sm:text-base font-extrabold tracking-[0.25em] text-[#1961e6] uppercase mb-2">
-            WITH A VISION
-          </p>
-
-          {/* Main Headline with handwritten cursive script */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-gray-950 tracking-tight leading-[1.15] mb-4 text-center max-w-4xl mx-auto whitespace-normal">
-            <span className="block">The world is bigger than</span>
-            <span
-              className="block text-[#2160DC] font-normal lowercase tracking-normal -mt-1 sm:-mt-2 relative inline-block font-handwritten"
-              style={{ fontSize: '1.25em', lineHeight: 1.1 }}
-            >
-              your classroom.
-              {/* Hand-drawn SVG underline curve */}
-              <svg
-                className="absolute -bottom-2 left-0 w-full h-4 overflow-visible pointer-events-none"
-                viewBox="0 0 300 20"
-                fill="none"
-              >
-                <path
-                  d="M5 14C80 4 220 5 295 12"
-                  stroke="#2160DC"
-                  strokeWidth="3.5"
-                  strokeLinecap="round"
-                  className="draw-underline"
-                />
-              </svg>
-            </span>
-          </h1>
-
-          {/* Supporting Body Text */}
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed mb-8 px-4">
-            Mentor Campus connects students with real people, real conversations and real-world exposure beyond the classroom.
-          </p>
-
-          {/* Primary Call to Action Button */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              onClick={() => setShowJoinModal(true)}
-              className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-[#2160DC] text-white font-bold text-sm tracking-wider uppercase hover:bg-blue-700 transition-all duration-150 shadow-md shadow-blue-500/30 active:scale-95 cursor-pointer"
-            >
-              <span>JOIN MENTORCAMPUS</span>
-              <svg className="w-4 h-4 ml-0.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                <path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-            <a
-              href="#mentors"
-              className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white hover:bg-slate-50 border border-slate-200 text-gray-700 font-bold text-sm tracking-wider uppercase shadow-xs hover:border-blue-400 transition-all"
-            >
-              EXPLORE MENTORS
-            </a>
-          </div>
         </div>
       </main>
 
       {/* ==================================================================== */}
-      {/* 3. TRUSTED PARTNERS & LEADING ENTERPRISES */}
-      
+      {/* 3. SECTION: ABOUT MENTORCAMPUS                                       */}
+      {/* ==================================================================== */}
+      <section id="about" className="py-20 md:py-28 bg-[#f9fafb] border-t border-b border-gray-100">
+        <div className="w-full max-w-[1300px] mx-auto px-6 sm:px-10 md:px-16">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="inline-block px-3.5 py-1 rounded-full bg-[#eff5ff] text-[#1961e6] font-bold text-xs tracking-wider uppercase mb-3 border border-[#1961e6]/20">
+              ABOUT MENTORCAMPUS
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-950 tracking-tight leading-tight">
+              Bridging the chasm between classrooms and industry reality.
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-gray-600 leading-relaxed">
+              Higher education teaches theory. Industry demands instincts. MentorCampus embeds battle-tested practitioners directly into college life so students graduate with proven direction.
+            </p>
+          </div>
 
-{/* ==================================================================== */}
-      <section id="about" className="relative z-10 py-20 bg-white border-t border-slate-200/80">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left Column: Purpose */}
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#eceef1] text-gray-800 text-xs font-bold uppercase tracking-wider mb-4">
-                <span>About Mentor Campus</span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-3xl p-8 border border-gray-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_32px_rgba(25,97,230,0.08)] hover:border-[#1961e6]/40 transition-all duration-300">
+              <div className="w-12 h-12 rounded-2xl bg-[#eff5ff] border border-[#1961e6]/20 flex items-center justify-center text-[#1961e6] font-bold text-lg mb-6">
+                <svg className="w-6 h-6 stroke-[2]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-950 tracking-tight leading-tight">
-                Bridging the chasm between classrooms and industry reality.
-              </h2>
-              <p className="mt-5 text-gray-600 text-sm sm:text-base leading-relaxed">
-                MentorCampus (<a href="https://mentorcampus.in" target="_blank" rel="noreferrer" className="text-[#2160dc] font-semibold underline">mentorcampus.in</a>) was created to solve the deep disconnect between college academic theory and actual workplace practices.
+              <h3 className="text-xl font-bold text-gray-950 mb-3">Authentic Industry Access</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                Connect directly with principal architects, enterprise vice presidents, and funded startup founders who share raw insider blueprints.
               </p>
-              <p className="mt-3 text-gray-600 text-sm sm:text-base leading-relaxed">
-                Rather than treating industry talks as isolated annual ceremonies, we empower colleges to build an ongoing
-                culture of interactive discussions, direct networking, and hands-on skill exposure.
-              </p>
+            </div>
 
-              {/* Three Pillars */}
-              <div className="mt-8 space-y-4.5">
+            <div className="bg-white rounded-3xl p-8 border border-gray-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_32px_rgba(25,97,230,0.08)] hover:border-[#1961e6]/40 transition-all duration-300">
+              <div className="w-12 h-12 rounded-2xl bg-[#eff5ff] border border-[#1961e6]/20 flex items-center justify-center text-[#1961e6] font-bold text-lg mb-6">
+                <svg className="w-6 h-6 stroke-[2]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                  <path d="M2 17l10 5 10-5"></path>
+                  <path d="M2 12l10 5 10-5"></path>
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-950 mb-3">Active Campus Chapters</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                We empower student-led Campus Chapters with semester roadmaps, masterclasses, and executive mentor roundtables built into college life.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-3xl p-8 border border-gray-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_32px_rgba(25,97,230,0.08)] hover:border-[#1961e6]/40 transition-all duration-300">
+              <div className="w-12 h-12 rounded-2xl bg-[#eff5ff] border border-[#1961e6]/20 flex items-center justify-center text-[#1961e6] font-bold text-lg mb-6">
+                <svg className="w-6 h-6 stroke-[2]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-950 mb-3">Verified Trajectories</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                No generic course certificates. Students earn portfolio reviews, direct referral endorsements, and industry project validation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ==================================================================== */}
+      {/* 4. SECTION: HOW IT WORKS & FORMATS                                   */}
+      {/* ==================================================================== */}
+      <section id="how-it-works" className="py-20 md:py-28 bg-white">
+        <div className="w-full max-w-[1300px] mx-auto px-6 sm:px-10 md:px-16">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="inline-block px-3.5 py-1 rounded-full bg-[#eff5ff] text-[#1961e6] font-bold text-xs tracking-wider uppercase mb-3 border border-[#1961e6]/20">
+              THE 3-STAGE BLUEPRINT
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-950 tracking-tight leading-tight">
+              How MentorCampus Works
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-gray-600">
+              A systematic student journey engineered to build real competence and verified professional networks.
+            </p>
+          </div>
+
+          {/* 3 Step Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+            <div className="bg-[#f9fafb] rounded-3xl p-8 border border-gray-200">
+              <span className="text-4xl font-extrabold text-[#1961e6] font-mono">01</span>
+              <h3 className="text-xl font-bold text-gray-950 mt-4 mb-2">Discover</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                Attend unfiltered fireside chats that demystify actual career ladders across AI, Cloud, Product, and High-Growth Startups.
+              </p>
+            </div>
+
+            <div className="bg-[#f9fafb] rounded-3xl p-8 border border-gray-200">
+              <span className="text-4xl font-extrabold text-[#1961e6] font-mono">02</span>
+              <h3 className="text-xl font-bold text-gray-950 mt-4 mb-2">Connect</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                Engage in direct 1:1 sessions, architecture teardowns, and masterclasses where mentors critique your real code and design.
+              </p>
+            </div>
+
+            <div className="bg-[#f9fafb] rounded-3xl p-8 border border-gray-200">
+              <span className="text-4xl font-extrabold text-[#1961e6] font-mono">03</span>
+              <h3 className="text-xl font-bold text-gray-950 mt-4 mb-2">Scale</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                Participate in industry-backed hackathons, earn interview referrals, and transition smoothly into top-tier tech roles.
+              </p>
+            </div>
+          </div>
+
+          {/* Curated Session Formats */}
+          <div className="bg-[#f9fafb] rounded-3xl p-8 sm:p-12 border border-gray-200">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8">
+              <div>
+                <h3 className="text-2xl font-bold text-gray-950">Curated Session Formats</h3>
+                <p className="text-sm text-gray-600 mt-1">Designed for honest dialogue and measurable student growth.</p>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
                 {[
-                  {
-                    title: 'Practitioners, Not Textbook Theorists',
-                    desc: 'Sessions are led exclusively by leaders actively deploying code, raising capital, and hiring talent right now.',
-                  },
-                  {
-                    title: 'Student-Driven Campus Chapters',
-                    desc: 'Colleges form student-led Mentor Campus clubs that establish an ongoing calendar rather than one-off events.',
-                  },
-                  {
-                    title: 'Unscripted, High-Candor Q&A',
-                    desc: 'Over 50% of session time is dedicated to unmoderated student questions about career hurdles, salaries, and real day-to-day challenges.',
-                  },
-                ].map((pillar, i) => (
-                  <div key={i} className="flex items-start gap-3.5">
-                    <div className="w-6 h-6 rounded-full bg-blue-100 text-[#2160dc] flex items-center justify-center shrink-0 mt-0.5 text-xs font-extrabold">
-                      ✓
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-bold text-gray-900">{pillar.title}</h4>
-                      <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">{pillar.desc}</p>
-                    </div>
-                  </div>
+                  { id: 'expert-talks', label: '1:1 Mentorship' },
+                  { id: 'masterclasses', label: 'Masterclasses' },
+                  { id: 'hackathons', label: 'Hackathon Sprints' },
+                  { id: 'panels', label: 'Executive Panels' },
+                ].map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveSessionTab(tab.id)}
+                    className={`px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
+                      activeSessionTab === tab.id
+                        ? 'bg-[#1961e6] text-white shadow-sm'
+                        : 'bg-white text-gray-700 hover:text-gray-950 border border-gray-200'
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
                 ))}
               </div>
             </div>
 
-            {/* Right Column: Campus Club Framework Card */}
-            <div className="relative">
-              <div className="bg-gradient-to-br from-[#0b192c] via-[#111827] to-[#1e293b] text-white rounded-3xl p-8 sm:p-10 shadow-2xl border border-slate-700/50">
-                <div className="flex items-center justify-between pb-6 border-b border-white/10">
-                  <div>
-                    <h3 className="text-xl font-bold tracking-tight">Mentor Campus Club Model</h3>
-                    <p className="text-xs text-slate-400">Institutional Blueprint for Colleges</p>
-                  </div>
-                  <span className="text-xs font-bold bg-[#2160dc]/40 text-blue-300 border border-blue-400/30 px-3 py-1 rounded-full">
-                    Student-Led
-                  </span>
-                </div>
-
-                <div className="mt-6 space-y-4">
-                  <div className="p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-colors">
-                    <div className="flex items-center gap-3.5">
-                      <div className="w-8 h-8 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-xs shrink-0">
-                        01
-                      </div>
-                      <div>
-                        <div className="text-xs font-bold text-white">Faculty Coordinator & Core Student Team</div>
-                        <p className="text-[11px] text-slate-300">Empowers students with leadership experience managing campus events</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-colors">
-                    <div className="flex items-center gap-3.5">
-                      <div className="w-8 h-8 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-xs shrink-0">
-                        02
-                      </div>
-                      <div>
-                        <div className="text-xs font-bold text-white">Monthly Focus Tracks & Masterclasses</div>
-                        <p className="text-[11px] text-slate-300">AI Month, Startup Sprint, HR Decoded & Cyber Defense cycles</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-colors">
-                    <div className="flex items-center gap-3.5">
-                      <div className="w-8 h-8 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-xs shrink-0">
-                        03
-                      </div>
-                      <div>
-                        <div className="text-xs font-bold text-white">Direct Mentorship & Portfolio Reviews</div>
-                        <p className="text-[11px] text-slate-300">Build relationships with senior practitioners who can advise on careers</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
-                  <div className="text-xs text-slate-300">Ready to launch a chapter?</div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div className="space-y-4">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#1961e6]">Interactive Experience</span>
+                <h4 className="text-xl font-bold text-gray-950">
+                  {activeSessionTab === 'expert-talks' && 'Personalized 1:1 Diagnostic Sessions'}
+                  {activeSessionTab === 'masterclasses' && 'Deep-Dive Technical Masterclasses'}
+                  {activeSessionTab === 'hackathons' && 'Mentor-Led Hackathons & Sprints'}
+                  {activeSessionTab === 'panels' && 'C-Suite & Founder Roundtable Panels'}
+                </h4>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  {activeSessionTab === 'expert-talks' &&
+                    'Sit down 1-on-1 with industry practitioners who evaluate your portfolio, identify knowledge blindspots, and guide your immediate milestones.'}
+                  {activeSessionTab === 'masterclasses' &&
+                    'Hands-on architecture workshops exploring real-world tech stacks: production Kubernetes, LLM fine-tuning, and scalable cloud designs.'}
+                  {activeSessionTab === 'hackathons' &&
+                    '48-hour build sprints judged by verified venture leads and startup founders with direct interview fast-tracks.'}
+                  {activeSessionTab === 'panels' &&
+                    'Honest multi-perspective debates on macroeconomic tech shifts, hiring benchmarks, and emerging venture funding.'}
+                </p>
+                <div className="pt-2">
                   <button
-                    onClick={() => {
-                      setJoinRole('college');
-                      setShowJoinModal(true);
-                    }}
-                    className="px-5 py-2.5 rounded-full bg-white text-gray-900 text-xs font-bold hover:bg-slate-100 transition-colors shadow-sm cursor-pointer"
+                    onClick={() => setShowJoinModal(true)}
+                    className="inline-flex items-center gap-2 text-xs font-bold text-[#1961e6] hover:text-[#1550c0] transition-colors"
                   >
-                    Start a Chapter →
+                    <span>Request this format for your college</span>
+                    <span>→</span>
                   </button>
                 </div>
               </div>
+
+              <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm space-y-3">
+                <div className="flex items-center justify-between pb-3 border-b border-gray-100">
+                  <span className="text-xs font-semibold text-gray-500">Duration</span>
+                  <span className="text-xs font-bold text-gray-900">45 - 90 Minutes</span>
+                </div>
+                <div className="flex items-center justify-between pb-3 border-b border-gray-100">
+                  <span className="text-xs font-semibold text-gray-500">Format</span>
+                  <span className="text-xs font-bold text-gray-900">Interactive Q&A + Live Teardown</span>
+                </div>
+                <div className="flex items-center justify-between pb-3 border-b border-gray-100">
+                  <span className="text-xs font-semibold text-gray-500">Attendee Cap</span>
+                  <span className="text-xs font-bold text-[#1961e6]">Strictly Capped for Quality</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-semibold text-gray-500">Outcome</span>
+                  <span className="text-xs font-bold text-gray-900">Direct Takeaways & Action Plan</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ==================================================================== */}
-      {/* 7. TESTIMONIALS */}
-
-{/* ==================================================================== */}
-      <section id="sessions" className="relative z-10 py-20 max-w-7xl mx-auto px-6 sm:px-10">
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <p className="text-xs font-extrabold uppercase tracking-widest text-[#2160dc] mb-2">
-            HOW THE SESSIONS WORK
-          </p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-950 tracking-tight">
-            Curated formats designed for honesty & impact
-          </h2>
-          <p className="text-gray-600 text-sm sm:text-base mt-3">
-            Designed specifically to eliminate monotone textbook lectures and substitute them with direct, honest
-            dialogues.
-          </p>
-        </div>
-
-        {/* 3 Session Format Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {SESSION_FORMATS.map((format) => (
-            <div
-              key={format.id}
-              onClick={() => setActiveSessionTab(format.id)}
-              className={`rounded-3xl p-8 border transition-all duration-300 flex flex-col justify-between cursor-pointer ${
-                activeSessionTab === format.id
-                  ? 'bg-white border-[#2160dc] shadow-[0_16px_36px_rgba(33,96,220,0.1)] ring-2 ring-blue-500/20'
-                  : 'bg-white/80 border-slate-200 shadow-xs hover:border-slate-300'
-              }`}
-            >
-              <div>
-                <div className="flex items-center justify-between mb-5">
-                  <span className="text-xs font-bold text-[#2160dc] bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
-                    {format.badge}
-                  </span>
-                  <span className="text-[11px] font-semibold text-gray-400 bg-gray-100 px-2.5 py-0.5 rounded-full">
-                    {format.duration}
-                  </span>
-                </div>
-                <h3 className="text-2xl font-bold text-gray-950 mb-3 tracking-tight">{format.title}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed mb-6">{format.desc}</p>
-              </div>
-
-              <div className="pt-4 border-t border-slate-100 space-y-2.5">
-                {format.highlights.map((h, i) => (
-                  <div key={i} className="flex items-center gap-2.5 text-xs text-gray-600">
-                    <svg className="w-3.5 h-3.5 text-[#2160dc] shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <span>{h}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Signature Philosophy Callout (Authentic PDF Quote Banner) */}
-        <div className="mt-14 rounded-3xl bg-[#091528] text-white p-8 sm:p-14 shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-[#2160dc]/20 rounded-full blur-3xl pointer-events-none" />
-          <div className="relative z-10 max-w-3xl">
-            <span className="inline-block text-blue-400 text-xs font-extrabold tracking-wider uppercase mb-3">
-              MENTOR CAMPUS, PROGRAM PHILOSOPHY
+      {/* 5. SECTION: BENEFITS & KEY IMPACT METRICS                            */}
+      {/* ==================================================================== */}
+      <section id="benefits" className="py-20 md:py-28 bg-[#f9fafb] border-t border-b border-gray-100">
+        <div className="w-full max-w-[1300px] mx-auto px-6 sm:px-10 md:px-16">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="inline-block px-3.5 py-1 rounded-full bg-[#eff5ff] text-[#1961e6] font-bold text-xs tracking-wider uppercase mb-3 border border-[#1961e6]/20">
+              PROVEN VALUE
             </span>
-            <blockquote className="text-xl sm:text-2xl md:text-3xl font-medium tracking-tight text-slate-100 leading-snug">
-              &ldquo;Students don&apos;t need another lecture about the industry — they need someone already in it, willing
-              to answer the honest questions.&rdquo;
-            </blockquote>
-            <p className="mt-4 text-xs font-semibold tracking-widest text-slate-400 uppercase">
-              Curated for maximum student clarity & zero corporate PR
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-950 tracking-tight leading-tight">
+              Why Colleges & Students Choose Us
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-gray-600">
+              Measurable career outcomes backed by senior enterprise leadership.
             </p>
           </div>
-        </div>
-      </section>
 
-      {/* ==================================================================== */}
-      {/* 6. ABOUT SECTION & CAMPUS CLUB FRAMEWORK */}
+          {/* 3 Metric Hero Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div className="bg-white rounded-3xl p-8 border border-gray-200 text-center shadow-sm">
+              <span className="text-5xl sm:text-6xl font-extrabold text-[#1961e6] block font-mono">40+</span>
+              <h4 className="text-lg font-bold text-gray-950 mt-3 mb-1">Enterprise Leaders</h4>
+              <p className="text-xs text-gray-500">Ford, Verizon, Amazon, StartupTN, ELCOT, Microsoft</p>
+            </div>
 
-{/* ==================================================================== */}
-      <section id="partners" className="relative z-10 py-12 mt-16 border-y border-slate-200/80 bg-white/60">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-[11px] font-bold tracking-[0.2em] text-gray-400 uppercase mb-8">
-            Mentors & Industry Leaders Participating From Global Organizations
-          </p>
+            <div className="bg-white rounded-3xl p-8 border border-gray-200 text-center shadow-sm">
+              <span className="text-5xl sm:text-6xl font-extrabold text-[#1961e6] block font-mono">10,000+</span>
+              <h4 className="text-lg font-bold text-gray-950 mt-3 mb-1">Mentorship Minutes</h4>
+              <p className="text-xs text-gray-500">Delivered across campus chapters and roundtables</p>
+            </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-5 sm:gap-8 items-center justify-center">
-            {TRUSTED_COMPANIES.map((company, i) => (
-              <div
-                key={i}
-                className="group relative flex flex-col items-center justify-center py-2 px-3 text-gray-800 font-bold tracking-tight text-sm hover:text-[#2160dc] transition-all cursor-default"
-              >
-                <span className="border-b-2 border-transparent group-hover:border-[#2160dc] pb-0.5 transition-colors">
-                  {company.logoText}
-                </span>
-                <span className="text-[10px] text-gray-400 font-normal opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-3">
-                  {company.mentorsCount}
-                </span>
-              </div>
-            ))}
+            <div className="bg-white rounded-3xl p-8 border border-gray-200 text-center shadow-sm">
+              <span className="text-5xl sm:text-6xl font-extrabold text-[#1961e6] block font-mono">100%</span>
+              <h4 className="text-lg font-bold text-gray-950 mt-3 mb-1">Direct Exposure</h4>
+              <p className="text-xs text-gray-500">Zero theoretical fluff, pure industry reality</p>
+            </div>
+          </div>
+
+          {/* Detailed Benefit Columns */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-2xl p-6 border border-gray-200">
+              <h4 className="font-bold text-gray-950 text-base mb-3 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#1961e6]"></span>
+                For Ambitious Students
+              </h4>
+              <ul className="space-y-2.5 text-xs text-gray-600">
+                <li className="flex items-start gap-2">✓ <span>Direct portfolio reviews by actual hiring managers.</span></li>
+                <li className="flex items-start gap-2">✓ <span>Fast-track referrals for internships and engineering roles.</span></li>
+                <li className="flex items-start gap-2">✓ <span>Clarity on emerging tech stacks and high-paying niches.</span></li>
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-2xl p-6 border border-gray-200">
+              <h4 className="font-bold text-gray-950 text-base mb-3 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#1961e6]"></span>
+                For Partner Institutions
+              </h4>
+              <ul className="space-y-2.5 text-xs text-gray-600">
+                <li className="flex items-start gap-2">✓ <span>Accreditation-grade industry collaboration programs.</span></li>
+                <li className="flex items-start gap-2">✓ <span>Elevated placement packages and higher tier hiring.</span></li>
+                <li className="flex items-start gap-2">✓ <span>Active student-led technical chapters that run themselves.</span></li>
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-2xl p-6 border border-gray-200">
+              <h4 className="font-bold text-gray-950 text-base mb-3 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#1961e6]"></span>
+                For Industry Mentors
+              </h4>
+              <ul className="space-y-2.5 text-xs text-gray-600">
+                <li className="flex items-start gap-2">✓ <span>High-impact platform to give back to the next generation.</span></li>
+                <li className="flex items-start gap-2">✓ <span>Early scout access to passionate top-percentile talent.</span></li>
+                <li className="flex items-start gap-2">✓ <span>Recognition across academic ecosystems and state initiatives.</span></li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ==================================================================== */}
-      {/* 4. SCROLLING-ANIMATED MENTOR DETAILS (RICH DIRECTORY & MARQUEE) */}
+      {/* 6. SECTION: WHAT IS MENTORCAMPUS (Mentors & Enterprise Partners)     */}
       {/* ==================================================================== */}
-      <section id="mentors" className="relative z-10 py-20 bg-slate-50/70 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 mb-10 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-[#2160dc] text-xs font-bold uppercase tracking-wider mb-3">
-            <span>Featured Track Directory</span>
+      <section id="what-is-mentorcampus" className="py-20 md:py-28 bg-white">
+        <div className="w-full max-w-[1300px] mx-auto px-6 sm:px-10 md:px-16 mb-12">
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="inline-block px-3.5 py-1 rounded-full bg-[#eff5ff] text-[#1961e6] font-bold text-xs tracking-wider uppercase mb-3 border border-[#1961e6]/20">
+              DISTINGUISHED MENTORS
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-950 tracking-tight leading-tight">
+              Meet the leaders mentoring on campus
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-gray-600">
+              From Ford's Chief AI Architect to directors at Verizon and startup founders backing StartupTN — learn directly from innovators shaping global industries.
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-950 tracking-tight">
-            Meet the leaders mentoring on campus
-          </h2>
-          <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto mt-3">
-            Real industry practitioners taking candid sessions through Mentor Campus — from enterprise AI architects to
-            venture founders and policy directors.
-          </p>
 
-          {/* Track Segmented Pills */}
-          <div className="flex items-center justify-center gap-1.5 flex-wrap mt-7 p-1.5 bg-[#eaecef] rounded-2xl max-w-fit mx-auto border border-slate-300/50 shadow-inner">
+          {/* Trusted Global Partner Badges */}
+          <div className="mt-12 pt-8 border-t border-gray-100 text-center">
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6">
+              Mentors hailing from trusted industry leaders
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 opacity-70">
+              {['Ford Motor Company', 'Verizon', 'Microsoft', 'Google Cloud', 'Amazon AWS', 'StartupTN', 'ELCOT', 'Aptahire', 'Unitive Technologies'].map((partner) => (
+                <span key={partner} className="px-4 py-2 rounded-xl bg-gray-50 border border-gray-200 text-xs font-bold text-gray-700">
+                  {partner}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Category Filter Pills (Strictly Brand Blue & Grey) */}
+          <div className="flex items-center justify-center gap-2 sm:gap-3 flex-wrap mt-12">
             {TRACK_CATEGORIES.map((cat) => {
-              const active = selectedTrack === cat.id;
+              const isSelected = selectedTrack === cat.id;
               return (
                 <button
                   key={cat.id}
                   onClick={() => setSelectedTrack(cat.id)}
-                  className={`px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
-                    active
-                      ? 'bg-white text-gray-950 shadow-sm font-bold'
-                      : 'text-gray-600 hover:text-gray-950 hover:bg-white/40'
+                  className={`px-4 sm:px-5 py-2 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
+                    isSelected
+                      ? 'bg-[#1961e6] text-white shadow-md shadow-[#1961e6]/25'
+                      : 'bg-[#eaecef] text-gray-700 hover:text-gray-950 hover:bg-gray-200'
                   }`}
                 >
-                  <span>{cat.label}</span>
-                  <span
-                    className={`text-[10px] px-1.5 py-0.2 rounded-full ${
-                      active ? 'bg-blue-50 text-[#2160dc] font-bold' : 'bg-slate-200 text-slate-500'
-                    }`}
-                  >
-                    {cat.count}
+                  {cat.label}
+                  <span className={`ml-1.5 text-[10px] opacity-80 ${isSelected ? 'text-white' : 'text-gray-500'}`}>
+                    ({cat.count})
                   </span>
                 </button>
               );
@@ -1643,544 +1624,436 @@ export default function MentorCampusLanding() {
           </div>
         </div>
 
-        {/* Dual Infinite Scrolling Marquees */}
-        <div className="relative w-full overflow-hidden py-3">
-          {/* Edge Blur Gradients */}
-          <div className="absolute left-0 inset-y-0 w-28 bg-gradient-to-r from-[#FBFBFD] to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 inset-y-0 w-28 bg-gradient-to-l from-[#FBFBFD] to-transparent z-10 pointer-events-none" />
-
-          {/* Row 1 (Leftwards) */}
-          <div className="animate-mc-marquee gap-5">
-            {row1Mentors.map((mentor, index) => (
-              <MentorMarqueeCard
-                key={`r1-${mentor.id}-${index}`}
-                mentor={mentor}
-                onSelect={(m) => setSelectedMentor(m)}
-              />
+        {/* Dual Ultra-Slow Scrolling Marquee Container */}
+        <div className="space-y-6 overflow-hidden py-4">
+          {/* Row 1: Leftward Ultra-Slow Marquee */}
+          <div className="animate-mc-marquee space-x-6 px-4">
+            {row1Mentors.map((mentor, idx) => (
+              <MentorMarqueeCard key={`${mentor.id}-r1-${idx}`} mentor={mentor} onSelect={setSelectedMentor} />
             ))}
           </div>
-        </div>
 
-        <div className="relative w-full overflow-hidden py-3 mt-1">
-          <div className="absolute left-0 inset-y-0 w-28 bg-gradient-to-r from-[#FBFBFD] to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 inset-y-0 w-28 bg-gradient-to-l from-[#FBFBFD] to-transparent z-10 pointer-events-none" />
-
-          {/* Row 2 (Rightwards) */}
-          <div className="animate-mc-marquee-reverse gap-5">
-            {row2Mentors.map((mentor, index) => (
-              <MentorMarqueeCard
-                key={`r2-${mentor.id}-${index}`}
-                mentor={mentor}
-                onSelect={(m) => setSelectedMentor(m)}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* 3 Metric Cards from PDF Reference */}
-        <div className="max-w-4xl mx-auto px-6 mt-14 grid grid-cols-1 sm:grid-cols-3 gap-5">
-          <div className="bg-white rounded-3xl p-6 border border-slate-200 text-center shadow-xs soft-apple-hover">
-            <div className="text-4xl font-extrabold text-[#2160dc] tracking-tight">100+</div>
-            <p className="text-xs font-bold text-gray-800 uppercase tracking-wide mt-1.5">
-              Leaders On This Track
-            </p>
-            <p className="text-xs text-gray-500 mt-0.5">Enterprise directors, architects & founders</p>
-          </div>
-          <div className="bg-white rounded-3xl p-6 border border-slate-200 text-center shadow-xs soft-apple-hover">
-            <div className="text-4xl font-extrabold text-gray-950 tracking-tight">10+</div>
-            <p className="text-xs font-bold text-gray-800 uppercase tracking-wide mt-1.5">
-              Industry Tracks Overall
-            </p>
-            <p className="text-xs text-gray-500 mt-0.5">AI, Startups, HR, Policy, Cyber & Media</p>
-          </div>
-          <div className="bg-white rounded-3xl p-6 border border-slate-200 text-center shadow-xs soft-apple-hover">
-            <div className="text-4xl font-extrabold text-gray-950 tracking-tight">3</div>
-            <p className="text-xs font-bold text-gray-800 uppercase tracking-wide mt-1.5">
-              Session Formats
-            </p>
-            <p className="text-xs text-gray-500 mt-0.5">Customized for maximum student candor</p>
-          </div>
-        </div>
-      </section>
-
-      {/* ==================================================================== */}
-      {/* 5. HOW THE SESSIONS WORK (From PDF) */}
-
-{/* ==================================================================== */}
-      <section id="testimonials" className="relative z-10 py-20 bg-slate-50/70 border-t border-slate-200">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10">
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <p className="text-xs font-extrabold uppercase tracking-widest text-[#2160dc] mb-2">TESTIMONIALS</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-950 tracking-tight">
-              Loved by students, faculty & mentors alike
-            </h2>
-            <p className="text-gray-600 text-sm sm:text-base mt-2">
-              Hear firsthand how unfiltered conversations with industry leaders transform college perspectives.
-            </p>
-
-            {/* Testimonial Category Filter */}
-            <div className="flex items-center justify-center gap-2 mt-6">
-              {[
-                { id: 'all', label: 'All Reviews' },
-                { id: 'student', label: 'Students' },
-                { id: 'dean', label: 'Deans & Faculty' },
-                { id: 'mentor', label: 'Industry Mentors' },
-              ].map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTestimonialTab(tab.id)}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
-                    activeTestimonialTab === tab.id
-                      ? 'bg-[#2160dc] text-white shadow-xs'
-                      : 'bg-white border border-slate-200 text-gray-600 hover:bg-slate-50'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {filteredTestimonials.map((t, idx) => (
-              <div
-                key={idx}
-                className="bg-white rounded-3xl p-7 border border-slate-200/90 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex text-amber-400">
-                      {[...Array(t.rating)].map((_, i) => (
-                        <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                      ))}
-                    </div>
-                    <span className="text-[11px] font-bold text-gray-400 bg-gray-100 px-2.5 py-0.5 rounded-full">
-                      {t.tag}
-                    </span>
-                  </div>
-                  <p className="text-gray-700 text-sm leading-relaxed italic">&ldquo;{t.quote}&rdquo;</p>
-                </div>
-
-                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                  <div>
-                    <h5 className="font-bold text-gray-900 text-sm">{t.author}</h5>
-                    <p className="text-[11px] text-gray-500">{t.role}</p>
-                  </div>
-                  <span className="text-[11px] font-semibold text-[#2160dc] bg-blue-50 px-2.5 py-1 rounded-md">
-                    {t.institution}
-                  </span>
-                </div>
-              </div>
+          {/* Row 2: Rightward Ultra-Slow Marquee */}
+          <div className="animate-mc-marquee-reverse space-x-6 px-4">
+            {row2Mentors.map((mentor, idx) => (
+              <MentorMarqueeCard key={`${mentor.id}-r2-${idx}`} mentor={mentor} onSelect={setSelectedMentor} />
             ))}
           </div>
         </div>
       </section>
 
       {/* ==================================================================== */}
-      {/* 8. BRING MENTOR CAMPUS TO YOUR COLLEGE (CTA BANNER FROM PDF) */}
+      {/* 7. SECTION: HOW TO JOIN & CHAPTER APPLICATION                        */}
       {/* ==================================================================== */}
-      <section id="contact" className="relative z-10 py-16 px-6 max-w-6xl mx-auto">
-        <div className="bg-gradient-to-r from-[#1961e6] via-[#2160dc] to-indigo-700 rounded-3xl p-8 sm:p-14 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="max-w-xl text-center md:text-left">
-            <span className="text-blue-200 text-xs font-bold tracking-widest uppercase">
-              Host Industry Leaders On Your Campus
+      <section id="how-to-join" className="py-20 md:py-28 bg-[#f9fafb] border-t border-gray-100">
+        <div className="w-full max-w-[1300px] mx-auto px-6 sm:px-10 md:px-16">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="inline-block px-3.5 py-1 rounded-full bg-[#eff5ff] text-[#1961e6] font-bold text-xs tracking-wider uppercase mb-3 border border-[#1961e6]/20">
+              BECOME PART OF THE NETWORK
             </span>
-            <h2 className="text-3xl sm:text-4xl font-black tracking-tight mt-1 mb-3">
-              Bring Mentor Campus to your college
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-950 tracking-tight leading-tight">
+              How to Join MentorCampus
             </h2>
-            <p className="text-blue-100 text-sm sm:text-base leading-relaxed">
-              Set up expert talks, panel discussions, and workshops for your students in any of our specialized industry
-              tracks.
+            <p className="mt-4 text-base sm:text-lg text-gray-600">
+              Whether you are an ambitious student, a college dean building a flagship chapter, or an industry leader giving back — get started in minutes.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-            <button
-              onClick={() => {
-                setJoinRole('college');
-                setShowJoinModal(true);
-              }}
-              className="px-7 py-3.5 rounded-full bg-white text-[#2160dc] font-bold text-xs sm:text-sm hover:bg-blue-50 active:scale-95 shadow-md transition-all text-center cursor-pointer"
-            >
-              Request a Session
-            </button>
-            <a
-              href="mailto:contact@mentorcampus.in"
-              className="px-7 py-3.5 rounded-full bg-blue-800/60 hover:bg-blue-800 border border-blue-400/40 text-white font-semibold text-xs sm:text-sm text-center transition-all"
-            >
-              Email Us Directly
-            </a>
+          {/* Testimonial Highlights */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+              <div className="text-[#1961e6] text-xl font-serif mb-2">“</div>
+              <p className="text-xs text-gray-700 leading-relaxed italic mb-4">
+                The architecture review with Ford's Chief AI Architect changed how our college hackathon team approached distributed ML. It secured our team three tier-1 offers.
+              </p>
+              <div className="border-t border-gray-100 pt-3">
+                <p className="font-bold text-xs text-gray-950">Vignesh S.</p>
+                <p className="text-[11px] text-gray-500">AI Track Ambassador · CEG Anna University</p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+              <div className="text-[#1961e6] text-xl font-serif mb-2">“</div>
+              <p className="text-xs text-gray-700 leading-relaxed italic mb-4">
+                MentorCampus gave our department a direct bridge to senior leadership at Verizon, AWS, and StartupTN. Student engagement is at an all-time high.
+              </p>
+              <div className="border-t border-gray-100 pt-3">
+                <p className="font-bold text-xs text-gray-950">Dr. K. Jayasundar</p>
+                <p className="text-[11px] text-gray-500">Dean of Placements · PSG Tech</p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+              <div className="text-[#1961e6] text-xl font-serif mb-2">“</div>
+              <p className="text-xs text-gray-700 leading-relaxed italic mb-4">
+                Mentoring through MentorCampus is effortless and impactful. The students are prepared with real questions, making every 45-minute sprint exceptionally valuable.
+              </p>
+              <div className="border-t border-gray-100 pt-3">
+                <p className="font-bold text-xs text-gray-950">Senthilkumar V.</p>
+                <p className="text-[11px] text-[#1961e6] font-semibold">Chief Technical AI Architect · Ford</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Chapter Application Card (High-Contrast Navy & Brand Blue) */}
+          <div className="bg-[#0b192c] text-white rounded-3xl p-8 sm:p-12 md:p-16 shadow-xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[#1961e6]/15 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="relative z-10 max-w-2xl">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#1961e6] mb-2 block">
+                START A CHAPTER OR JOIN AS A MENTOR
+              </span>
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-tight mb-4">
+                Bring Mentor Campus to your institution
+              </h3>
+              <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-8">
+                Tell us about your college or background. We will schedule a personalized onboarding call and match you with relevant track leaders within 48 hours.
+              </p>
+
+              <form onSubmit={handleJoinSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-300 mb-1">Your Full Name</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Anand Kumar"
+                      value={joinFormData.name}
+                      onChange={(e) => setJoinFormData({ ...joinFormData, name: e.target.value })}
+                      className="w-full px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 text-xs focus:outline-none focus:border-[#1961e6] focus:ring-1 focus:ring-[#1961e6]"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-300 mb-1">Institution / College</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Anna University"
+                      value={joinFormData.institution}
+                      onChange={(e) => setJoinFormData({ ...joinFormData, institution: e.target.value })}
+                      className="w-full px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 text-xs focus:outline-none focus:border-[#1961e6] focus:ring-1 focus:ring-[#1961e6]"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-300 mb-1">Official Email</label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="anand@college.edu"
+                      value={joinFormData.email}
+                      onChange={(e) => setJoinFormData({ ...joinFormData, email: e.target.value })}
+                      className="w-full px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 text-xs focus:outline-none focus:border-[#1961e6] focus:ring-1 focus:ring-[#1961e6]"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-300 mb-1">Role / Affiliation</label>
+                    <select
+                      value={joinRole}
+                      onChange={(e) => setJoinRole(e.target.value)}
+                      className="w-full px-4 py-2.5 rounded-xl bg-gray-900 border border-white/20 text-white text-xs focus:outline-none focus:border-[#1961e6]"
+                    >
+                      <option value="college">College Faculty / Placement Dean</option>
+                      <option value="student">Student Chapter Lead</option>
+                      <option value="mentor">Industry Practitioner / Mentor</option>
+                    </select>
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={joinSubmitted}
+                  className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#1961e6] hover:bg-[#1550c0] text-white font-bold text-xs tracking-wider uppercase transition-all shadow-lg shadow-[#1961e6]/30 cursor-pointer mt-2"
+                >
+                  {joinSubmitted ? 'Application Submitted! ✓' : 'Submit Chapter Application →'}
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ==================================================================== */}
-      {/* 9. FOOTER */}
+      {/* 8. FOOTER                                                            */}
       {/* ==================================================================== */}
-      <footer className="relative z-10 border-t border-slate-200 bg-white py-12 text-gray-500 text-xs">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-100">
-            <MentorCampusLogo />
-
-            <div className="flex flex-wrap items-center justify-center gap-6 text-gray-600 font-medium">
-              <button onClick={() => handleNavClick('Home', 'home')} className="hover:text-[#2160dc] cursor-pointer">
-                Home
-              </button>
-              <button onClick={() => handleNavClick('About us', 'about')} className="hover:text-[#2160dc] cursor-pointer">
-                About us
-              </button>
-              <button onClick={() => handleNavClick('Mentors', 'mentors')} className="hover:text-[#2160dc] cursor-pointer">
-                Mentors Directory
-              </button>
-              <button onClick={() => handleNavClick('Testimonials', 'testimonials')} className="hover:text-[#2160dc] cursor-pointer">
-                Testimonials
-              </button>
-              <a href="https://mentorcampus.in" target="_blank" rel="noreferrer" className="text-[#2160dc] hover:underline">
-                mentorcampus.in ↗
-              </a>
-            </div>
+      <footer className="bg-white border-t border-gray-100 py-12">
+        <div className="w-full max-w-[1300px] mx-auto px-6 sm:px-10 md:px-16 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-2">
+            <MentorCampusLogo className="h-7" />
           </div>
-
-          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-gray-400 text-[11px] gap-3">
-            <p>© {new Date().getFullYear()} Mentor Campus (mentorcampus.in). All rights reserved.</p>
-            <p>Designed with Soft Apple Aesthetics & Verified Industry Leaders.</p>
+          <p className="text-xs text-gray-500">
+            © {new Date().getFullYear()} MentorCampus. The world is bigger than your classroom. All rights reserved.
+          </p>
+          <div className="flex items-center gap-6 text-xs text-gray-500">
+            <a href="#about" onClick={(e) => { e.preventDefault(); handleNavClick('About', 'about'); }} className="hover:text-[#1961e6]">About</a>
+            <a href="#how-it-works" onClick={(e) => { e.preventDefault(); handleNavClick('How it works', 'how-it-works'); }} className="hover:text-[#1961e6]">Framework</a>
+            <a href="#what-is-mentorcampus" onClick={(e) => { e.preventDefault(); handleNavClick('What is MentorCampus', 'what-is-mentorcampus'); }} className="hover:text-[#1961e6]">Mentors</a>
+            <a href="#how-to-join" onClick={(e) => { e.preventDefault(); handleNavClick('How to join', 'how-to-join'); }} className="hover:text-[#1961e6]">Join Chapter</a>
           </div>
         </div>
       </footer>
 
       {/* ==================================================================== */}
-      {/* 10. MODAL: SIGN IN (From Header Action) */}
+      {/* MODAL 1: MENTOR PROFILE DRAWER                                       */}
+      {/* ==================================================================== */}
+      {selectedMentor && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in">
+          <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-gray-100 relative max-h-[90vh] overflow-y-auto">
+            <button
+              onClick={() => setSelectedMentor(null)}
+              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-gray-100 text-gray-500 hover:text-gray-950 flex items-center justify-center font-bold text-sm cursor-pointer"
+            >
+              ✕
+            </button>
+
+            <div className="flex items-center gap-4 mb-6">
+              {selectedMentor.image ? (
+                <img
+                  src={selectedMentor.image}
+                  alt={selectedMentor.name}
+                  className="w-16 h-16 rounded-full object-cover border-2 border-[#1961e6]/30 bg-gray-50 flex-shrink-0"
+                />
+              ) : (
+                <div className="w-16 h-16 rounded-full bg-[#eff5ff] border-2 border-[#1961e6]/30 flex items-center justify-center font-bold text-[#1961e6] text-xl flex-shrink-0">
+                  {selectedMentor.initials}
+                </div>
+              )}
+              <div>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#1961e6] bg-[#eff5ff] px-2.5 py-0.5 rounded-full border border-[#1961e6]/20">
+                  {selectedMentor.trackLabel}
+                </span>
+                <h3 className="text-xl font-bold text-gray-950 mt-1">{selectedMentor.name}</h3>
+                <p className="text-xs text-gray-600 font-semibold">{selectedMentor.role} · {selectedMentor.company}</p>
+              </div>
+            </div>
+
+            <div className="space-y-4 text-xs leading-relaxed text-gray-700">
+              <div>
+                <h4 className="font-bold text-gray-950 uppercase tracking-wider text-[11px] mb-1">Executive Summary</h4>
+                <p className="text-gray-600">{selectedMentor.bio}</p>
+              </div>
+
+              {selectedMentor.topics && selectedMentor.topics.length > 0 && (
+                <div>
+                  <h4 className="font-bold text-gray-950 uppercase tracking-wider text-[11px] mb-2">Key Discussion Topics</h4>
+                  <div className="flex flex-wrap gap-1.5">
+                    {selectedMentor.topics.map((t, idx) => (
+                      <span key={idx} className="px-2.5 py-1 rounded-full bg-[#eff5ff] text-[#1961e6] font-semibold text-[11px] border border-[#1961e6]/20">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div className="bg-[#f9fafb] p-4 rounded-2xl border border-gray-100 flex items-center justify-between">
+                <div>
+                  <p className="text-[10px] text-gray-500 uppercase font-semibold">Track Record</p>
+                  <p className="text-xs font-bold text-gray-900">{selectedMentor.sessionsTaken}+ verified student sessions</p>
+                </div>
+                <div className="w-2.5 h-2.5 rounded-full bg-[#1961e6]" />
+              </div>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-gray-100 flex gap-3">
+              <button
+                onClick={() => {
+                  setSelectedMentor(null);
+                  setShowJoinModal(true);
+                }}
+                className="flex-1 py-3 rounded-full bg-[#1961e6] hover:bg-[#1550c0] text-white font-bold text-xs tracking-wider uppercase transition-all shadow-md shadow-[#1961e6]/20 cursor-pointer"
+              >
+                Request Mentorship Session
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ==================================================================== */}
+      {/* MODAL 2: SIGN IN MODAL                                               */}
       {/* ==================================================================== */}
       {showSignInModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md animate-backdrop">
-          <div className="relative w-full max-w-md bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-200 animate-modal-pop">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in">
+          <div className="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-gray-100 relative">
             <button
               onClick={() => setShowSignInModal(false)}
-              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 text-gray-500 hover:text-gray-950 flex items-center justify-center text-xs font-bold cursor-pointer"
+              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-gray-100 text-gray-500 hover:text-gray-950 flex items-center justify-center font-bold text-sm cursor-pointer"
             >
               ✕
             </button>
 
             <div className="text-center mb-6">
-              <span className="text-[11px] font-extrabold text-[#2160dc] uppercase tracking-wider">
-                MentorCampus Portal
-              </span>
-              <h3 className="text-2xl font-bold text-gray-950 tracking-tight mt-1">Welcome back</h3>
-              <p className="text-xs text-gray-500 mt-1">Sign in to manage your campus sessions & mentorship</p>
+              <MentorCampusLogo className="h-7 mx-auto mb-3" />
+              <h3 className="text-xl font-bold text-gray-950">Welcome to MentorCampus</h3>
+              <p className="text-xs text-gray-500 mt-1">Sign in with your verified institutional identity</p>
             </div>
 
-            {/* Role Switcher */}
-            <div className="grid grid-cols-3 gap-1 p-1 bg-[#eaecef] rounded-2xl mb-5 text-xs font-semibold text-gray-600">
-              {(['student', 'college', 'mentor']).map((r) => (
-                <button
-                  key={r}
-                  onClick={() => setSignInTab(r)}
-                  className={`py-1.5 rounded-xl capitalize cursor-pointer transition-all ${
-                    signInTab === r ? 'bg-white text-gray-950 shadow-xs font-bold' : 'hover:text-gray-950'
-                  }`}
-                >
-                  {r}
-                </button>
-              ))}
+            <div className="flex bg-[#eaecef] p-1 rounded-full text-xs font-semibold mb-6">
+              <button
+                onClick={() => setSignInTab('student')}
+                className={`flex-1 py-1.5 rounded-full transition-all cursor-pointer ${
+                  signInTab === 'student' ? 'bg-white text-gray-950 font-bold shadow-sm' : 'text-gray-600'
+                }`}
+              >
+                Student
+              </button>
+              <button
+                onClick={() => setSignInTab('mentor')}
+                className={`flex-1 py-1.5 rounded-full transition-all cursor-pointer ${
+                  signInTab === 'mentor' ? 'bg-white text-gray-950 font-bold shadow-sm' : 'text-gray-600'
+                }`}
+              >
+                Mentor
+              </button>
+              <button
+                onClick={() => setSignInTab('college')}
+                className={`flex-1 py-1.5 rounded-full transition-all cursor-pointer ${
+                  signInTab === 'college' ? 'bg-white text-gray-950 font-bold shadow-sm' : 'text-gray-600'
+                }`}
+              >
+                Faculty
+              </button>
             </div>
 
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                alert(`Signed in as ${signInTab}!`);
                 setShowSignInModal(false);
               }}
-              className="space-y-3.5"
+              className="space-y-4"
             >
               <div>
-                <label className="block text-[11px] font-bold text-gray-700 uppercase mb-1">
-                  Email Address
-                </label>
+                <label className="block text-xs font-semibold text-gray-700 mb-1">Institutional Email</label>
                 <input
                   type="email"
                   required
-                  placeholder={
-                    signInTab === 'student'
-                      ? 'student@college.edu.in'
-                      : signInTab === 'college'
-                      ? 'coordinator@college.edu.in'
-                      : 'mentor@company.com'
-                  }
-                  className="w-full px-3.5 py-2.5 rounded-xl text-xs bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#2160dc]"
+                  placeholder="name@college.edu or name@company.com"
+                  className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-[#1961e6] focus:ring-1 focus:ring-[#1961e6]"
                 />
               </div>
 
               <div>
-                <div className="flex items-center justify-between mb-1">
-                  <label className="text-[11px] font-bold text-gray-700 uppercase">Password</label>
-                  <a href="#" className="text-[11px] text-[#2160dc] hover:underline">
-                    Forgot password?
-                  </a>
-                </div>
+                <label className="block text-xs font-semibold text-gray-700 mb-1">Password</label>
                 <input
                   type="password"
                   required
                   placeholder="••••••••"
-                  className="w-full px-3.5 py-2.5 rounded-xl text-xs bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#2160dc]"
+                  className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-[#1961e6] focus:ring-1 focus:ring-[#1961e6]"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-3 rounded-full bg-[#2160DC] hover:bg-blue-700 active:scale-95 text-white font-bold text-xs uppercase tracking-wider shadow-md shadow-blue-500/25 transition-all mt-2 cursor-pointer"
+                className="w-full py-3 rounded-full bg-[#1961e6] hover:bg-[#1550c0] text-white font-bold text-xs tracking-wider uppercase transition-all shadow-md shadow-[#1961e6]/25 cursor-pointer mt-2"
               >
-                Sign In to Portal
+                Sign In →
               </button>
-
-              <div className="text-center pt-2">
-                <span className="text-[11px] text-gray-400">
-                  New to Mentor Campus?{' '}
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setShowSignInModal(false);
-                      setShowJoinModal(true);
-                    }}
-                    className="text-[#2160dc] font-bold hover:underline cursor-pointer"
-                  >
-                    Join us here
-                  </button>
-                </span>
-              </div>
             </form>
           </div>
         </div>
       )}
 
       {/* ==================================================================== */}
-      {/* 11. MODAL: JOIN MENTORCAMPUS (From Hero CTA & Nav) */}
+      {/* MODAL 3: CHAPTER REGISTRATION / JOIN MODAL                           */}
       {/* ==================================================================== */}
       {showJoinModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md animate-backdrop">
-          <div className="relative w-full max-w-lg bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-200 animate-modal-pop">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in">
+          <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-gray-100 relative max-h-[90vh] overflow-y-auto">
             <button
               onClick={() => setShowJoinModal(false)}
-              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 text-gray-500 hover:text-gray-950 flex items-center justify-center text-xs font-bold cursor-pointer"
+              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-gray-100 text-gray-500 hover:text-gray-950 flex items-center justify-center font-bold text-sm cursor-pointer"
             >
               ✕
             </button>
 
-            {joinSubmitted ? (
-              <div className="py-10 text-center">
-                <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
-                  ✓
-                </div>
-                <h3 className="text-2xl font-bold text-gray-950 tracking-tight">Application Received!</h3>
-                <p className="text-gray-500 text-xs sm:text-sm max-w-xs mx-auto mt-2">
-                  Our campus coordination team will connect with you via email & WhatsApp within 24 hours.
-                </p>
-              </div>
-            ) : (
+            <div className="mb-6">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#1961e6] bg-[#eff5ff] px-2.5 py-0.5 rounded-full border border-[#1961e6]/20">
+                JOIN MENTORCAMPUS
+              </span>
+              <h3 className="text-xl font-bold text-gray-950 mt-2">Get Connected With Industry Mentors</h3>
+              <p className="text-xs text-gray-600 mt-1">Submit your details to launch a campus chapter or attend upcoming rounds.</p>
+            </div>
+
+            <form onSubmit={handleJoinSubmit} className="space-y-4">
               <div>
-                <div className="mb-5">
-                  <span className="text-[11px] font-extrabold text-[#2160dc] uppercase tracking-wider">
-                    Join The Movement
-                  </span>
-                  <h3 className="text-2xl font-bold text-gray-950 tracking-tight mt-0.5">
-                    Connect With MentorCampus
-                  </h3>
-                  <p className="text-xs text-gray-500 mt-1">
-                    Bring industry leaders to your campus or become a contributing mentor.
-                  </p>
-                </div>
-
-                {/* Role Picker */}
-                <div className="flex gap-2 mb-4">
-                  {[
-                    { id: 'college', label: 'College / Faculty' },
-                    { id: 'student', label: 'Student Chapter' },
-                    { id: 'mentor', label: 'Industry Leader' },
-                  ].map((role) => (
-                    <button
-                      key={role.id}
-                      type="button"
-                      onClick={() => setJoinRole(role.id)}
-                      className={`flex-1 py-2 px-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                        joinRole === role.id
-                          ? 'bg-[#2160dc] text-white shadow-xs'
-                          : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                      }`}
-                    >
-                      {role.label}
-                    </button>
-                  ))}
-                </div>
-
-                <form onSubmit={handleJoinSubmit} className="space-y-3.5">
-                  <div>
-                    <label className="block text-[11px] font-bold text-gray-700 uppercase mb-1">
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Dr. / Prof. / Student Name"
-                      value={joinFormData.name}
-                      onChange={(e) => setJoinFormData({ ...joinFormData, name: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl text-xs bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#2160dc]"
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-[11px] font-bold text-gray-700 uppercase mb-1">
-                        {joinRole === 'mentor' ? 'Current Company' : 'College / University'}
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        placeholder={joinRole === 'mentor' ? 'e.g. Google, Ford' : 'e.g. NIT Trichy, PSG Tech'}
-                        value={joinFormData.institution}
-                        onChange={(e) => setJoinFormData({ ...joinFormData, institution: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl text-xs bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#2160dc]"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-[11px] font-bold text-gray-700 uppercase mb-1">
-                        WhatsApp / Phone
-                      </label>
-                      <input
-                        type="tel"
-                        required
-                        placeholder="+91 98765 43210"
-                        value={joinFormData.phone}
-                        onChange={(e) => setJoinFormData({ ...joinFormData, phone: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl text-xs bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#2160dc]"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-[11px] font-bold text-gray-700 uppercase mb-1">
-                      Official Email
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="coordinator@college.edu.in"
-                      value={joinFormData.email}
-                      onChange={(e) => setJoinFormData({ ...joinFormData, email: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl text-xs bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#2160dc]"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[11px] font-bold text-gray-700 uppercase mb-1">
-                      Target Track of Interest
-                    </label>
-                    <select
-                      value={joinFormData.preferredTrack}
-                      onChange={(e) => setJoinFormData({ ...joinFormData, preferredTrack: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl text-xs bg-slate-50 border border-slate-200 text-gray-700 focus:outline-none focus:border-[#2160dc]"
-                    >
-                      <option>Technology & Artificial Intelligence</option>
-                      <option>Human Resources & Talent Acquisition</option>
-                      <option>Founders, CXOs & Entrepreneurship</option>
-                      <option>Government Policy & Angel Investing</option>
-                      <option>IoT, Cybersecurity & Cloud Infrastructure</option>
-                      <option>Multi-Track Annual Campus Chapter</option>
-                    </select>
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full py-3 rounded-full bg-[#2160DC] hover:bg-blue-700 active:scale-95 text-white font-bold text-xs uppercase tracking-wider shadow-md shadow-blue-500/25 transition-all mt-2 cursor-pointer"
-                  >
-                    Submit Application
-                  </button>
-                  <p className="text-[10px] text-center text-gray-400 mt-1">
-                    Official domain: mentorcampus.in • Direct email: contact@mentorcampus.in
-                  </p>
-                </form>
+                <label className="block text-xs font-semibold text-gray-700 mb-1">Your Full Name</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="e.g. Priyadarshini R."
+                  value={joinFormData.name}
+                  onChange={(e) => setJoinFormData({ ...joinFormData, name: e.target.value })}
+                  className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-[#1961e6] focus:ring-1 focus:ring-[#1961e6]"
+                />
               </div>
-            )}
-          </div>
-        </div>
-      )}
 
-      {/* ==================================================================== */}
-      {/* 12. MODAL: MENTOR QUICK VIEW PROFILE */}
-      {/* ==================================================================== */}
-      {selectedMentor && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md animate-backdrop">
-          <div className="relative w-full max-w-lg bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-200 animate-modal-pop">
-            <button
-              onClick={() => setSelectedMentor(null)}
-              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 text-gray-500 hover:text-gray-950 flex items-center justify-center text-xs font-bold cursor-pointer"
-            >
-              ✕
-            </button>
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 mb-1">College / University</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="e.g. Coimbatore Institute of Technology"
+                  value={joinFormData.institution}
+                  onChange={(e) => setJoinFormData({ ...joinFormData, institution: e.target.value })}
+                  className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-[#1961e6] focus:ring-1 focus:ring-[#1961e6]"
+                />
+              </div>
 
-            <div className="flex items-start gap-4 mb-5">
-              <div className="w-16 h-16 rounded-2xl overflow-hidden bg-slate-100 shadow-md shrink-0 border border-slate-200/80">
-                {selectedMentor.image ? (
-                  <img
-                    src={selectedMentor.image}
-                    alt={selectedMentor.name}
-                    className="w-full h-full object-cover object-top"
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-gray-700 mb-1">Email</label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="name@college.edu"
+                    value={joinFormData.email}
+                    onChange={(e) => setJoinFormData({ ...joinFormData, email: e.target.value })}
+                    className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-[#1961e6] focus:ring-1 focus:ring-[#1961e6]"
                   />
-                ) : (
-                  <div
-                    className={`w-full h-full flex items-center justify-center text-white font-extrabold text-xl bg-gradient-to-br ${selectedMentor.color}`}
-                  >
-                    {selectedMentor.initials}
-                  </div>
-                )}
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-700 mb-1">Phone</label>
+                  <input
+                    type="tel"
+                    required
+                    placeholder="+91 98765 43210"
+                    value={joinFormData.phone}
+                    onChange={(e) => setJoinFormData({ ...joinFormData, phone: e.target.value })}
+                    className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-[#1961e6] focus:ring-1 focus:ring-[#1961e6]"
+                  />
+                </div>
               </div>
-              <div className="min-w-0 flex-1">
-                <span className="text-[10px] font-bold text-[#2160dc] uppercase tracking-wider bg-blue-50 px-2 py-0.5 rounded">
-                  {selectedMentor.trackLabel}
-                </span>
-                <h3 className="text-xl font-bold text-gray-950 mt-1">{selectedMentor.name}</h3>
-                <p className="text-xs text-gray-500">{selectedMentor.role}</p>
-                <p className="text-xs font-semibold text-gray-800 mt-0.5">{selectedMentor.company}</p>
-              </div>
-            </div>
 
-            <p className="text-xs sm:text-sm text-gray-600 leading-relaxed bg-slate-50 p-3.5 rounded-2xl border border-slate-100 mb-4">
-              {selectedMentor.bio}
-            </p>
-
-            <div className="mb-5">
-              <h4 className="text-xs font-bold text-gray-800 uppercase tracking-wider mb-2">
-                Primary Session Topics
-              </h4>
-              <div className="flex flex-wrap gap-1.5">
-                {selectedMentor.topics.map((t, idx) => (
-                  <span
-                    key={idx}
-                    className="text-xs font-medium text-gray-700 bg-[#eceef1] px-3 py-1 rounded-full border border-gray-200/50"
-                  >
-                    • {t}
-                  </span>
-                ))}
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 mb-1">Primary Domain of Interest</label>
+                <select
+                  value={joinFormData.preferredTrack}
+                  onChange={(e) => setJoinFormData({ ...joinFormData, preferredTrack: e.target.value })}
+                  className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-[#1961e6]"
+                >
+                  <option value="Technology & AI">Artificial Intelligence & ML</option>
+                  <option value="Cloud & Cyber">IoT, Cloud & Cybersecurity</option>
+                  <option value="Founders & Startups">Founders & Venture Building</option>
+                  <option value="Human Resources">Human Resources & Talent</option>
+                </select>
               </div>
-            </div>
 
-            <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-              <div className="text-xs text-gray-500">
-                <span className="font-bold text-emerald-600">{selectedMentor.sessionsTaken}</span> campus sessions delivered
-              </div>
               <button
-                onClick={() => {
-                  setSelectedMentor(null);
-                  setShowJoinModal(true);
-                }}
-                className="px-5 py-2.5 rounded-full bg-[#2160dc] hover:bg-blue-700 text-white font-bold text-xs shadow-md transition-all cursor-pointer"
+                type="submit"
+                disabled={joinSubmitted}
+                className="w-full py-3.5 rounded-full bg-[#1961e6] hover:bg-[#1550c0] text-white font-bold text-xs tracking-wider uppercase transition-all shadow-md shadow-[#1961e6]/25 cursor-pointer mt-2"
               >
-                Request Session With Mentor
+                {joinSubmitted ? 'Application Submitted! ✓' : 'Submit Registration →'}
               </button>
-            </div>
+            </form>
           </div>
         </div>
       )}
     </div>
   );
 }
+
+export default MentorCampusLanding;

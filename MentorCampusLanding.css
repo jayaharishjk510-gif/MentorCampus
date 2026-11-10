@@ -1,25 +1,27 @@
 /* ==========================================================================
-   MentorCampus - Soft Apple Style Design System & Keyframe Animations
+   MentorCampus - Pure Brand Color System & Soft Apple Aesthetics
+   Brand Blue: #1961e6 | Brand Navy: #0b192c | Brand Dark: #111827
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-/* Color Variables */
 :root {
-  --mc-blue: #2160dc;
-  --mc-blue-dark: #1950b8;
+  --mc-blue: #1961e6;
+  --mc-blue-dark: #1550c0;
   --mc-blue-light: #eff5ff;
-  --mc-blue-glow: rgba(33, 96, 220, 0.25);
-  --mc-navy: #091528;
+  --mc-blue-glow: rgba(25, 97, 230, 0.22);
+  --mc-navy: #0b192c;
   --mc-dark: #111827;
-  --mc-gray-bg: #fbfbfd;
+  --mc-gray-bg: #ffffff;
   --mc-pill-bg: #eaecef;
-  --mc-card-border: rgba(226, 232, 240, 0.8);
+  --mc-card-border: rgba(229, 231, 235, 0.85);
 }
 
-/* Typography Helpers */
-.font-sans {
+body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #ffffff;
+  color: #111827;
+  overflow-x: hidden;
 }
 
 .font-handwritten {
@@ -29,169 +31,83 @@
 }
 
 /* --------------------------------------------------------------------------
-   Marquee Animations for Scrolling Mentor Details
+   Marquee Animations for Scrolling Mentor Details (Ultra Slow)
    -------------------------------------------------------------------------- */
 @keyframes mcMarquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
 }
 
 @keyframes mcMarqueeReverse {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0%);
-  }
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
 }
 
 .animate-mc-marquee {
   display: flex;
   width: max-content;
-  animation: mcMarquee 110s linear infinite;
+  animation: mcMarquee 115s linear infinite;
 }
 
 .animate-mc-marquee-reverse {
   display: flex;
   width: max-content;
-  animation: mcMarqueeReverse 115s linear infinite;
+  animation: mcMarqueeReverse 120s linear infinite;
 }
 
 /* --------------------------------------------------------------------------
-   Organic Floating & Bobbing for Hero Avatars
+   Avatar Cluster Organic Breathing Float Animations
    -------------------------------------------------------------------------- */
-@keyframes mcFloat1 {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-8px) rotate(0.8deg);
-  }
+@keyframes clusterFloat1 {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-7px); }
 }
 
-@keyframes mcFloat2 {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-12px) rotate(-1deg);
-  }
+@keyframes clusterFloat2 {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-11px); }
 }
 
-@keyframes mcFloat3 {
-  0%, 100% {
-    transform: translateY(0px) scale(1);
-  }
-  50% {
-    transform: translateY(-14px) scale(1.02);
-  }
+@keyframes clusterFloat3 {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-9px) scale(1.02); }
 }
 
-@keyframes mcBadgePulse {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(33, 96, 220, 0.4);
-  }
-  50% {
-    transform: scale(1.08);
-    box-shadow: 0 0 0 6px rgba(33, 96, 220, 0);
-  }
+@keyframes badgeFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
 }
 
-.float-avatar-1 {
-  animation: mcFloat1 6s ease-in-out infinite;
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.04); }
 }
 
-.float-avatar-2 {
-  animation: mcFloat2 7s ease-in-out infinite 0.5s;
-}
-
-.float-avatar-3 {
-  animation: mcFloat3 5.5s ease-in-out infinite 1s;
-}
-
-.float-avatar-4 {
-  animation: mcFloat2 6.5s ease-in-out infinite 1.5s;
-}
-
-.float-avatar-5 {
-  animation: mcFloat1 7.2s ease-in-out infinite 0.8s;
-}
-
-.badge-pulse {
-  animation: mcBadgePulse 3s infinite;
-}
+.float-card-1 { animation: clusterFloat1 6.5s ease-in-out infinite; }
+.float-card-2 { animation: clusterFloat2 7.5s ease-in-out infinite 0.6s; }
+.float-card-3 { animation: clusterFloat3 5.8s ease-in-out infinite 1.2s; }
+.float-badge-1 { animation: badgeFloat 6s ease-in-out infinite 0.3s; }
+.float-badge-2 { animation: badgeFloat 7s ease-in-out infinite 0.9s; }
+.badge-glow { animation: pulseGlow 4s ease-in-out infinite; }
 
 /* --------------------------------------------------------------------------
-   Hand-Drawn Underline SVG Animation
-   -------------------------------------------------------------------------- */
-@keyframes drawStroke {
-  0% {
-    stroke-dashoffset: 350;
-  }
-  100% {
-    stroke-dashoffset: 0;
-  }
-}
-
-.draw-underline {
-  stroke-dasharray: 350;
-  stroke-dashoffset: 350;
-  animation: drawStroke 1.8s cubic-bezier(0.65, 0, 0.35, 1) forwards 0.4s;
-}
-
-/* --------------------------------------------------------------------------
-   Subtle Sheen & Glassmorphism Utilities
+   Apple-Style Glassmorphism & Pill Indicators
    -------------------------------------------------------------------------- */
 .glass-header {
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
 
-.glass-pill {
-  background: #eaecef;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-/* Apple-style sliding nav pill indicator */
 .nav-pill-indicator {
   will-change: transform, width, height;
 }
 
-.glass-card {
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+.soft-card-shadow {
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05),
+              0 2px 6px -2px rgba(15, 23, 42, 0.03);
 }
 
-.glass-modal {
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-}
-
-.soft-apple-shadow {
-  box-shadow: 0 4px 24px -2px rgba(15, 23, 42, 0.05),
-              0 2px 8px -2px rgba(15, 23, 42, 0.03);
-}
-
-.soft-apple-hover {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.soft-apple-hover:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 16px 36px -6px rgba(33, 96, 220, 0.12),
-              0 6px 16px -4px rgba(15, 23, 42, 0.04);
-}
-
-/* Card shimmer highlight on hover */
 .card-sheen {
   position: relative;
   overflow: hidden;
@@ -219,55 +135,18 @@
   transform: translateX(100%);
 }
 
-/* --------------------------------------------------------------------------
-   Modal Fade In & Slide Up Animation
-   -------------------------------------------------------------------------- */
-@keyframes modalBackdropFade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes modalContentPop {
-  from {
-    opacity: 0;
-    transform: scale(0.96) translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-.animate-backdrop {
-  animation: modalBackdropFade 0.25s ease-out forwards;
-}
-
-.animate-modal-pop {
-  animation: modalContentPop 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* --------------------------------------------------------------------------
-   Scrollbar Aesthetics
-   -------------------------------------------------------------------------- */
+/* Custom Minimal Scrollbar */
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #f8fafc;
 }
-
 ::-webkit-scrollbar-thumb {
   background: #cbd5e1;
   border-radius: 9999px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
-

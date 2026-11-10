@@ -823,10 +823,10 @@ const MENTORS_DATA = [
 ];
 
 // ============================================================================
-// HERO MENTORS: 8 FLAWLESSLY SYMMETRICAL CARDS ACROSS THE X = 50% CENTER AXIS
+// HERO MENTORS: 8 BALANCED & BILATERALLY SYMMETRICAL CARDS ACROSS THE X-AXIS
 // ============================================================================
 const HERO_MENTORS = [
-  // 1. Center Front (Dominant Anchor - Ford Chief AI Architect) -> Exact Center
+  // 1. Center Front (Dominant Focal Anchor - Ford Chief Technical AI Architect)
   {
     cardId: 'hero-center-front',
     name: 'Senthilkumar Viswanathan',
@@ -835,14 +835,14 @@ const HERO_MENTORS = [
     trackLabel: 'Artificial Intelligence',
     image: './images/mentors/senthilkumar-viswanathan.png',
     pos: {
-      left: '50%',
+      left: '52%',
       top: '58%',
-      sizeClass: 'w-28 h-36 sm:w-38 sm:h-50 md:w-46 md:h-58',
+      sizeClass: 'w-28 h-38 sm:w-36 sm:h-48 md:w-44 md:h-58',
       zIndex: 30,
       floatClass: 'float-card-1',
     }
   },
-  // 2. Center Top (Directly Behind Anchor - Verizon Director AI Science) -> Exact Center
+  // 2. Center Back (Behind Anchor - Verizon Director AI Science)
   {
     cardId: 'hero-center-top',
     name: 'Bharathi Ravindran',
@@ -851,14 +851,14 @@ const HERO_MENTORS = [
     trackLabel: 'Artificial Intelligence',
     image: './images/mentors/bharathi-ravindran.png',
     pos: {
-      left: '50%',
-      top: '24%',
+      left: '46%',
+      top: '34%',
       sizeClass: 'w-24 h-32 sm:w-30 sm:h-40 md:w-36 md:h-46',
       zIndex: 10,
       floatClass: 'float-card-2',
     }
   },
-  // 3. Left Inner (Ayush Ranjan - Vibrant / Hunch) -> 50% - 18% = 32%
+  // 3. Left Inner (Ayush Ranjan - Vibrant / Hunch CEO) -> Sits below Creators badge
   {
     cardId: 'hero-left-inner',
     name: 'Ayush Ranjan',
@@ -867,14 +867,14 @@ const HERO_MENTORS = [
     trackLabel: 'Founders & Startups',
     image: './images/mentors/ayush-ranjan-vibrant.png',
     pos: {
-      left: '32%',
-      top: '42%',
-      sizeClass: 'w-22 h-30 sm:w-28 sm:h-38 md:w-34 md:h-44',
+      left: '31%',
+      top: '47%',
+      sizeClass: 'w-20 h-28 sm:w-26 sm:h-36 md:w-32 md:h-42',
       zIndex: 20,
       floatClass: 'float-card-3',
     }
   },
-  // 4. Right Inner (Rajsekar Sivasamy - Amazon AWS) -> 50% + 18% = 68%
+  // 4. Right Inner (Rajsekar Sivasamy - Amazon AWS Lead) -> Sits below Founders badge (Exact Mirror of Left Inner)
   {
     cardId: 'hero-right-inner',
     name: 'Rajsekar Sivasamy',
@@ -883,14 +883,14 @@ const HERO_MENTORS = [
     trackLabel: 'IoT & Cybersecurity',
     image: './images/mentors/rajsekar-sivasamy.png',
     pos: {
-      left: '68%',
-      top: '42%',
-      sizeClass: 'w-22 h-30 sm:w-28 sm:h-38 md:w-34 md:h-44',
+      left: '69%',
+      top: '47%',
+      sizeClass: 'w-20 h-28 sm:w-26 sm:h-36 md:w-32 md:h-42',
       zIndex: 20,
       floatClass: 'float-card-3',
     }
   },
-  // 5. Left Lower (Nithya Rajasekar - StartupTN) -> 50% - 12% = 38%
+  // 5. Left Lower (Nithya Rajasekar - StartupTN Evangelist) -> Nestled below Left Inner
   {
     cardId: 'hero-left-lower',
     name: 'Nithya Rajasekar',
@@ -899,30 +899,30 @@ const HERO_MENTORS = [
     trackLabel: 'Gov & Angel Investors',
     image: './images/mentors/nithya-rajasekar-startuptn.png',
     pos: {
-      left: '38%',
-      top: '74%',
-      sizeClass: 'w-18 h-24 sm:w-22 sm:h-30 md:w-26 md:h-34',
+      left: '39%',
+      top: '68%',
+      sizeClass: 'w-16 h-22 sm:w-20 sm:h-28 md:w-24 md:h-32',
       zIndex: 25,
       floatClass: 'float-card-1',
     }
   },
-  // 6. Right Lower (Rakesh R - ELCOT) -> 50% + 12% = 62%
+  // 6. Right Lower (Muhamadu Mansur R - Infosys Lead) -> Nestled below Right Inner
   {
     cardId: 'hero-right-lower',
-    name: 'Rakesh R',
-    role: 'State Innovation Lead',
-    company: 'ELCOT',
-    trackLabel: 'Gov & Angel Investors',
-    image: './images/mentors/rakesh-r-elcot.png',
+    name: 'Muhamadu Mansur R',
+    role: 'Technology Lead',
+    company: 'Infosys',
+    trackLabel: 'IoT & Cybersecurity',
+    image: './images/mentors/muhamadu-mansur-r.png',
     pos: {
-      left: '62%',
-      top: '74%',
-      sizeClass: 'w-18 h-24 sm:w-22 sm:h-30 md:w-26 md:h-34',
+      left: '73%',
+      top: '64%',
+      sizeClass: 'w-16 h-22 sm:w-20 sm:h-28 md:w-24 md:h-32',
       zIndex: 25,
       floatClass: 'float-card-1',
     }
   },
-  // 7. Left Outer Wing (Dr. Prabhu Venugopal - Microsoft) -> 50% - 35% = 15%
+  // 7. Far Left Wing (Dr. Prabhu Venugopal - Microsoft Principal Data Scientist) -> Outer High Tip
   {
     cardId: 'hero-left-wing',
     name: 'Dr. Prabhu Venugopal',
@@ -931,25 +931,25 @@ const HERO_MENTORS = [
     trackLabel: 'Artificial Intelligence',
     image: './images/mentors/dr-prabhu-venugopal.png',
     pos: {
-      left: '15%',
-      top: '32%',
-      sizeClass: 'w-18 h-24 sm:w-22 sm:h-30 md:w-26 md:h-34',
+      left: '19%',
+      top: '33%',
+      sizeClass: 'w-15 h-20 sm:w-18 sm:h-24 md:w-22 md:h-30',
       zIndex: 15,
       floatClass: 'float-card-2',
     }
   },
-  // 8. Right Outer Wing (Aravindh Raj - Global Software Labs) -> 50% + 35% = 85%
+  // 8. Far Right Wing (Tarun Billa - Angel Investor) -> Outer High Tip (Exact Mirror of Far Left Wing)
   {
     cardId: 'hero-right-wing',
-    name: 'Aravindh Raj',
-    role: 'VP of Technology',
-    company: 'Global Software Labs',
+    name: 'Tarun Billa',
+    role: 'Angel Investor',
+    company: 'Private Syndicate',
     trackLabel: 'Founders & Startups',
-    image: './images/mentors/aravindh-raj.png',
+    image: './images/mentors/tarun-billa.png',
     pos: {
-      left: '85%',
-      top: '32%',
-      sizeClass: 'w-18 h-24 sm:w-22 sm:h-30 md:w-26 md:h-34',
+      left: '81%',
+      top: '33%',
+      sizeClass: 'w-15 h-20 sm:w-18 sm:h-24 md:w-22 md:h-30',
       zIndex: 15,
       floatClass: 'float-card-2',
     }
@@ -1326,18 +1326,18 @@ function MentorCampusLanding() {
       <main id="home" className="relative pt-24 sm:pt-28 md:pt-32 pb-16 md:pb-24 overflow-hidden bg-white">
         <div className="w-full max-w-[1300px] mx-auto px-4 sm:px-6 md:px-12">
           
-          {/* --- TOP: MATHEMATICALLY SYMMETRICAL AVATAR NETWORK (Mirror Axis at X = 50%) --- */}
-          <div className="relative w-full max-w-[1080px] h-[380px] sm:h-[450px] md:h-[500px] mx-auto mb-6 select-none">
+          {/* --- TOP: BILATERALLY SYMMETRICAL AVATAR NETWORK --- */}
+          <div className="relative w-full max-w-[1060px] h-[390px] sm:h-[460px] md:h-[510px] mx-auto mb-6 select-none">
             
             {/* Mirror-Symmetrical Floating Blue Plus Signs */}
-            <span style={{ left: '24%', top: '20%' }} className="absolute text-[#1961e6] font-bold text-sm pointer-events-none opacity-70">+</span>
-            <span style={{ left: '76%', top: '20%' }} className="absolute text-[#1961e6] font-bold text-sm pointer-events-none opacity-70">+</span>
-            <span style={{ left: '8%', top: '46%' }} className="absolute text-[#1961e6] font-bold text-sm pointer-events-none opacity-70">+</span>
-            <span style={{ left: '92%', top: '46%' }} className="absolute text-[#1961e6] font-bold text-sm pointer-events-none opacity-70">+</span>
-            <span style={{ left: '44%', top: '48%' }} className="absolute text-[#1961e6] font-bold text-sm pointer-events-none opacity-70">+</span>
-            <span style={{ left: '56%', top: '48%' }} className="absolute text-[#1961e6] font-bold text-sm pointer-events-none opacity-70">+</span>
-            <span style={{ left: '30%', top: '88%' }} className="absolute text-[#1961e6] font-bold text-sm pointer-events-none opacity-70">+</span>
-            <span style={{ left: '70%', top: '88%' }} className="absolute text-[#1961e6] font-bold text-sm pointer-events-none opacity-70">+</span>
+            <span style={{ left: '24%', top: '22%' }} className="absolute text-[#1961e6] font-bold text-sm pointer-events-none opacity-60">+</span>
+            <span style={{ left: '76%', top: '22%' }} className="absolute text-[#1961e6] font-bold text-sm pointer-events-none opacity-60">+</span>
+            <span style={{ left: '10%', top: '48%' }} className="absolute text-[#1961e6] font-bold text-sm pointer-events-none opacity-60">+</span>
+            <span style={{ left: '90%', top: '48%' }} className="absolute text-[#1961e6] font-bold text-sm pointer-events-none opacity-60">+</span>
+            <span style={{ left: '42%', top: '53%' }} className="absolute text-[#1961e6] font-bold text-sm pointer-events-none opacity-60">+</span>
+            <span style={{ left: '58%', top: '53%' }} className="absolute text-[#1961e6] font-bold text-sm pointer-events-none opacity-60">+</span>
+            <span style={{ left: '27%', top: '86%' }} className="absolute text-[#1961e6] font-bold text-sm pointer-events-none opacity-60">+</span>
+            <span style={{ left: '73%', top: '86%' }} className="absolute text-[#1961e6] font-bold text-sm pointer-events-none opacity-60">+</span>
 
             {/* --- 8 FLAWLESSLY BALANCED MENTOR CARDS WITH REAL PHOTOGRAPHY --- */}
             {HERO_MENTORS.map((m) => {
@@ -1345,39 +1345,45 @@ function MentorCampusLanding() {
               return (
                 <div 
                   key={m.cardId}
-                  onClick={() => setSelectedMentor(matchedMentor)}
                   style={{
                     left: m.pos.left,
                     top: m.pos.top,
                     zIndex: m.pos.zIndex,
                   }}
-                  className={`absolute -translate-x-1/2 -translate-y-1/2 ${m.pos.sizeClass} bg-[#e5e8ed] rounded-2xl sm:rounded-3xl border-2 sm:border-[3px] border-white shadow-[0_8px_24px_rgba(0,0,0,0.06)] overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-[0_18px_42px_rgba(25,97,230,0.22)] hover:border-[#1961e6]/60 ${m.pos.floatClass} group select-none`}
-                  title={`${m.name} (${m.role} - ${m.company})`}
+                  className="absolute -translate-x-1/2 -translate-y-1/2 pointer-events-auto"
                 >
-                  {/* Real Mentor Photograph */}
-                  <div className="w-full h-full relative overflow-hidden bg-gradient-to-b from-gray-100 to-[#e2e6ec] flex items-center justify-center">
-                    <img
-                      src={m.image}
-                      alt={m.name}
-                      className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = './images/mentors/mentor-campus-logo.png';
-                      }}
-                    />
-                  </div>
+                  <div className={m.pos.floatClass}>
+                    <div
+                      onClick={() => setSelectedMentor(matchedMentor)}
+                      className={`${m.pos.sizeClass} relative rounded-2xl sm:rounded-3xl border-2 sm:border-[2.5px] border-white shadow-[0_8px_24px_rgba(0,0,0,0.06)] bg-[#eff2f6] overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(25,97,230,0.22)] hover:border-[#1961e6]/50 group select-none`}
+                      title={`${m.name} (${m.role} - ${m.company})`}
+                    >
+                      {/* Real Mentor Photograph */}
+                      <div className="w-full h-full relative overflow-hidden bg-gradient-to-b from-gray-100 to-[#e2e6ec] flex items-center justify-center">
+                        <img
+                          src={m.image}
+                          alt={m.name}
+                          className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = './images/mentors/mentor-campus-logo.png';
+                          }}
+                        />
+                      </div>
 
-                  {/* Brand Blue Circle + Badge in bottom-left */}
-                  <div className="absolute bottom-1.5 left-1.5 sm:bottom-2.5 sm:left-2.5 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 rounded-full bg-[#1961e6] border-2 border-white flex items-center justify-center text-white shadow-sm z-10 pointer-events-none">
-                    <svg className="w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 stroke-[3]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                      <line x1="12" y1="5" x2="12" y2="19"></line>
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                    </svg>
-                  </div>
+                      {/* Brand Blue Circle + Badge in bottom-left */}
+                      <div className="absolute bottom-1.5 left-1.5 sm:bottom-2.5 sm:left-2.5 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 rounded-full bg-[#1961e6] border-2 border-white flex items-center justify-center text-white shadow-sm z-10 pointer-events-none">
+                        <svg className="w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 stroke-[3]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                          <line x1="12" y1="5" x2="12" y2="19"></line>
+                          <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                      </div>
 
-                  {/* Subtle Hover Name Pill */}
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none absolute bottom-8 sm:bottom-10 left-1/2 -translate-x-1/2 bg-[#0b192c]/90 backdrop-blur-md text-white text-[9px] sm:text-[10px] font-semibold px-2 py-0.5 rounded-full whitespace-nowrap shadow-md z-20">
-                    {m.name.split(' ')[0]} · {m.company.split(' ')[0]}
+                      {/* Subtle Hover Name Pill */}
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none absolute bottom-8 sm:bottom-10 left-1/2 -translate-x-1/2 bg-[#0b192c]/90 backdrop-blur-md text-white text-[9px] sm:text-[10px] font-semibold px-2 py-0.5 rounded-full whitespace-nowrap shadow-md z-20">
+                        {m.name.split(' ')[0]} · {m.company.split(' ')[0]}
+                      </div>
+                    </div>
                   </div>
                 </div>
               );
@@ -1387,65 +1393,89 @@ function MentorCampusLanding() {
             {/* 4 CATEGORY BADGES IN PERFECT BILATERAL MIRROR SYMMETRY            */}
             {/* ================================================================= */}
 
-            {/* 1. CREATORS BADGE (Top-Left: 50% - 17% = 33%, top: 14%) */}
+            {/* 1. CREATORS BADGE (Top-Left: 50% - 17% = 33%, top: 15%) */}
             <div 
-              onClick={() => handleNavClick('What is MentorCampus', 'what-is-mentorcampus')}
-              style={{ left: '33%', top: '14%' }}
-              className="absolute -translate-x-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-md rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-gray-100 p-2 sm:p-2.5 px-3 sm:px-4 flex items-center gap-2.5 sm:gap-3 z-40 float-badge-1 cursor-pointer transition-transform hover:scale-105"
+              style={{ left: '33%', top: '15%', zIndex: 40 }}
+              className="absolute -translate-x-1/2 -translate-y-1/2 pointer-events-auto"
             >
-              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full border-[3.5px] border-[#1961e6] flex-shrink-0" />
-              <div className="text-left">
-                <div className="text-[11px] sm:text-xs font-bold text-gray-950 leading-tight">Creators</div>
-                <div className="text-[9px] sm:text-[10px] text-gray-500 font-medium">Ideas, media & innovation</div>
+              <div className="float-badge-1">
+                <div
+                  onClick={() => handleNavClick('What is MentorCampus', 'what-is-mentorcampus')}
+                  className="bg-white/95 backdrop-blur-md rounded-2xl shadow-[0_6px_20px_rgba(0,0,0,0.06)] border border-gray-100/90 p-2 sm:p-2.5 px-3 sm:px-4 flex items-center gap-2.5 sm:gap-3 cursor-pointer transition-transform duration-200 hover:scale-105 select-none"
+                >
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full border-[3.5px] border-[#1961e6] flex-shrink-0" />
+                  <div className="text-left">
+                    <div className="text-[11px] sm:text-xs font-bold text-gray-950 leading-tight">Creators</div>
+                    <div className="text-[9px] sm:text-[10px] text-gray-500 font-medium">Ideas, media & innovation</div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* 2. FOUNDERS BADGE (Top-Right: 50% + 17% = 67%, top: 14%) */}
+            {/* 2. FOUNDERS BADGE (Top-Right: 50% + 17% = 67%, top: 15%) */}
             <div 
-              onClick={() => handleNavClick('What is MentorCampus', 'what-is-mentorcampus')}
-              style={{ left: '67%', top: '14%' }}
-              className="absolute -translate-x-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-md rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-gray-100 p-2 sm:p-2.5 px-3 sm:px-4 flex items-center gap-2.5 sm:gap-3 z-40 float-badge-2 cursor-pointer transition-transform hover:scale-105"
+              style={{ left: '67%', top: '15%', zIndex: 40 }}
+              className="absolute -translate-x-1/2 -translate-y-1/2 pointer-events-auto"
             >
-              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-[#1961e6] text-white flex items-center justify-center flex-shrink-0">
-                <svg className="w-3.5 h-3.5 stroke-[2.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <line x1="7" y1="17" x2="17" y2="7"></line>
-                  <polyline points="7 7 17 7 17 17"></polyline>
-                </svg>
-              </div>
-              <div className="text-left">
-                <div className="text-[11px] sm:text-xs font-bold text-gray-950 leading-tight">Founders</div>
-                <div className="text-[9px] sm:text-[10px] text-gray-500 font-medium">Builders & Entrepreneurs</div>
+              <div className="float-badge-2">
+                <div
+                  onClick={() => handleNavClick('What is MentorCampus', 'what-is-mentorcampus')}
+                  className="bg-white/95 backdrop-blur-md rounded-2xl shadow-[0_6px_20px_rgba(0,0,0,0.06)] border border-gray-100/90 p-2 sm:p-2.5 px-3 sm:px-4 flex items-center gap-2.5 sm:gap-3 cursor-pointer transition-transform duration-200 hover:scale-105 select-none"
+                >
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-[#1961e6] text-white flex items-center justify-center flex-shrink-0">
+                    <svg className="w-3.5 h-3.5 stroke-[2.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </div>
+                  <div className="text-left">
+                    <div className="text-[11px] sm:text-xs font-bold text-gray-950 leading-tight">Founders</div>
+                    <div className="text-[9px] sm:text-[10px] text-gray-500 font-medium">Builders & Entrepreneurs</div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* 3. LEADERS BADGE (Bottom-Left: 50% - 31% = 19%, top: 72%) */}
+            {/* 3. LEADERS BADGE (Bottom-Left: 50% - 33% = 17%, top: 64%) */}
             <div 
-              onClick={() => handleNavClick('What is MentorCampus', 'what-is-mentorcampus')}
-              style={{ left: '19%', top: '72%' }}
-              className="absolute -translate-x-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-md rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-gray-100 p-2 sm:p-2.5 px-3 sm:px-4 flex items-center gap-2.5 sm:gap-3 z-40 float-badge-2 cursor-pointer transition-transform hover:scale-105"
+              style={{ left: '17%', top: '64%', zIndex: 40 }}
+              className="absolute -translate-x-1/2 -translate-y-1/2 pointer-events-auto"
             >
-              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full border-[3.5px] border-[#1961e6] flex-shrink-0" />
-              <div className="text-left">
-                <div className="text-[11px] sm:text-xs font-bold text-gray-950 leading-tight">Leaders</div>
-                <div className="text-[9px] sm:text-[10px] text-gray-500 font-medium">Public & community leaders</div>
+              <div className="float-badge-2">
+                <div
+                  onClick={() => handleNavClick('What is MentorCampus', 'what-is-mentorcampus')}
+                  className="bg-white/95 backdrop-blur-md rounded-2xl shadow-[0_6px_20px_rgba(0,0,0,0.06)] border border-gray-100/90 p-2 sm:p-2.5 px-3 sm:px-4 flex items-center gap-2.5 sm:gap-3 cursor-pointer transition-transform duration-200 hover:scale-105 select-none"
+                >
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full border-[3.5px] border-[#1961e6] flex-shrink-0" />
+                  <div className="text-left">
+                    <div className="text-[11px] sm:text-xs font-bold text-gray-950 leading-tight">Leaders</div>
+                    <div className="text-[9px] sm:text-[10px] text-gray-500 font-medium">Public & community leaders</div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* 4. PROFESSIONALS BADGE (Bottom-Right: 50% + 31% = 81%, top: 72%) */}
+            {/* 4. PROFESSIONALS BADGE (Bottom-Right: 50% + 33% = 83%, top: 64%) */}
             <div 
-              onClick={() => handleNavClick('What is MentorCampus', 'what-is-mentorcampus')}
-              style={{ left: '81%', top: '72%' }}
-              className="absolute -translate-x-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-md rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-gray-100 p-2 sm:p-2.5 px-3 sm:px-4 flex items-center gap-2.5 sm:gap-3 z-40 float-badge-1 cursor-pointer transition-transform hover:scale-105"
+              style={{ left: '83%', top: '64%', zIndex: 40 }}
+              className="absolute -translate-x-1/2 -translate-y-1/2 pointer-events-auto"
             >
-              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-[#1961e6] text-white flex items-center justify-center flex-shrink-0">
-                <svg className="w-3.5 h-3.5 stroke-[2.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                  <rect x="8" y="8" width="8" height="8"></rect>
-                </svg>
-              </div>
-              <div className="text-left">
-                <div className="text-[11px] sm:text-xs font-bold text-gray-950 leading-tight">Professionals</div>
-                <div className="text-[9px] sm:text-[10px] text-gray-500 font-medium">People building careers</div>
+              <div className="float-badge-1">
+                <div
+                  onClick={() => handleNavClick('What is MentorCampus', 'what-is-mentorcampus')}
+                  className="bg-white/95 backdrop-blur-md rounded-2xl shadow-[0_6px_20px_rgba(0,0,0,0.06)] border border-gray-100/90 p-2 sm:p-2.5 px-3 sm:px-4 flex items-center gap-2.5 sm:gap-3 cursor-pointer transition-transform duration-200 hover:scale-105 select-none"
+                >
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-[#1961e6] text-white flex items-center justify-center flex-shrink-0">
+                    <svg className="w-3.5 h-3.5 stroke-[2.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                      <rect x="8" y="8" width="8" height="8"></rect>
+                    </svg>
+                  </div>
+                  <div className="text-left">
+                    <div className="text-[11px] sm:text-xs font-bold text-gray-950 leading-tight">Professionals</div>
+                    <div className="text-[9px] sm:text-[10px] text-gray-500 font-medium">People building careers</div>
+                  </div>
+                </div>
               </div>
             </div>
 

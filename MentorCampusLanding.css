@@ -60,22 +60,22 @@ body {
    -------------------------------------------------------------------------- */
 @keyframes clusterFloat1 {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-7px); }
+  50% { transform: translateY(-6px); }
 }
 
 @keyframes clusterFloat2 {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-11px); }
+  50% { transform: translateY(-8px); }
 }
 
 @keyframes clusterFloat3 {
-  0%, 100% { transform: translateY(0px) scale(1); }
-  50% { transform: translateY(-9px) scale(1.02); }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
 }
 
 @keyframes badgeFloat {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-5px); }
+  50% { transform: translateY(-4px); }
 }
 
 @keyframes pulseGlow {

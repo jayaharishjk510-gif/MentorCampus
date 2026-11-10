@@ -1,0 +1,8 @@
+# Large screen recording captures
+Recording*.mp4
+
+# OS generated files
+Thumbs.db
+Desktop.ini
+.DS_Store
+

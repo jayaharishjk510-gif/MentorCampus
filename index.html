@@ -3,625 +3,1606 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mentor Campus — Learn from people who are building the real world</title>
+  <title>MentorCampus — The world is bigger than your classroom</title>
+  
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @keyframes mcMarquee {
-      0% { transform: translateX(0%); }
-      100% { transform: translateX(-33.333%); }
-    }
-    @keyframes mcMarqueeReverse {
-      0% { transform: translateX(-33.333%); }
-      100% { transform: translateX(0%); }
-    }
-    .animate-mc-marquee {
-      display: flex;
-      width: max-content;
-      animation: mcMarquee 42s linear infinite;
-    }
-    .animate-mc-marquee-reverse {
-      display: flex;
-      width: max-content;
-      animation: mcMarqueeReverse 46s linear infinite;
-    }
-    .is-paused {
-      animation-play-state: paused !important;
-    }
-    ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #cbd5e1;
-      border-radius: 9999px;
-    }
-  </style>
-</head>
-<body class="bg-[#FBFBFD] text-slate-800 antialiased font-sans selection:bg-blue-600 selection:text-white relative overflow-x-hidden min-h-screen">
-
-  <!-- Ambient Glow -->
-  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-    <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[720px] h-[480px] bg-gradient-to-b from-blue-100/70 via-indigo-100/40 to-transparent rounded-full blur-3xl opacity-80"></div>
-    <div class="absolute top-[35%] -right-40 w-[500px] h-[500px] bg-blue-50/70 rounded-full blur-3xl opacity-60"></div>
-    <div class="absolute top-[65%] -left-40 w-[500px] h-[500px] bg-indigo-50/70 rounded-full blur-3xl opacity-60"></div>
-  </div>
-
-  <!-- NAVIGATION -->
-  <header class="sticky top-0 z-40 w-full backdrop-blur-xl bg-white/80 border-b border-black/[0.06]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <div class="flex items-center gap-2.5">
-        <div class="flex items-center justify-center w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-700 via-blue-600 to-indigo-600 text-white shadow-sm shadow-blue-500/20">
-          <svg viewBox="0 0 32 32" class="w-5 h-5 fill-current">
-            <circle cx="16" cy="7" r="2.75" />
-            <path d="M7 25V15.5C7 14.12 8.12 13 9.5 13H11V25H7Z" />
-            <path d="M21 25V13H22.5C23.88 13 25 14.12 25 15.5V25H21Z" />
-            <path d="M13 25V11.5C13 10.67 13.67 10 14.5 10H17.5C18.33 10 19 10.67 19 11.5V25H13Z" />
-          </svg>
-        </div>
-        <div class="flex flex-col text-left leading-none">
-          <span class="font-extrabold tracking-tight text-[15px] text-slate-900 uppercase">
-            Mentor<span class="text-blue-600 ml-1">Campus</span>
-          </span>
-          <span class="text-[10px] tracking-wider text-slate-400 font-medium lowercase">mentorcampus.in</span>
-        </div>
-      </div>
-
-      <nav class="hidden md:flex items-center gap-8 text-[13px] font-medium text-slate-600">
-        <a href="#about" class="hover:text-blue-600 transition-colors">About</a>
-        <a href="#sessions" class="hover:text-blue-600 transition-colors">How It Works</a>
-        <a href="#mentors" class="hover:text-blue-600 transition-colors">Mentors</a>
-        <a href="#partners" class="hover:text-blue-600 transition-colors">Partners</a>
-        <a href="#testimonials" class="hover:text-blue-600 transition-colors">Testimonials</a>
-        <a href="#campus-clubs" class="hover:text-blue-600 transition-colors">Campus Clubs</a>
-      </nav>
-
-      <div class="flex items-center gap-3">
-        <a href="https://mentorcampus.in" target="_blank" class="hidden sm:block text-xs font-medium text-slate-500 hover:text-slate-800 px-3 py-1.5 transition-colors">
-          mentorcampus.in ↗
-        </a>
-        <button onclick="openModal()" class="px-4 py-2 rounded-full text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 active:scale-95 shadow-sm shadow-blue-500/25 transition-all">
-          Bring to Your College
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- HERO SECTION -->
-  <section class="relative z-10 pt-16 pb-20 sm:pt-24 sm:pb-28 max-w-5xl mx-auto px-4 text-center">
-    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50/90 border border-blue-100 text-blue-700 text-xs font-semibold mb-8 shadow-xs">
-      <span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
-      <span>Redefining College Industry Exposure</span>
-      <span class="text-blue-300">|</span>
-      <span class="text-slate-500 font-normal">Beyond Textbook Lectures</span>
-    </div>
-
-    <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.08] mb-6">
-      Learn from people who are <br class="hidden sm:block"/>
-      <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-600">
-        building the real world.
-      </span>
-    </h1>
-
-    <p class="max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed font-normal mb-10">
-      Mentor Campus brings senior industry leaders directly into colleges for expert talks and interactive sessions — engineers and AI leads, founders, policymakers, clinicians, journalists and athletes speaking candidly about their work, instead of another textbook lecture.
-    </p>
-
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
-      <button onclick="openModal()" class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm shadow-md shadow-blue-500/25 active:scale-95 transition-all flex items-center justify-center gap-2">
-        <span>Bring Mentor Campus to your college</span>
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-        </svg>
-      </button>
-      <a href="#mentors" class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-medium text-sm shadow-xs transition-all">
-        Explore 100+ Mentors
-      </a>
-    </div>
-
-    <!-- Active tracks pills -->
-    <div class="flex flex-wrap items-center justify-center gap-2 max-w-4xl mx-auto">
-      <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-white/80 border border-slate-200 text-slate-700 shadow-xs">Technology & AI</span>
-      <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-white/80 border border-slate-200 text-slate-700 shadow-xs">Business & Startups</span>
-      <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-white/80 border border-slate-200 text-slate-700 shadow-xs">Government & Policy</span>
-      <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-white/80 border border-slate-200 text-slate-700 shadow-xs">Healthcare</span>
-      <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-white/80 border border-slate-200 text-slate-700 shadow-xs">Media & Arts</span>
-      <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-white/80 border border-slate-200 text-slate-700 shadow-xs">Sports</span>
-      <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-white/80 border border-slate-200 text-slate-700 shadow-xs">IoT & Cybersecurity</span>
-      <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-white/80 border border-slate-200 text-slate-700 shadow-xs">Human Resources</span>
-    </div>
-  </section>
-
-  <!-- TRUSTED PARTNERS -->
-  <section id="partners" class="relative z-10 py-12 border-y border-slate-200/80 bg-white/60">
-    <div class="max-w-7xl mx-auto px-4 text-center">
-      <p class="text-[11px] font-semibold tracking-wider text-slate-400 uppercase mb-8">
-        Industry leaders & mentors participating from global organizations
-      </p>
-      <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-6 items-center justify-center opacity-70 grayscale hover:grayscale-0 transition-all font-bold text-slate-800 text-sm">
-        <span class="py-1">Ford</span>
-        <span class="py-1">Verizon</span>
-        <span class="py-1">Capgemini</span>
-        <span class="py-1">Deloitte.</span>
-        <span class="py-1">IBM</span>
-        <span class="py-1">Flipkart</span>
-        <span class="py-1">accenture</span>
-        <span class="py-1">PayPal</span>
-        <span class="py-1">TATA TCS</span>
-        <span class="py-1">wipro</span>
-        <span class="py-1">HCLTech</span>
-        <span class="py-1">AstraZeneca</span>
-        <span class="py-1">StartupTN</span>
-        <span class="py-1">ELCOT</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- SCROLLING-ANIMATED MENTOR DIRECTORY -->
-  <section id="mentors" class="relative z-10 py-20 bg-slate-50/60 overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 text-center mb-10">
-      <span class="text-xs font-semibold text-blue-600 uppercase tracking-wider">Featured Track Directory</span>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-1">
-        Meet the leaders mentoring on campus
-      </h2>
-      <p class="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto mt-3">
-        Real industry practitioners taking candid sessions through Mentor Campus — from enterprise AI architects to venture founders and public policy leaders.
-      </p>
-
-      <!-- Track Switcher -->
-      <div class="flex items-center justify-center gap-1.5 flex-wrap mt-8 p-1.5 bg-slate-200/70 rounded-2xl max-w-fit mx-auto border border-slate-300/60" id="track-buttons">
-        <button onclick="filterTrack('all')" data-track="all" class="track-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white text-slate-900 shadow-xs">
-          All Mentors
-        </button>
-        <button onclick="filterTrack('ai')" data-track="ai" class="track-btn px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900">
-          Artificial Intelligence
-        </button>
-        <button onclick="filterTrack('hr')" data-track="hr" class="track-btn px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900">
-          Human Resources
-        </button>
-        <button onclick="filterTrack('entrepreneur')" data-track="entrepreneur" class="track-btn px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900">
-          Founders & CXOs
-        </button>
-        <button onclick="filterTrack('gov')" data-track="gov" class="track-btn px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900">
-          Gov & Angel Investors
-        </button>
-        <button onclick="filterTrack('cyber')" data-track="cyber" class="track-btn px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900">
-          IoT & Cybersecurity
-        </button>
-      </div>
-
-      <div class="mt-4 flex items-center justify-center gap-3 text-xs text-slate-400">
-        <button onclick="toggleScroll()" id="pause-btn" class="px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 transition-colors shadow-2xs">
-          ⏸ Pause Auto-Scroll
-        </button>
-        <span>• Hover any card to inspect details</span>
-      </div>
-    </div>
-
-    <!-- Scrolling Row 1 (Left) -->
-    <div class="relative w-full overflow-hidden py-3" onmouseenter="setHoverPause(true)" onmouseleave="setHoverPause(false)">
-      <div class="absolute left-0 inset-y-0 w-24 bg-gradient-to-r from-[#FBFBFD] to-transparent z-10 pointer-events-none"></div>
-      <div class="absolute right-0 inset-y-0 w-24 bg-gradient-to-l from-[#FBFBFD] to-transparent z-10 pointer-events-none"></div>
-      <div id="marquee-row-1" class="animate-mc-marquee gap-5">
-        <!-- Rendered by JS -->
-      </div>
-    </div>
-
-    <!-- Scrolling Row 2 (Right) -->
-    <div class="relative w-full overflow-hidden py-3 mt-1" onmouseenter="setHoverPause(true)" onmouseleave="setHoverPause(false)">
-      <div class="absolute left-0 inset-y-0 w-24 bg-gradient-to-r from-[#FBFBFD] to-transparent z-10 pointer-events-none"></div>
-      <div class="absolute right-0 inset-y-0 w-24 bg-gradient-to-l from-[#FBFBFD] to-transparent z-10 pointer-events-none"></div>
-      <div id="marquee-row-2" class="animate-mc-marquee-reverse gap-5">
-        <!-- Rendered by JS -->
-      </div>
-    </div>
-
-    <!-- 3 Big Numbers (From PDF) -->
-    <div class="max-w-4xl mx-auto px-4 mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4">
-      <div class="bg-white rounded-2xl p-6 border border-slate-200 text-center shadow-xs">
-        <div class="text-3xl sm:text-4xl font-extrabold text-blue-600">100+</div>
-        <p class="text-xs font-bold text-slate-800 uppercase tracking-wide mt-1">Leaders On This Track</p>
-        <p class="text-xs text-slate-500 mt-0.5">Enterprise directors, architects & VPs</p>
-      </div>
-      <div class="bg-white rounded-2xl p-6 border border-slate-200 text-center shadow-xs">
-        <div class="text-3xl sm:text-4xl font-extrabold text-slate-900">10+</div>
-        <p class="text-xs font-bold text-slate-800 uppercase tracking-wide mt-1">Industry Tracks Overall</p>
-        <p class="text-xs text-slate-500 mt-0.5">AI, Startups, HR, Policy, Cyber & more</p>
-      </div>
-      <div class="bg-white rounded-2xl p-6 border border-slate-200 text-center shadow-xs">
-        <div class="text-3xl sm:text-4xl font-extrabold text-slate-900">3</div>
-        <p class="text-xs font-bold text-slate-800 uppercase tracking-wide mt-1">Session Formats</p>
-        <p class="text-xs text-slate-500 mt-0.5">Designed for deep student engagement</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW THE SESSIONS WORK -->
-  <section id="sessions" class="relative z-10 py-20 max-w-7xl mx-auto px-4">
-    <div class="text-center max-w-3xl mx-auto mb-14">
-      <span class="text-xs font-bold uppercase tracking-wider text-blue-600">How The Sessions Work</span>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-1">
-        Three formats designed for honesty & impact
-      </h2>
-      <p class="text-slate-600 text-sm sm:text-base mt-3">
-        Replacing boring lecture halls with active, candid interactions where students get real answers.
-      </p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="bg-white rounded-3xl p-8 border border-slate-200/90 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] transition-all flex flex-col justify-between">
-        <div>
-          <span class="inline-block text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-full mb-4">High Impact</span>
-          <h3 class="text-xl font-bold text-slate-900 mb-2">Expert talks</h3>
-          <p class="text-sm text-slate-600 leading-relaxed mb-4">
-            A senior leader visits your college for a single focused session, followed by open Q&A with students.
-          </p>
-        </div>
-        <div class="pt-4 border-t border-slate-100 text-xs text-slate-500 space-y-2">
-          <p>• Director & VP tier practitioners</p>
-          <p>• 45+ minutes open audience Q&A</p>
-          <p>• Real workplace case studies</p>
-        </div>
-      </div>
-
-      <div class="bg-white rounded-3xl p-8 border border-slate-200/90 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] transition-all flex flex-col justify-between">
-        <div>
-          <span class="inline-block text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-full mb-4">Multi-Perspective</span>
-          <h3 class="text-xl font-bold text-slate-900 mb-2">Panel discussions</h3>
-          <p class="text-sm text-slate-600 leading-relaxed mb-4">
-            Multiple experts discuss a shared theme, moderated for students in an interactive format.
-          </p>
-        </div>
-        <div class="pt-4 border-t border-slate-100 text-xs text-slate-500 space-y-2">
-          <p>• 3 to 4 cross-sector leaders</p>
-          <p>• Candid debates on future job market</p>
-          <p>• Multi-industry pathways</p>
-        </div>
-      </div>
-
-      <div class="bg-white rounded-3xl p-8 border border-slate-200/90 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] transition-all flex flex-col justify-between">
-        <div>
-          <span class="inline-block text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-full mb-4">Hands-on</span>
-          <h3 class="text-xl font-bold text-slate-900 mb-2">Interactive workshops</h3>
-          <p class="text-sm text-slate-600 leading-relaxed mb-4">
-            Smaller, hands-on sessions that go deep on one specific skill or topic.
-          </p>
-        </div>
-        <div class="pt-4 border-t border-slate-100 text-xs text-slate-500 space-y-2">
-          <p>• Direct tooling & code walkthroughs</p>
-          <p>• Practical portfolio & resume reviews</p>
-          <p>• Small cohort focus</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Official PDF Quote Block -->
-    <div class="mt-14 rounded-3xl bg-[#091528] text-white p-8 sm:p-12 shadow-2xl relative overflow-hidden">
-      <span class="text-blue-400 text-xs font-bold uppercase tracking-wider">Mentor Campus • Program Philosophy</span>
-      <blockquote class="text-xl sm:text-2xl md:text-3xl font-medium tracking-tight text-slate-100 mt-2 mb-3 leading-snug">
-        &ldquo;Students don&apos;t need another lecture about the industry — they need someone already in it, willing to answer the honest questions.&rdquo;
-      </blockquote>
-      <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Unfiltered practitioner dialogues</p>
-    </div>
-  </section>
-
-  <!-- ABOUT & CAMPUS CLUB MODEL -->
-  <section id="about" class="relative z-10 py-20 bg-white border-t border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-      <div>
-        <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">About Mentor Campus</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-1 mb-4 leading-tight">
-          Connecting campus classrooms with real-world industry leaders.
-        </h2>
-        <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-4">
-          MentorCampus (<a href="https://mentorcampus.in" target="_blank" class="text-blue-600 underline">mentorcampus.in</a>) solves the isolation between college academic curricula and real industry expectations. Instead of rare, formal guest lectures, we institutionalize ongoing access to the people driving modern technology, startups, and institutions.
-        </p>
-        <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
-          Through student-led chapters, faculties and student core teams host recurring monthly themes, giving students a head start on real workplace readiness.
-        </p>
-
-        <div class="space-y-4">
-          <div class="flex items-start gap-3.5">
-            <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">✓</span>
-            <div>
-              <p class="text-sm font-bold text-slate-900">Zero Corporate PR Filters</p>
-              <p class="text-xs text-slate-500 mt-0.5">Mentors speak candidly about career mistakes, real hiring demands, and day-to-day work.</p>
-            </div>
-          </div>
-          <div class="flex items-start gap-3.5">
-            <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">✓</span>
-            <div>
-              <p class="text-sm font-bold text-slate-900">Student-Led Campus Clubs</p>
-              <p class="text-xs text-slate-500 mt-0.5">Autonomous student core teams backed by faculty advisors host continuous masterclasses.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Campus Club Card -->
-      <div id="campus-clubs" class="bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950 text-white rounded-3xl p-8 sm:p-10 shadow-2xl">
-        <div class="flex items-center justify-between pb-6 border-b border-white/10">
-          <div>
-            <h3 class="text-lg font-bold">The Campus Club Framework</h3>
-            <p class="text-xs text-slate-400">Sustainable industry culture on your campus</p>
-          </div>
-          <span class="text-xs bg-blue-600/50 text-blue-200 border border-blue-400/30 px-3 py-1 rounded-full font-semibold">Student-Led</span>
-        </div>
-
-        <div class="mt-6 space-y-4">
-          <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
-            <p class="text-xs font-bold text-white">01. Faculty Coordinator & Student Core Team</p>
-            <p class="text-xs text-slate-300 mt-0.5">Empowers students with leadership experience managing events and guest hospitality.</p>
-          </div>
-          <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
-            <p class="text-xs font-bold text-white">02. Monthly Focus Tracks</p>
-            <p class="text-xs text-slate-300 mt-0.5">Deep dives into AI & Data, Founder Journeys, HR Interviews, and Cybersecurity.</p>
-          </div>
-          <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
-            <p class="text-xs font-bold text-white">03. Direct Mentorship & Referrals</p>
-            <p class="text-xs text-slate-300 mt-0.5">Build relationships with senior practitioners who can review portfolios and advise on careers.</p>
-          </div>
-        </div>
-
-        <div class="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
-          <span class="text-xs text-slate-300">Start a chapter at your college</span>
-          <button onclick="openModal()" class="px-4 py-2 rounded-xl bg-white text-slate-900 text-xs font-bold hover:bg-slate-100 transition-colors">
-            Start a Chapter
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section id="testimonials" class="relative z-10 py-20 bg-slate-50/70 border-t border-slate-200">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center max-w-xl mx-auto mb-14">
-        <span class="text-xs font-bold uppercase tracking-wider text-blue-600">Testimonials</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-1">
-          What students & colleges say
-        </h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-white rounded-3xl p-7 border border-slate-200 shadow-xs flex flex-col justify-between">
-          <div>
-            <div class="text-amber-400 text-xs mb-3">★★★★★</div>
-            <p class="text-sm text-slate-700 italic leading-relaxed">
-              &ldquo;Instead of another textbook lecture, having the Chief AI Architect from Ford break down how real ML pipelines run in production completely transformed our students' approach to projects.&rdquo;
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
-            <div>
-              <p class="font-bold text-slate-900 text-sm">Dr. S. Sundararajan</p>
-              <p class="text-slate-500">Dean of Industry Relations, PSG Tech</p>
-            </div>
-            <span class="text-blue-600 font-semibold bg-blue-50 px-2.5 py-1 rounded">Faculty Dean</span>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-3xl p-7 border border-slate-200 shadow-xs flex flex-col justify-between">
-          <div>
-            <div class="text-amber-400 text-xs mb-3">★★★★★</div>
-            <p class="text-sm text-slate-700 italic leading-relaxed">
-              &ldquo;I asked directly about how resumes get screened at Flipkart and ADP. The mentors answered without holding anything back. That 90-minute session gave me more clarity than two full semesters.&rdquo;
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
-            <div>
-              <p class="font-bold text-slate-900 text-sm">Ananya Mehra</p>
-              <p class="text-slate-500">Final Year B.Tech, Campus Club Lead</p>
-            </div>
-            <span class="text-blue-600 font-semibold bg-blue-50 px-2.5 py-1 rounded">Student Lead</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA BANNER -->
-  <section class="relative z-10 py-16 px-4 max-w-6xl mx-auto">
-    <div class="bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 rounded-3xl p-8 sm:p-14 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
-      <div class="max-w-xl text-center md:text-left">
-        <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">Bring Mentor Campus to your college</h2>
-        <p class="text-sm sm:text-base text-blue-100 mt-2">
-          Set up expert talks, panel discussions, and workshops for your students in any of our specialized industry tracks.
-        </p>
-      </div>
-      <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-        <button onclick="openModal()" class="px-6 py-3.5 rounded-full bg-white text-blue-700 font-bold text-xs sm:text-sm hover:bg-blue-50 active:scale-95 shadow-md transition-all text-center">
-          Request a Session
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="border-t border-slate-200 bg-white py-12 text-xs text-slate-500 text-center">
-    <p>© 2026 Mentor Campus (<a href="https://mentorcampus.in" target="_blank" class="text-blue-600 hover:underline">mentorcampus.in</a>). All rights reserved.</p>
-    <p class="mt-1 text-slate-400">Soft Apple UI Design with authentic mentor tracks.</p>
-  </footer>
-
-  <!-- MODAL -->
-  <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md">
-    <div class="relative w-full max-w-md bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-200">
-      <button onclick="closeModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:text-slate-900 flex items-center justify-center text-xs font-bold">
-        ✕
-      </button>
-      <div id="modal-content">
-        <span class="text-xs font-bold text-blue-600 uppercase">Partner With Us</span>
-        <h3 class="text-xl font-bold text-slate-900 mt-1 mb-1">Bring Mentor Campus to Your College</h3>
-        <p class="text-xs text-slate-500 mb-4">Connect your campus with senior industry practitioners.</p>
-
-        <form onsubmit="handleForm(event)" class="space-y-3">
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1">College Name</label>
-            <input type="text" required placeholder="e.g. National Institute of Technology" class="w-full px-3 py-2 rounded-xl text-xs bg-slate-50 border border-slate-200 focus:outline-none focus:border-blue-600" />
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1">Coordinator Name</label>
-            <input type="text" required placeholder="Prof. / Student Representative" class="w-full px-3 py-2 rounded-xl text-xs bg-slate-50 border border-slate-200 focus:outline-none focus:border-blue-600" />
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1">Work / College Email</label>
-            <input type="email" required placeholder="coordinator@college.edu.in" class="w-full px-3 py-2 rounded-xl text-xs bg-slate-50 border border-slate-200 focus:outline-none focus:border-blue-600" />
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1">Preferred Track</label>
-            <select class="w-full px-3 py-2 rounded-xl text-xs bg-slate-50 border border-slate-200 text-slate-700">
-              <option>Technology & AI</option>
-              <option>Human Resources</option>
-              <option>Entrepreneur & Founders</option>
-              <option>Government & Angel Investors</option>
-              <option>IoT & Cybersecurity</option>
-            </select>
-          </div>
-          <button type="submit" class="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md transition-all mt-2">
-            Submit College Request
-          </button>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- JAVASCRIPT DATA & LOGIC -->
   <script>
-    const MENTORS = [
-      // AI
-      { name: 'Senthilkumar Viswanathan', role: 'Chief Technical AI Architect', company: 'Ford Motor Company', track: 'ai', initials: 'SV', color: 'from-blue-600 to-indigo-600', highlight: 'Enterprise AI & Architecture' },
-      { name: 'Bharathi Ravindran', role: 'Director, AI Science', company: 'Verizon', track: 'ai', initials: 'BR', color: 'from-sky-500 to-blue-600', highlight: 'Applied AI & ML Science' },
-      { name: 'Senthilvel Kasirajan', role: 'Director, Gen AI & Data Science', company: 'Capgemini', track: 'ai', initials: 'SK', color: 'from-indigo-500 to-blue-700', highlight: 'Generative AI & Cloud Data' },
-      { name: 'Ramesh Babu', role: 'Director, Data & AI', company: 'Metayb', track: 'ai', initials: 'RB', color: 'from-cyan-600 to-blue-600', highlight: 'Big Data Strategy' },
-      { name: 'Raj Arun', role: 'Director, AI Engineering', company: 'Fractal', track: 'ai', initials: 'RA', color: 'from-blue-500 to-cyan-500', highlight: 'AI Engineering & Production' },
-      { name: 'Kishan S', role: 'Assistant Vice President, Data & AI', company: 'EXL', track: 'ai', initials: 'KS', color: 'from-indigo-600 to-violet-600', highlight: 'Enterprise Operations' },
-      { name: 'Karthick Nethaji Kaleeswaran', role: 'Director of AI Product Management', company: 'HCLTech', track: 'ai', initials: 'KK', color: 'from-blue-600 to-slate-700', highlight: 'AI Product Strategy' },
-      { name: 'Amudha Murugesan', role: 'Director, AI Managed Services', company: 'Vendasta', track: 'ai', initials: 'AM', color: 'from-sky-600 to-indigo-600', highlight: 'AI Scaling' },
-      { name: 'Edward Satish C', role: 'Head of Digital Tech & Automation AI', company: 'WPP Production', track: 'ai', initials: 'EC', color: 'from-slate-700 to-blue-800', highlight: 'Automation Tech' },
-      // HR
-      { name: 'Keerthana Arul', role: 'Senior HR Business Analyst', company: 'Deloitte', track: 'hr', initials: 'KA', color: 'from-teal-500 to-emerald-600', highlight: 'HR Analytics' },
-      { name: 'Vignesh U', role: 'Senior Talent Acquisition Partner', company: 'ADP', track: 'hr', initials: 'VU', color: 'from-blue-500 to-teal-600', highlight: 'Talent Acquisition' },
-      { name: 'Vasanth M', role: 'Cluster HR Business Partner', company: 'Flipkart', track: 'hr', initials: 'VM', color: 'from-amber-500 to-orange-600', highlight: 'E-commerce HRBP' },
-      { name: 'Reshma Subash', role: 'Senior Talent Acquisition Specialist', company: 'IBM', track: 'hr', initials: 'RS', color: 'from-blue-700 to-indigo-700', highlight: 'Tech Hiring' },
-      { name: 'Pavithran Sivakumar', role: 'Senior Talent Acquisition Specialist', company: 'Accenture', track: 'hr', initials: 'PS', color: 'from-violet-600 to-purple-600', highlight: 'Campus to Corporate' },
-      { name: 'Shaffiullah S', role: 'HR Business Partner', company: 'TCS', track: 'hr', initials: 'SS', color: 'from-blue-600 to-cyan-700', highlight: 'Workforce Planning' },
-      // Entrepreneur
-      { name: 'Rakesh R', role: 'Co-Founder and CEO', company: 'Aptahire', track: 'entrepreneur', initials: 'RR', color: 'from-rose-500 to-pink-600', highlight: 'Venture Building' },
-      { name: 'Nithya Rajasekar', role: 'Founder & CEO', company: 'Unitive Technologies', track: 'entrepreneur', initials: 'NR', color: 'from-fuchsia-600 to-purple-600', highlight: 'Tech Startups' },
-      { name: 'Balachander G', role: 'Founder & Director', company: 'BookWater', track: 'entrepreneur', initials: 'BG', color: 'from-blue-500 to-teal-500', highlight: 'CleanTech SaaS' },
-      { name: 'Sudarsan Babu', role: 'Founder & CEO', company: 'Pauket', track: 'entrepreneur', initials: 'SB', color: 'from-purple-600 to-indigo-600', highlight: 'Consumer Apps' },
-      // Gov & Angel
-      { name: 'Rakesh R', role: 'VP, Promotions & Facilitation', company: 'ELCOT', track: 'gov', initials: 'RR', color: 'from-emerald-600 to-green-700', highlight: 'State IT Ecosystem' },
-      { name: 'Nithya Rajasekar', role: 'Vice President & Chief of Staff', company: 'StartupTN', track: 'gov', initials: 'NR', color: 'from-blue-600 to-teal-600', highlight: 'Incubation & Policy' },
-      { name: 'Dharanidharan Sivasamy', role: 'Foreign Direct Investment Officer', company: 'hub.brussels', track: 'gov', initials: 'DS', color: 'from-indigo-600 to-blue-700', highlight: 'Global Trade' },
-      { name: 'Rajan BL', role: 'VP — Startup & AI Ecosystem', company: 'StartupTN', track: 'gov', initials: 'RB', color: 'from-cyan-600 to-blue-700', highlight: 'Regional Innovation' },
-      // Cyber
-      { name: 'Prasath Jayasundar', role: 'Senior Cybersecurity Engineer', company: 'PayPal', track: 'cyber', initials: 'PJ', color: 'from-blue-600 to-indigo-600', highlight: 'Fintech Security' },
-      { name: 'Vinod Kumar', role: 'Senior Application Developer', company: 'UPS', track: 'cyber', initials: 'VK', color: 'from-amber-700 to-stone-800', highlight: 'IoT & Logistics' },
-      { name: 'Arivukkarasan Raja', role: 'Director', company: 'AstraZeneca', track: 'cyber', initials: 'AR', color: 'from-teal-600 to-cyan-700', highlight: 'Pharma Infrastructure' },
-      { name: 'Muhamadu Mansur R', role: 'Technology Lead', company: 'Infosys', track: 'cyber', initials: 'MM', color: 'from-sky-600 to-blue-700', highlight: 'Cloud Defense' }
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              blue: '#1961e6',
+              accent: '#2160dc',
+              dark: '#111827',
+              navy: '#0b192c',
+              lightGray: '#eceef1',
+              muted: '#6b7280'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            script: ['"Caveat"', 'cursive', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Inter & Caveat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- React 18 & Babel for instant browser execution without build steps -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Custom CSS for animations and soft Apple style -->
+  <link rel="stylesheet" href="./MentorCampusLanding.css">
+</head>
+<body class="bg-[#FBFBFD] text-gray-900 font-sans antialiased min-h-screen selection:bg-blue-100 selection:text-[#2160dc] relative overflow-x-hidden">
+  
+  <div id="root">
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;color:#6b7280;gap:12px;">
+      <div style="width:36px;height:36px;border:3px solid #e2e8f0;border-top-color:#2160dc;border-radius:50%;animation:mcSpin 0.8s linear infinite;"></div>
+      <p style="font-size:14px;font-weight:600;color:#1e293b;">Loading MentorCampus...</p>
+    </div>
+    <style>
+      @keyframes mcSpin { to { transform: rotate(360deg); } }
+    </style>
+  </div>
+
+  <!-- React Component Execution -->
+  <script type="text/babel">
+    const { useState, useMemo, useEffect, useRef } = React;
+
+    // --- DATA ---
+    const TRACK_CATEGORIES = [
+      { id: 'all', label: 'All Mentors', count: '40+' },
+      { id: 'ai', label: 'Artificial Intelligence', count: '100+' },
+      { id: 'hr', label: 'Human Resources', count: '100+' },
+      { id: 'entrepreneur', label: 'Founders & Startups', count: '100+' },
+      { id: 'gov', label: 'Gov & Angel Investors', count: '100+' },
+      { id: 'cyber', label: 'IoT & Cybersecurity', count: '100+' },
     ];
 
-    let currentTrack = 'all';
-    let isPaused = false;
+    const HERO_PILLS = [
+      { id: 'creators', title: 'Creators', subtitle: 'Ideas & media', filterTrack: 'all', type: 'dot' },
+      { id: 'founders', title: 'Founders', subtitle: 'Entrepreneurs', filterTrack: 'entrepreneur', type: 'arrow' },
+      { id: 'leaders', title: 'Leaders', subtitle: 'Community leaders', filterTrack: 'gov', type: 'dot' },
+      { id: 'professionals', title: 'Professionals', subtitle: 'Career builders', filterTrack: 'ai', type: 'grid' },
+    ];
 
-    function renderCards() {
-      const filtered = currentTrack === 'all' ? MENTORS : MENTORS.filter(m => m.track === currentTrack);
-      const half = Math.ceil(filtered.length / 2);
-      const r1 = filtered.slice(0, half);
-      const r2 = filtered.slice(half).length ? filtered.slice(half) : filtered;
+    const MENTORS_DATA = [
+  // --- Artificial Intelligence Track ---
+  {
+    id: 'm-ai-1',
+    name: 'Senthilkumar Viswanathan',
+    role: 'Chief Technical AI Architect',
+    company: 'Ford Motor Company',
+    track: 'ai',
+    trackLabel: 'Artificial Intelligence',
+    initials: 'SV',
+    highlight: 'Enterprise AI & Architecture',
+    bio: 'Pioneering large-scale enterprise AI infrastructure and autonomous vehicle machine learning systems at Ford.',
+    topics: ['Production ML Deployment', 'Autonomous Systems Architecture', 'AI Engineering Roadmaps'],
+    sessionsTaken: 14,
+    color: 'from-blue-600 to-indigo-600',
+    image: './images/mentors/senthilkumar-viswanathan.png',
+  },
+  {
+    id: 'm-ai-2',
+    name: 'Bharathi Ravindran',
+    role: 'Director, AI Science',
+    company: 'Verizon',
+    track: 'ai',
+    trackLabel: 'Artificial Intelligence',
+    initials: 'BR',
+    highlight: 'Applied AI & ML Science',
+    bio: 'Directs applied data science and deep learning research teams scaling telecommunications intelligence.',
+    topics: ['Applied AI in Telecom', 'From Research to Production', 'Data Science Career Ladders'],
+    sessionsTaken: 9,
+    color: 'from-sky-500 to-blue-600',
+    image: './images/mentors/bharathi-ravindran.png',
+  },
+  {
+    id: 'm-ai-3',
+    name: 'Senthilvel Kasirajan',
+    role: 'Director, Gen AI & Data Science, GCP',
+    company: 'Capgemini',
+    track: 'ai',
+    trackLabel: 'Artificial Intelligence',
+    initials: 'SK',
+    highlight: 'Generative AI & Cloud Data',
+    bio: 'Oversees GCP AI Center of Excellence, helping enterprises architect generative AI and LLM solutions.',
+    topics: ['Enterprise Generative AI', 'Cloud Foundation Models', 'Agentic Workflows'],
+    sessionsTaken: 11,
+    color: 'from-indigo-500 to-blue-700',
+    image: './images/mentors/senthilvel-kasirajan.png',
+  },
+  {
+    id: 'm-ai-4',
+    name: 'Ramesh Babu',
+    role: 'Director, Data & AI',
+    company: 'Metayb',
+    track: 'ai',
+    trackLabel: 'Artificial Intelligence',
+    initials: 'RB',
+    highlight: 'Big Data Strategy & AI',
+    bio: 'Architecting big data pipelines and distributed analytics systems for global clients.',
+    topics: ['Big Data at Scale', 'Data Engineering vs Data Science', 'Real-time Streaming'],
+    sessionsTaken: 7,
+    color: 'from-cyan-600 to-blue-600',
+    image: './images/mentors/ramesh-babu.png',
+  },
+  {
+    id: 'm-ai-5',
+    name: 'Raj Arun',
+    role: 'Director, AI Engineering',
+    company: 'Fractal',
+    track: 'ai',
+    trackLabel: 'Artificial Intelligence',
+    initials: 'RA',
+    highlight: 'AI Engineering & Production',
+    bio: 'Driving engineering excellence and AI model monitoring for Fortune 500 analytics implementations.',
+    topics: ['MLOps Best Practices', 'Scaling Model Observability', 'AI Consulting Dynamics'],
+    sessionsTaken: 8,
+    color: 'from-blue-500 to-cyan-500',
+    image: './images/mentors/raj-arun.png',
+  },
+  {
+    id: 'm-ai-6',
+    name: 'Kishan S',
+    role: 'Assistant Vice President, Data & AI',
+    company: 'EXL',
+    track: 'ai',
+    trackLabel: 'Artificial Intelligence',
+    initials: 'KS',
+    highlight: 'Enterprise AI Operations',
+    bio: 'Guiding global analytics transformation, financial data modeling, and enterprise risk intelligence.',
+    topics: ['Fintech AI Applications', 'Executive Data Strategy', 'Consulting Readiness'],
+    sessionsTaken: 12,
+    color: 'from-indigo-600 to-violet-600',
+    image: './images/mentors/kishan-s.png',
+  },
+  {
+    id: 'm-ai-7',
+    name: 'Karthick Nethaji Kaleeswaran',
+    role: 'Director of AI Product Management',
+    company: 'HCLTech',
+    track: 'ai',
+    trackLabel: 'Artificial Intelligence',
+    initials: 'KK',
+    highlight: 'AI Product Strategy & Roadmap',
+    bio: 'Spearheading product vision for enterprise cognitive solutions and applied AI software suites.',
+    topics: ['Product Management for AI', 'Validating AI Business Value', 'Product Roadmapping'],
+    sessionsTaken: 6,
+    color: 'from-blue-600 to-slate-700',
+    image: './images/mentors/karthick-nethaji-kaleeswaran.png',
+  },
+  {
+    id: 'm-ai-8',
+    name: 'Amudha Murugesan',
+    role: 'Director, AI Managed Services',
+    company: 'Vendasta',
+    track: 'ai',
+    trackLabel: 'Artificial Intelligence',
+    initials: 'AM',
+    highlight: 'AI Services & Scaling',
+    bio: 'Leads AI service delivery and customer enablement for high-growth SaaS ecosystems.',
+    topics: ['SaaS Scale-up with AI', 'Operational AI Excellence', 'Customer Experience Automation'],
+    sessionsTaken: 5,
+    color: 'from-sky-600 to-indigo-600',
+    image: './images/mentors/amudha-murugesan.png',
+  },
+  {
+    id: 'm-ai-9',
+    name: 'Edward Satish C',
+    role: 'Head of Digital Tech & Automation AI',
+    company: 'WPP Production',
+    track: 'ai',
+    trackLabel: 'Artificial Intelligence',
+    initials: 'EC',
+    highlight: 'Automation AI & Media Tech',
+    bio: 'Bridging creative agency automation with bleeding-edge generative media and digital technology.',
+    topics: ['Generative Media Tech', 'Creative Automation', 'Next-Gen Content Engines'],
+    sessionsTaken: 8,
+    color: 'from-slate-700 to-blue-800',
+    image: './images/mentors/edward-satish-c.png',
+  },
 
-      const row1Data = [...r1, ...r1, ...r1];
-      const row2Data = [...r2, ...r2, ...r2];
+  // --- Human Resources Track ---
+  {
+    id: 'm-hr-1',
+    name: 'Keerthana Arul',
+    role: 'Senior HR Business Analyst',
+    company: 'Deloitte',
+    track: 'hr',
+    trackLabel: 'Human Resources',
+    initials: 'KA',
+    highlight: 'HR Analytics & Talent Ops',
+    bio: 'Specializes in talent supply-chain analytics and modern hiring intelligence frameworks.',
+    topics: ['Cracking Campus Placements', 'What Recruiters Screen For', 'Resume Decoders'],
+    sessionsTaken: 16,
+    color: 'from-teal-500 to-emerald-600',
+    image: './images/mentors/keerthana-arul.png',
+  },
+  {
+    id: 'm-hr-2',
+    name: 'Vignesh U',
+    role: 'Senior Talent Acquisition Partner',
+    company: 'ADP',
+    track: 'hr',
+    trackLabel: 'Human Resources',
+    initials: 'VU',
+    highlight: 'Talent Acquisition & Hiring',
+    bio: 'Recruiter with over a decade hiring engineers, engineering managers, and cloud architects.',
+    topics: ['Technical Interview Prep', 'Navigating Salary Negotiations', 'Engineering Culture'],
+    sessionsTaken: 13,
+    color: 'from-blue-500 to-teal-600',
+    image: './images/mentors/vignesh-u.png',
+  },
+  {
+    id: 'm-hr-3',
+    name: 'Vasanth M',
+    role: 'Cluster HR Business Partner',
+    company: 'Flipkart',
+    track: 'hr',
+    trackLabel: 'Human Resources',
+    initials: 'VM',
+    highlight: 'E-commerce HRBP & Operations',
+    bio: 'Manages high-volume talent development and leadership scaling for India premier e-commerce ecosystem.',
+    topics: ['High-Growth Culture', 'First 90 Days at Work', 'Leadership Transitions'],
+    sessionsTaken: 10,
+    color: 'from-amber-500 to-orange-600',
+    image: './images/mentors/vasanth-m.png',
+  },
+  {
+    id: 'm-hr-4',
+    name: 'Reshma Subash',
+    role: 'Senior Talent Acquisition Specialist',
+    company: 'IBM',
+    track: 'hr',
+    trackLabel: 'Human Resources',
+    initials: 'RS',
+    highlight: 'Tech Recruiting & Culture',
+    bio: 'Sourcing and onboarding talent for IBM cloud, consulting, and cybersecurity divisions.',
+    topics: ['Global Enterprise Sourcing', 'LinkedIn Profile Optimization', 'Behavioral Interviews'],
+    sessionsTaken: 12,
+    color: 'from-blue-700 to-indigo-700',
+    image: './images/mentors/reshma-subash.png',
+  },
+  {
+    id: 'm-hr-5',
+    name: 'Ayush Ranjan',
+    role: 'Human Resources Business Partner',
+    company: 'NielsenIQ',
+    track: 'hr',
+    trackLabel: 'Human Resources',
+    initials: 'AR',
+    highlight: 'Corporate People Strategy',
+    bio: 'Driving HR business partnerships, talent metrics, and executive performance coaching.',
+    topics: ['People Operations Scaling', 'Competency Mapping', 'HR in Multinational Firms'],
+    sessionsTaken: 8,
+    color: 'from-purple-500 to-indigo-600',
+    image: './images/mentors/ayush-ranjan-hr.png',
+  },
+  {
+    id: 'm-hr-6',
+    name: 'Pavithran Sivakumar',
+    role: 'Senior Talent Acquisition Specialist',
+    company: 'Accenture',
+    track: 'hr',
+    trackLabel: 'Human Resources',
+    initials: 'PS',
+    highlight: 'Campus to Corporate Transition',
+    bio: 'Dedicated to helping campus students understand corporate communication and onboarding standards.',
+    topics: ['Campus to Corporate Shift', 'Overcoming Imposter Syndrome', 'Interview Do’s & Don’ts'],
+    sessionsTaken: 15,
+    color: 'from-violet-600 to-purple-600',
+    image: './images/mentors/pavithran-sivakumar.png',
+  },
+  {
+    id: 'm-hr-7',
+    name: 'Shaffiullah S',
+    role: 'HR Business Partner',
+    company: 'TCS',
+    track: 'hr',
+    trackLabel: 'Human Resources',
+    initials: 'SS',
+    highlight: 'Workforce Planning & People Dev',
+    bio: 'Guiding thousands of young engineers through structured capability building and mentorship.',
+    topics: ['Career Pathing in Large IT', 'Continuous Upskilling', 'Performance Evaluations'],
+    sessionsTaken: 9,
+    color: 'from-blue-600 to-cyan-700',
+    image: './images/mentors/shaffiullah-s.png',
+  },
+  {
+    id: 'm-hr-8',
+    name: 'Roshini Karunakaran',
+    role: 'Senior Executive Talent Acquisition',
+    company: 'Wipro',
+    track: 'hr',
+    trackLabel: 'Human Resources',
+    initials: 'RK',
+    highlight: 'Engineering Hiring & Sourcing',
+    bio: 'Specialist in early-career engineering recruitment, skill-matrix assessments, and hiring operations.',
+    topics: ['Acing Coding Interviews', 'Soft Skills for Engineers', 'Campus Selection Process'],
+    sessionsTaken: 11,
+    color: 'from-emerald-600 to-teal-700',
+    image: './images/mentors/roshini-karunakaran.png',
+  },
+  {
+    id: 'm-hr-9',
+    name: 'Saravana Kumar',
+    role: 'Talent Acquisition Lead',
+    company: 'UST',
+    track: 'hr',
+    trackLabel: 'Human Resources',
+    initials: 'SK',
+    highlight: 'Global IT Talent Strategy',
+    bio: 'Leads digital tech sourcing and lateral hiring strategies for cloud and enterprise software engineering.',
+    topics: ['Lateral vs Freshers Hiring', 'Tech Stack Demands', 'Building Professional Networks'],
+    sessionsTaken: 14,
+    color: 'from-indigo-600 to-blue-700',
+    image: './images/mentors/saravana-kumar.png',
+  },
 
-      const createCard = (m) => `
-        <div class="w-[300px] sm:w-[320px] flex-shrink-0 bg-white rounded-2xl p-5 border border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_32px_rgba(37,99,235,0.08)] hover:border-blue-300 transition-all group select-none">
-          <div class="flex items-start gap-3.5 mb-3.5">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center text-white font-semibold text-sm bg-gradient-to-br ${m.color} flex-shrink-0 shadow-inner">
-              ${m.initials}
-            </div>
-            <div class="min-w-0 flex-1">
-              <h4 class="font-semibold text-slate-900 text-sm truncate group-hover:text-blue-600 transition-colors">${m.name}</h4>
-              <p class="text-[12px] text-slate-500 line-clamp-1 mt-0.5">${m.role}</p>
-            </div>
-          </div>
-          <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
-            <span class="font-medium text-slate-800 bg-slate-100/90 px-2 py-0.5 rounded text-[11px] truncate max-w-[150px]">${m.company}</span>
-            <span class="text-blue-600 font-medium text-[11px]">${m.highlight}</span>
-          </div>
+  // --- Entrepreneur Track ---
+  {
+    id: 'm-ent-1',
+    name: 'Rakesh R',
+    role: 'Co-Founder and CEO',
+    company: 'Aptahire',
+    track: 'entrepreneur',
+    trackLabel: 'Founders & Startups',
+    initials: 'RR',
+    highlight: 'Early-stage Venture Building',
+    bio: 'Bootstrapped and scaled hiring tech platforms serving rapid-growth startups across India.',
+    topics: ['Finding Product-Market Fit', 'Bootstrapping vs VC Funding', 'First 10 Hires'],
+    sessionsTaken: 18,
+    color: 'from-rose-500 to-pink-600',
+    image: './images/mentors/rakesh-r-aptahire.png',
+  },
+  {
+    id: 'm-ent-2',
+    name: 'Nithya Rajasekar',
+    role: 'Founder & CEO',
+    company: 'Unitive Technologies',
+    track: 'entrepreneur',
+    trackLabel: 'Founders & Startups',
+    initials: 'NR',
+    highlight: 'Tech Product Entrepreneurship',
+    bio: 'Serial entrepreneur building developer tooling and enterprise SaaS products.',
+    topics: ['Validating SaaS Ideas', 'Building in Public', 'Sales for Introverted Engineers'],
+    sessionsTaken: 11,
+    color: 'from-fuchsia-600 to-purple-600',
+    image: './images/mentors/nithya-rajasekar-unitive.png',
+  },
+  {
+    id: 'm-ent-3',
+    name: 'Balachander G',
+    role: 'Founder & Director',
+    company: 'BookWater',
+    track: 'entrepreneur',
+    trackLabel: 'Founders & Startups',
+    initials: 'BG',
+    highlight: 'CleanTech & IoT Systems',
+    bio: 'Building IoT-enabled water delivery networks and sustainable urban utility hardware.',
+    topics: ['Hardware & IoT Startups', 'Sustainability Ventures', 'Managing Supply Chains'],
+    sessionsTaken: 7,
+    color: 'from-blue-500 to-teal-500',
+    image: './images/mentors/balachander-g.png',
+  },
+  {
+    id: 'm-ent-4',
+    name: 'Pinku B',
+    role: 'Founder & CEO',
+    company: 'Taxina',
+    track: 'entrepreneur',
+    trackLabel: 'Founders & Startups',
+    initials: 'PB',
+    highlight: 'Fintech & Mobility Startups',
+    bio: 'Building urban mobility solutions and decentralized fintech payment integration models.',
+    topics: ['Mobility Tech Platforms', 'Fintech Unit Economics', 'Customer Acquisition Cost'],
+    sessionsTaken: 8,
+    color: 'from-amber-600 to-orange-600',
+    image: './images/mentors/pinku-b.png',
+  },
+  {
+    id: 'm-ent-5',
+    name: 'Ayush Ranjan',
+    role: 'CEO & Mentor',
+    company: 'Vibrant Education',
+    track: 'entrepreneur',
+    trackLabel: 'Founders & Startups',
+    initials: 'AR',
+    highlight: 'EdTech & Skill Building',
+    bio: 'Educator and entrepreneur scaling student enablement programs and experiential learning.',
+    topics: ['EdTech Business Models', 'Student Entrepreneurship', 'Scaling Offline-Online Hybrids'],
+    sessionsTaken: 10,
+    color: 'from-purple-500 to-indigo-600',
+    image: './images/mentors/ayush-ranjan-vibrant.png',
+  },
+  {
+    id: 'm-ent-6',
+    name: 'Senthil K Chinnasamy',
+    role: 'Investor, Partner — Strategy & Growth',
+    company: 'Varam.app',
+    track: 'entrepreneur',
+    trackLabel: 'Founders & Startups',
+    initials: 'SC',
+    highlight: 'Venture Strategy & Scale',
+    bio: 'Active early-stage angel investor and startup operator guiding scaling ventures.',
+    topics: ['Growth Playbooks', 'Evaluating Startup Traction', 'Fundraising Realities'],
+    sessionsTaken: 12,
+    color: 'from-emerald-600 to-teal-600',
+    image: './images/mentors/senthil-k-chinnasamy.png',
+  },
+  {
+    id: 'm-ent-7',
+    name: 'Siraj M.K',
+    role: 'Managing Partner',
+    company: 'Pathfinder',
+    track: 'entrepreneur',
+    trackLabel: 'Founders & Startups',
+    initials: 'SM',
+    highlight: 'Business Incubation & Advisory',
+    bio: 'Consultant and enterprise mentor advising early-stage founders on corporate governance and market entry.',
+    topics: ['Go-to-Market Strategy', 'Navigating Regulatory Frameworks', 'Founder Resilience'],
+    sessionsTaken: 9,
+    color: 'from-cyan-600 to-blue-700',
+    image: './images/mentors/siraj-m-k.png',
+  },
+  {
+    id: 'm-ent-8',
+    name: 'Sudarsan Babu',
+    role: 'Founder & CEO',
+    company: 'Pauket',
+    track: 'entrepreneur',
+    trackLabel: 'Founders & Startups',
+    initials: 'SB',
+    highlight: 'Consumer Tech & SaaS',
+    bio: 'Creating viral consumer mobile apps and social micro-commerce platforms.',
+    topics: ['Consumer Growth Hacking', 'UI/UX That Converts', 'From College Hackathon to Startup'],
+    sessionsTaken: 14,
+    color: 'from-purple-600 to-indigo-600',
+    image: './images/mentors/sudarsan-babu.png',
+  },
+  {
+    id: 'm-ent-9',
+    name: 'Selventhiran Kathiresan',
+    role: 'Co Founder',
+    company: 'Arthamandapam',
+    track: 'entrepreneur',
+    trackLabel: 'Founders & Startups',
+    initials: 'SK',
+    highlight: 'Cultural & Tech Ventures',
+    bio: 'Co-founder blending digital platforms with cultural commerce and decentralized creator networks.',
+    topics: ['Niche Market Penetration', 'Building Mission-Driven Brands', 'Community-Led Growth'],
+    sessionsTaken: 7,
+    color: 'from-sky-600 to-blue-700',
+    image: './images/mentors/selventhiran-kathiresan.png',
+  },
+
+  // --- Gov & Angel Track ---
+  {
+    id: 'm-gov-1',
+    name: 'Rakesh R',
+    role: 'VP, Promotions & Facilitation',
+    company: 'ELCOT',
+    track: 'gov',
+    trackLabel: 'Gov & Policy',
+    initials: 'RR',
+    highlight: 'State IT Ecosystem & Infrastructure',
+    bio: 'Fosters state-level technology policy, IT corridors, and academic incubation centers.',
+    topics: ['State Incubation Grants', 'Public Policy in Tech', 'Tier-2/3 City Opportunities'],
+    sessionsTaken: 8,
+    color: 'from-emerald-600 to-green-700',
+    image: './images/mentors/rakesh-r-elcot.png',
+  },
+  {
+    id: 'm-gov-2',
+    name: 'Nithya Rajasekar',
+    role: 'Vice President & Chief of Staff',
+    company: 'StartupTN',
+    track: 'gov',
+    trackLabel: 'Gov & Policy',
+    initials: 'NR',
+    highlight: 'Startup Policy & Incubation',
+    bio: 'Spearheading state government initiatives to fund and support student founders across 500+ colleges.',
+    topics: ['Government Grants for Students', 'Incubator Access', 'State Innovation Ecosystem'],
+    sessionsTaken: 19,
+    color: 'from-blue-600 to-teal-600',
+    image: './images/mentors/nithya-rajasekar-startuptn.png',
+  },
+  {
+    id: 'm-gov-3',
+    name: 'Dharanidharan Sivasamy',
+    role: 'Foreign Direct Investment Officer',
+    company: 'hub.brussels',
+    track: 'gov',
+    trackLabel: 'Gov & Policy',
+    initials: 'DS',
+    highlight: 'Global Trade & FDI Policy',
+    bio: 'Advising European and Indian trade delegations on international startup expansion.',
+    topics: ['Global Mobility for Engineers', 'International Market Entry', 'Diplomacy in Tech'],
+    sessionsTaken: 6,
+    color: 'from-indigo-600 to-blue-700',
+    image: './images/mentors/dharanidharan-sivasamy.png',
+  },
+  {
+    id: 'm-gov-4',
+    name: 'Rajan BL',
+    role: 'Vice President — Tamil Nadu Startup & AI Ecosystem',
+    company: 'StartupTN',
+    track: 'gov',
+    trackLabel: 'Gov & Policy',
+    initials: 'RB',
+    highlight: 'State AI & Startup Missions',
+    bio: 'Directing statewide AI innovation corridors and public-private industry accelerator programs.',
+    topics: ['State Startup Grants', 'Emerging Tech Public Policy', 'Incubator Networks'],
+    sessionsTaken: 13,
+    color: 'from-teal-600 to-cyan-700',
+    image: './images/mentors/rajan-bl.png',
+  },
+  {
+    id: 'm-gov-5',
+    name: 'Nikunj Panchal',
+    role: 'Assistant Vice President',
+    company: 'StartupTN',
+    track: 'gov',
+    trackLabel: 'Gov & Policy',
+    initials: 'NP',
+    highlight: 'Incubation & Seed Grants',
+    bio: 'Evaluating early-stage grant applications and student founder incubation readiness.',
+    topics: ['Writing Winning Grant Proposals', 'Government Seed Funds', 'Campus Pitch Competitions'],
+    sessionsTaken: 11,
+    color: 'from-blue-600 to-slate-700',
+    image: './images/mentors/nikunj-panchal.png',
+  },
+  {
+    id: 'm-gov-6',
+    name: 'Rajsekar Sivasamy',
+    role: 'Project Associate',
+    company: 'StartupTN',
+    track: 'gov',
+    trackLabel: 'Gov & Policy',
+    initials: 'RS',
+    highlight: 'Campus Ecosystem Outreach',
+    bio: 'Facilitating student entrepreneurship awareness drives across higher education institutions.',
+    topics: ['Student Innovation Hubs', 'Accessing State Labs', 'College Startup Cells'],
+    sessionsTaken: 9,
+    color: 'from-sky-600 to-indigo-600',
+    image: './images/mentors/rajsekar-sivasamy.png',
+  },
+  {
+    id: 'm-gov-7',
+    name: 'Raghavender R',
+    role: 'Angel Investor',
+    company: 'Angel Network',
+    track: 'gov',
+    trackLabel: 'Gov & Angel Investors',
+    initials: 'RR',
+    highlight: 'Early-stage Venture Backing',
+    bio: 'Angel investor backing high-conviction founders solving enterprise SaaS and digital logistics problems.',
+    topics: ['What Angels Look For in First Pitches', 'Cap Table Essentials', 'Market Validation'],
+    sessionsTaken: 10,
+    color: 'from-amber-600 to-orange-600',
+    image: './images/mentors/raghavender-r.png',
+  },
+  {
+    id: 'm-gov-8',
+    name: 'Dr Prabhu Venugopal',
+    role: 'Angel Investor & Syndicate Lead',
+    company: 'Angel Network',
+    track: 'gov',
+    trackLabel: 'Gov & Angel Investors',
+    initials: 'PV',
+    highlight: 'Pre-Seed / Seed Angel Backing',
+    bio: 'Active angel investor with 25+ portfolio bets across healthcare, AI, and developer tools.',
+    topics: ['How Angels Read Pitch Decks', 'Cap Table Hygiene', 'Valuation Realities'],
+    sessionsTaken: 15,
+    color: 'from-amber-600 to-orange-600',
+    image: './images/mentors/dr-prabhu-venugopal.png',
+  },
+  {
+    id: 'm-gov-9',
+    name: 'Tarun Billa',
+    role: 'Angel Investor',
+    company: 'Private Syndicate',
+    track: 'gov',
+    trackLabel: 'Gov & Angel Investors',
+    initials: 'TB',
+    highlight: 'Early Growth & Syndicate Investing',
+    bio: 'Angel syndicate member supporting tech-enabled founders during pre-seed and angel rounds.',
+    topics: ['Preparing for Due Diligence', 'Term Sheets 101', 'Founder-Investor Relationships'],
+    sessionsTaken: 8,
+    color: 'from-purple-600 to-pink-600',
+    image: './images/mentors/tarun-billa.png',
+  },
+
+  // --- IoT & Cybersecurity Track ---
+  {
+    id: 'm-cyb-1',
+    name: 'Vinod Kumar',
+    role: 'Senior Application Developer',
+    company: 'UPS',
+    track: 'cyber',
+    trackLabel: 'IoT & Cybersecurity',
+    initials: 'VK',
+    highlight: 'Logistics Systems & IoT Architecture',
+    bio: 'Building enterprise tracking networks and resilient supply-chain IoT edge infrastructure.',
+    topics: ['Edge Computing & IoT', 'Supply Chain Telemetry', 'Embedded Systems Engineering'],
+    sessionsTaken: 7,
+    color: 'from-amber-700 to-stone-800',
+    image: './images/mentors/vinod-kumar.png',
+  },
+  {
+    id: 'm-cyb-2',
+    name: 'Arivukkarasan Raja',
+    role: 'Director',
+    company: 'AstraZeneca',
+    track: 'cyber',
+    trackLabel: 'IoT & Cybersecurity',
+    initials: 'AR',
+    highlight: 'Pharma Tech, IoT & Infrastructure',
+    bio: 'Leading enterprise cloud compliance and medical device connectivity for life sciences.',
+    topics: ['HealthTech Security', 'Regulatory Compliance & GxP', 'Enterprise Architecture'],
+    sessionsTaken: 10,
+    color: 'from-teal-600 to-cyan-700',
+    image: './images/mentors/arivukkarasan-raja.png',
+  },
+  {
+    id: 'm-cyb-3',
+    name: 'Abishek R',
+    role: 'Technical Lead',
+    company: 'HCLTech',
+    track: 'cyber',
+    trackLabel: 'IoT & Cybersecurity',
+    initials: 'AR',
+    highlight: 'SecOps & Embedded Security',
+    bio: 'Leading vulnerability assessments, secure firmware development, and IoT device hardening.',
+    topics: ['Embedded System Security', 'Penetration Testing Essentials', 'Securing Connected Devices'],
+    sessionsTaken: 8,
+    color: 'from-blue-600 to-slate-700',
+    image: './images/mentors/abishek-r.png',
+  },
+  {
+    id: 'm-cyb-4',
+    name: 'Prasath Jayasundar',
+    role: 'Senior Cybersecurity Engineer',
+    company: 'PayPal',
+    track: 'cyber',
+    trackLabel: 'IoT & Cybersecurity',
+    initials: 'PJ',
+    highlight: 'Financial Cyber Defense & SOC',
+    bio: 'Protects critical financial rails from sophisticated multi-vector attacks and breach threats.',
+    topics: ['Fintech Security Standards', 'Ethical Hacking & Bug Bounties', 'SOC Analyst Careers'],
+    sessionsTaken: 12,
+    color: 'from-blue-600 to-indigo-600',
+    image: './images/mentors/prasath-jayasundar.png',
+  },
+  {
+    id: 'm-cyb-5',
+    name: 'Aravindh Raj',
+    role: 'Cyber Security Manager',
+    company: 'Northern Lights',
+    track: 'cyber',
+    trackLabel: 'IoT & Cybersecurity',
+    initials: 'AR',
+    highlight: 'Enterprise Threat Intelligence',
+    bio: 'Managing cybersecurity operations, incident response, and cloud perimeter defense for critical platforms.',
+    topics: ['Incident Response In Action', 'Threat Hunting Techniques', 'Certifications (CEH, OSCP, CISSP)'],
+    sessionsTaken: 9,
+    color: 'from-indigo-600 to-purple-600',
+    image: './images/mentors/aravindh-raj.png',
+  },
+  {
+    id: 'm-cyb-6',
+    name: 'Muhamadu Mansur R',
+    role: 'Technology Lead',
+    company: 'Infosys',
+    track: 'cyber',
+    trackLabel: 'IoT & Cybersecurity',
+    initials: 'MM',
+    highlight: 'Cloud Security & IoT Networks',
+    bio: 'Hands-on architect designing cloud perimeter defense and identity systems for global banks.',
+    topics: ['Cloud Security Posture (CSPM)', 'Zero-Trust Architecture', 'Security Certifications'],
+    sessionsTaken: 11,
+    color: 'from-sky-600 to-blue-700',
+    image: './images/mentors/muhamadu-mansur-r.png',
+  },
+];
+
+    const TRUSTED_COMPANIES = [
+      { name: 'Ford', logoText: 'Ford', count: '8+ Mentors' },
+      { name: 'Verizon', logoText: 'verizon', count: '6+ Mentors' },
+      { name: 'Capgemini', logoText: 'Capgemini', count: '12+ Mentors' },
+      { name: 'Deloitte', logoText: 'Deloitte.', count: '9+ Mentors' },
+      { name: 'IBM', logoText: 'IBM', count: '7+ Mentors' },
+      { name: 'Flipkart', logoText: 'Flipkart', count: '5+ Mentors' },
+      { name: 'Accenture', logoText: 'accenture', count: '14+ Mentors' },
+      { name: 'PayPal', logoText: 'PayPal', count: '6+ Mentors' },
+      { name: 'TCS', logoText: 'TATA TCS', count: '15+ Mentors' },
+      { name: 'Wipro', logoText: 'wipro', count: '8+ Mentors' },
+      { name: 'HCLTech', logoText: 'HCLTech', count: '10+ Mentors' },
+      { name: 'AstraZeneca', logoText: 'AstraZeneca', count: '4+ Mentors' },
+      { name: 'StartupTN', logoText: 'StartupTN', count: 'State Partner' },
+      { name: 'ELCOT', logoText: 'ELCOT', count: 'Gov Partner' },
+    ];
+
+    const SESSION_FORMATS = [
+      {
+        id: 'expert-talks',
+        title: 'Expert talks',
+        badge: 'High Impact',
+        desc: 'A senior leader visits your college for a single, focused session, followed by open and uncensored Q&A with students.',
+        duration: '90 Minutes',
+        highlights: ['Direct access to VP/Director level leaders', 'Audience-driven 45-min open Q&A', 'Real workplace case studies & metrics'],
+      },
+      {
+        id: 'panel-discussions',
+        title: 'Panel discussions',
+        badge: 'Multi-Perspective',
+        desc: 'Multiple experts discuss a shared emerging theme, moderated specifically for students in an engaging, interactive format.',
+        duration: '120 Minutes',
+        highlights: ['3 to 4 cross-sector practitioners', 'Healthy debates on industry shifts', 'Diverse career trajectory roadmaps'],
+      },
+      {
+        id: 'interactive-workshops',
+        title: 'Interactive workshops',
+        badge: 'Hands-on Mastery',
+        desc: 'Smaller, hands-on masterclasses that go deep on one specific skill, practical toolstack, or industry workflow.',
+        duration: 'Half-Day / Full-Day',
+        highlights: ['Intimate cohort size for direct feedback', 'Live tooling, code reviews & resume audits', 'Zero abstract theories'],
+      },
+    ];
+
+    const TESTIMONIALS = [
+      {
+        quote: 'Instead of another generic motivation lecture, our students were listening to the Chief AI Architect from Ford break down how production models are deployed. The candid Q&A changed how students view their engineering projects.',
+        author: 'Dr. S. Sundararajan',
+        role: 'Dean of Academic & Industry Relations',
+        institution: 'PSG College of Technology',
+        tag: 'Institutional Leader',
+        category: 'dean',
+        rating: 5,
+      },
+      {
+        quote: 'I got to ask direct questions about what hiring managers actually look for in portfolio projects versus resume keywords. That 90-minute session was more actionable than 3 years of classroom theory.',
+        author: 'Ananya Mehra',
+        role: 'Final Year B.Tech Student & Club Lead',
+        institution: 'Mentor Campus Club Member',
+        tag: 'Student Perspective',
+        category: 'student',
+        rating: 5,
+      },
+      {
+        quote: 'Giving back through Mentor Campus is deeply fulfilling because there are zero PR scripts or artificial barriers. Students ask real, difficult questions about the industry, and we give them honest, grounded answers.',
+        author: 'Bharathi Ravindran',
+        role: 'Director, AI Science',
+        institution: 'Verizon & Mentor Campus Contributor',
+        tag: 'Industry Mentor',
+        category: 'mentor',
+        rating: 5,
+      },
+      {
+        quote: 'Setting up a student-led Mentor Campus Club on our campus has created an ongoing buzz. Sessions happen every month across AI, Startups, and HR, making industry exposure a regular part of campus life.',
+        author: 'Prof. K. Venkatesh',
+        role: 'Faculty Coordinator, Innovation Cell',
+        institution: 'Anna University Affiliated Campus',
+        tag: 'Campus Coordinator',
+        category: 'dean',
+        rating: 5,
+      },
+    ];
+
+    // --- LOGO COMPONENT ---
+    function MentorCampusLogo({ className = 'h-11 sm:h-12' }) {
+      return (
+        <div className="flex items-center gap-2.5">
+          <img
+            src="./Mentor Campus Handshake Logo.png"
+            alt="Mentor Campus"
+            className={`w-auto object-contain transition-transform duration-200 hover:scale-[1.02] ${className}`}
+            onError={(e) => {
+              if (!e.target.dataset.triedFallback) {
+                e.target.dataset.triedFallback = 'true';
+                e.target.src = './images/Mentor Campus Handshake Logo.png';
+              }
+            }}
+          />
         </div>
-      `;
-
-      document.getElementById('marquee-row-1').innerHTML = row1Data.map(createCard).join('');
-      document.getElementById('marquee-row-2').innerHTML = row2Data.map(createCard).join('');
+      );
     }
 
-    function filterTrack(trackId) {
-      currentTrack = trackId;
-      document.querySelectorAll('.track-btn').forEach(btn => {
-        if (btn.getAttribute('data-track') === trackId) {
-          btn.className = 'track-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white text-slate-900 shadow-xs';
-        } else {
-          btn.className = 'track-btn px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900';
-        }
+    // --- MARQUEE CARD COMPONENT ---
+    function MentorMarqueeCard({ mentor, onSelect }) {
+      return (
+        <div
+          onClick={() => onSelect(mentor)}
+          className="w-[300px] sm:w-[325px] flex-shrink-0 bg-white/95 rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_36px_rgba(33,96,220,0.12)] hover:border-blue-400 transition-all duration-300 group cursor-pointer select-none card-sheen"
+        >
+          <div className="flex items-start gap-3.5 mb-3">
+            <div className="w-12 h-12 rounded-xl overflow-hidden bg-slate-100 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform duration-300 shrink-0 border border-slate-200/60">
+              {mentor.image ? (
+                <img
+                  src={mentor.image}
+                  alt={mentor.name}
+                  className="w-full h-full object-cover object-top"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    if (e.target.nextSibling) e.target.nextSibling.style.display = 'flex';
+                  }}
+                />
+              ) : null}
+              <div className={`w-full h-full items-center justify-center text-white font-bold text-sm bg-gradient-to-br ${mentor.color} ${mentor.image ? 'hidden' : 'flex'}`}>
+                {mentor.initials}
+              </div>
+            </div>
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center gap-1.5">
+                <h4 className="font-bold text-gray-900 text-sm truncate group-hover:text-[#2160dc] transition-colors">
+                  {mentor.name}
+                </h4>
+                <span className="inline-flex text-[#2160dc]" title="Verified Mentor">
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                </span>
+              </div>
+              <p className="text-[12px] text-gray-500 truncate mt-0.5">{mentor.role}</p>
+            </div>
+          </div>
+
+          <div className="space-y-2 pt-2.5 border-t border-slate-100 text-xs">
+            <div className="flex items-center justify-between">
+              <span className="text-gray-400 font-medium">Organization</span>
+              <span className="font-semibold text-gray-800 bg-[#eceef1] px-2 py-0.5 rounded-md text-[11px] truncate max-w-[160px]">
+                {mentor.company}
+              </span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-gray-400 font-medium">Domain</span>
+              <span className="text-[#2160dc] font-semibold text-[11px] truncate max-w-[170px]">{mentor.highlight}</span>
+            </div>
+          </div>
+
+          <div className="mt-3 flex items-center justify-between text-[11px] text-gray-400 pt-2 border-t border-slate-50">
+            <span className="text-emerald-600 font-medium flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              {mentor.sessionsTaken} sessions completed
+            </span>
+            <span className="text-[#2160dc] font-semibold group-hover:translate-x-0.5 transition-transform">
+              View Profile →
+            </span>
+          </div>
+        </div>
+      );
+    }
+
+    // --- ANIMATED HEADER NAV PILLS COMPONENT ---
+    function AnimatedNavPills({ activeNav, onNavClick, onJoinClick }) {
+      const navItems = [
+        { label: 'Home', section: 'home' },
+        { label: 'About us', section: 'about' },
+        { label: 'Mentors', section: 'mentors' },
+        { label: 'Testimonials', section: 'testimonials' },
+        { label: 'Contact us', section: 'contact' },
+        { label: 'Join us', action: onJoinClick },
+      ];
+
+      const containerRef = useRef(null);
+      const btnRefs = useRef({});
+      const [indicatorStyle, setIndicatorStyle] = useState({
+        left: 0,
+        top: 0,
+        width: 0,
+        height: 0,
+        opacity: 0,
+        isReady: false,
       });
-      renderCards();
-    }
 
-    function toggleScroll() {
-      isPaused = !isPaused;
-      const r1 = document.getElementById('marquee-row-1');
-      const r2 = document.getElementById('marquee-row-2');
-      const btn = document.getElementById('pause-btn');
-      if (isPaused) {
-        r1.classList.add('is-paused');
-        r2.classList.add('is-paused');
-        btn.innerText = '▶ Resume Scrolling';
-      } else {
-        r1.classList.remove('is-paused');
-        r2.classList.remove('is-paused');
-        btn.innerText = '⏸ Pause Auto-Scroll';
-      }
-    }
-
-    function setHoverPause(pause) {
-      if (!isPaused) {
-        const r1 = document.getElementById('marquee-row-1');
-        const r2 = document.getElementById('marquee-row-2');
-        if (pause) {
-          r1.classList.add('is-paused');
-          r2.classList.add('is-paused');
-        } else {
-          r1.classList.remove('is-paused');
-          r2.classList.remove('is-paused');
+      const updateIndicator = () => {
+        const activeBtn = btnRefs.current[activeNav];
+        if (activeBtn && containerRef.current) {
+          const navRect = containerRef.current.getBoundingClientRect();
+          const btnRect = activeBtn.getBoundingClientRect();
+          setIndicatorStyle((prev) => ({
+            left: btnRect.left - navRect.left,
+            top: btnRect.top - navRect.top,
+            width: btnRect.width,
+            height: btnRect.height,
+            opacity: 1,
+            isReady: prev.opacity > 0,
+          }));
         }
-      }
+      };
+
+      useEffect(() => {
+        updateIndicator();
+        const rafId = requestAnimationFrame(updateIndicator);
+        const timer1 = setTimeout(updateIndicator, 50);
+        const timer2 = setTimeout(updateIndicator, 150);
+
+        window.addEventListener('resize', updateIndicator);
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(updateIndicator);
+        }
+
+        return () => {
+          cancelAnimationFrame(rafId);
+          clearTimeout(timer1);
+          clearTimeout(timer2);
+          window.removeEventListener('resize', updateIndicator);
+        };
+      }, [activeNav]);
+
+      return (
+        <nav
+          ref={containerRef}
+          aria-label="Main Navigation"
+          className="relative hidden md:flex items-center bg-[#eaecef] p-1 rounded-full text-xs font-semibold text-gray-600 shadow-inner px-1.5"
+        >
+          {/* Smooth Sliding Pill Indicator with Apple Spring Physics */}
+          <span
+            className="absolute top-0 left-0 rounded-full bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08),0_1px_2px_rgba(0,0,0,0.04)] pointer-events-none nav-pill-indicator"
+            style={{
+              transform: `translate3d(${indicatorStyle.left}px, ${indicatorStyle.top}px, 0)`,
+              width: `${indicatorStyle.width}px`,
+              height: `${indicatorStyle.height}px`,
+              opacity: indicatorStyle.opacity,
+              transition: indicatorStyle.isReady
+                ? 'transform 320ms cubic-bezier(0.16, 1, 0.3, 1), width 320ms cubic-bezier(0.16, 1, 0.3, 1), height 320ms cubic-bezier(0.16, 1, 0.3, 1), opacity 180ms ease'
+                : 'opacity 180ms ease',
+            }}
+            aria-hidden="true"
+          />
+
+          {navItems.map((item) => {
+            const isActive = activeNav === item.label;
+            return (
+              <button
+                key={item.label}
+                ref={(el) => (btnRefs.current[item.label] = el)}
+                onClick={() => {
+                  if (item.action) {
+                    item.action();
+                  } else {
+                    onNavClick(item.label, item.section);
+                  }
+                }}
+                className={`relative z-10 px-4 py-1.5 rounded-full transition-colors duration-200 cursor-pointer select-none ${
+                  isActive
+                    ? 'text-gray-950 font-bold'
+                    : 'text-gray-600 hover:text-gray-950 font-medium'
+                }`}
+              >
+                {item.label}
+              </button>
+            );
+          })}
+        </nav>
+      );
     }
 
-    function openModal() {
-      const modal = document.getElementById('modal');
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-    }
+    // --- MAIN REACT APPLICATION ---
+    function App() {
+      const [activeNav, setActiveNav] = useState('Home');
+      const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+      const [selectedTrack, setSelectedTrack] = useState('all');
 
-    function closeModal() {
-      const modal = document.getElementById('modal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-    }
+      const [selectedMentor, setSelectedMentor] = useState(null);
+      const [showSignInModal, setShowSignInModal] = useState(false);
+      const [signInTab, setSignInTab] = useState('student');
+      const [showJoinModal, setShowJoinModal] = useState(false);
+      const [joinSubmitted, setJoinSubmitted] = useState(false);
+      const [joinRole, setJoinRole] = useState('college');
 
-    function handleForm(e) {
-      e.preventDefault();
-      document.getElementById('modal-content').innerHTML = `
-        <div class="py-8 text-center">
-          <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 text-xl font-bold">✓</div>
-          <h3 class="text-lg font-bold text-slate-900">Inquiry Submitted!</h3>
-          <p class="text-xs text-slate-500 mt-1">Our campus coordinator team will contact you within 24 hours.</p>
+      const [activeSessionTab, setActiveSessionTab] = useState('expert-talks');
+      const [activeTestimonialTab, setActiveTestimonialTab] = useState('all');
+
+      const [joinFormData, setJoinFormData] = useState({
+        name: '',
+        institution: '',
+        email: '',
+        phone: '',
+        preferredTrack: 'Technology & AI',
+      });
+
+      const filteredMentors = useMemo(() => {
+        if (selectedTrack === 'all') return MENTORS_DATA;
+        return MENTORS_DATA.filter((m) => m.track === selectedTrack);
+      }, [selectedTrack]);
+
+      const row1Mentors = useMemo(() => {
+        const list = filteredMentors.slice(0, Math.ceil(filteredMentors.length / 2));
+        const eff = list.length > 0 ? list : filteredMentors;
+        return [...eff, ...eff, ...eff, ...eff];
+      }, [filteredMentors]);
+
+      const row2Mentors = useMemo(() => {
+        const list = filteredMentors.slice(Math.ceil(filteredMentors.length / 2));
+        const eff = list.length > 0 ? list : filteredMentors;
+        return [...eff, ...eff, ...eff, ...eff];
+      }, [filteredMentors]);
+
+      const filteredTestimonials = useMemo(() => {
+        if (activeTestimonialTab === 'all') return TESTIMONIALS;
+        return TESTIMONIALS.filter((t) => t.category === activeTestimonialTab);
+      }, [activeTestimonialTab]);
+
+      const isClickScrollingRef = useRef(false);
+
+      const handleNavClick = (navItem, sectionId) => {
+        setActiveNav(navItem);
+        setMobileMenuOpen(false);
+        isClickScrollingRef.current = true;
+        setTimeout(() => {
+          isClickScrollingRef.current = false;
+        }, 850);
+
+        if (sectionId) {
+          const el = document.getElementById(sectionId);
+          if (el) {
+            const offset = 80;
+            const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({
+              top: Math.max(0, elementPosition - offset),
+              behavior: 'smooth'
+            });
+          }
+        }
+      };
+
+      // Scroll Spy: Keep activeNav and animated indicator in sync with visible section
+      useEffect(() => {
+        const sections = [
+          { id: 'home', label: 'Home' },
+          { id: 'about', label: 'About us' },
+          { id: 'mentors', label: 'Mentors' },
+          { id: 'testimonials', label: 'Testimonials' },
+          { id: 'contact', label: 'Contact us' },
+        ];
+
+        const handleScroll = () => {
+          if (isClickScrollingRef.current) return;
+          const scrollPos = window.scrollY + 200;
+
+          for (let i = sections.length - 1; i >= 0; i--) {
+            const el = document.getElementById(sections[i].id);
+            if (el && el.offsetTop <= scrollPos) {
+              setActiveNav((curr) => (curr !== sections[i].label ? sections[i].label : curr));
+              break;
+            }
+          }
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+      }, []);
+
+      const handleJoinSubmit = (e) => {
+        e.preventDefault();
+        setJoinSubmitted(true);
+        setTimeout(() => {
+          setJoinSubmitted(false);
+          setShowJoinModal(false);
+          setJoinFormData({
+            name: '',
+            institution: '',
+            email: '',
+            phone: '',
+            preferredTrack: 'Technology & AI',
+          });
+        }, 2200);
+      };
+
+      return (
+        <div className="relative">
+          {/* Ambient Glow */}
+          <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+            <div className="absolute -top-36 left-1/2 -translate-x-1/2 w-[760px] h-[520px] bg-gradient-to-b from-blue-100/70 via-indigo-100/30 to-transparent rounded-full blur-3xl opacity-80" />
+            <div className="absolute top-[38%] -right-32 w-[520px] h-[520px] bg-blue-50/70 rounded-full blur-3xl opacity-60" />
+          </div>
+
+          {/* 1. MAIN HEADER / PERSISTENT STATIC TOOLBAR */}
+          <header className="sticky top-0 z-50 w-full bg-[#FBFBFD]/90 backdrop-blur-xl border-b border-gray-200/70 shadow-[0_2px_12px_rgba(0,0,0,0.03)] transition-all">
+            <div className="w-full max-w-[1400px] mx-auto px-6 sm:px-10 md:px-16 flex items-center justify-between py-3.5">
+              <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('Home', 'home'); }} className="flex items-center gap-2.5 focus:outline-none">
+                <MentorCampusLogo />
+              </a>
+
+              {/* Center Pill Nav Container with Smooth Sliding Animation */}
+              <AnimatedNavPills
+                activeNav={activeNav}
+                onNavClick={handleNavClick}
+                onJoinClick={() => {
+                  setActiveNav('Join us');
+                  setShowJoinModal(true);
+                }}
+              />
+
+              {/* Right Header Sign In Action */}
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => setShowSignInModal(true)}
+                  className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-[#1961e6] text-xs font-bold text-gray-800 hover:bg-blue-50/70 transition-all shadow-sm active:scale-95 cursor-pointer bg-white"
+                >
+                  <span className="text-[#1961e6] font-bold text-sm leading-none">+</span>
+                  <span>Sign In</span>
+                </button>
+              </div>
+            </div>
+          </header>
+
+          {/* 2. HERO SECTION & ORGANIC AVATAR NETWORK */}
+          <main id="home" className="w-full max-w-[1400px] mx-auto px-6 sm:px-12 md:px-16 flex flex-col items-center pt-2 relative z-10">
+            {/* Organic network layout */}
+            <div className="w-full max-w-6xl mx-auto py-6 select-none flex flex-col items-center justify-center gap-7">
+              {/* Category Badges Row */}
+              <div className="w-full max-w-4xl flex items-center justify-center md:justify-between gap-3 sm:gap-4 md:gap-8 flex-wrap px-4">
+                {HERO_PILLS.map((pill) => (
+                  <button
+                    key={pill.id}
+                    onClick={() => {
+                      setSelectedTrack(pill.filterTrack);
+                      const el = document.getElementById('mentors');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="flex items-center gap-2.5 bg-white px-4 py-2 rounded-full shadow-sm border border-gray-200/70 hover:border-blue-400 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-pointer group"
+                  >
+                    {pill.type === 'dot' && (
+                      <div className="w-5 h-5 rounded-full border-2 border-[#1961e6] flex items-center justify-center shrink-0">
+                        <div className="w-1.5 h-1.5 bg-[#1961e6] rounded-full group-hover:scale-125 transition-transform" />
+                      </div>
+                    )}
+                    {pill.type === 'arrow' && (
+                      <div className="w-5 h-5 rounded-lg bg-[#1961e6] flex items-center justify-center text-white shrink-0 group-hover:rotate-45 transition-transform">
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                          <path d="M7 17L17 7M17 7H9M17 7V15" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
+                    )}
+                    {pill.type === 'grid' && (
+                      <div className="w-5 h-5 rounded-lg bg-[#1961e6] flex items-center justify-center text-white shrink-0">
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                          <rect height="16" rx="2" width="16" x="4" y="4" />
+                          <rect fill="currentColor" height="8" rx="1" width="8" x="8" y="8" />
+                        </svg>
+                      </div>
+                    )}
+                    <div className="leading-tight text-left">
+                      <p className="text-xs font-bold text-gray-900 group-hover:text-[#2160dc] transition-colors">{pill.title}</p>
+                      <p className="text-[10px] text-gray-500 font-medium">{pill.subtitle}</p>
+                    </div>
+                  </button>
+                ))}
+              </div>
+
+              {/* 5 Tiered Organic Mentor Avatars with Real Photos */}
+              <div className="flex items-end justify-center gap-3 sm:gap-6 md:gap-9 flex-nowrap pt-2">
+                <div
+                  onClick={() => setSelectedMentor(MENTORS_DATA.find((m) => m.id === 'm-gov-8'))}
+                  className="relative w-16 h-20 bg-slate-100 rounded-2xl overflow-hidden shadow-sm flex flex-col items-center justify-center shrink-0 float-avatar-1 cursor-pointer group hover:scale-105 transition-transform border border-slate-200/80"
+                  title="Dr Prabhu Venugopal • Angel Investor"
+                >
+                  <img src="./images/mentors/dr-prabhu-venugopal.png" alt="Dr Prabhu Venugopal" className="w-full h-full object-cover object-top" />
+                </div>
+
+                <div
+                  onClick={() => setSelectedMentor(MENTORS_DATA.find((m) => m.id === 'm-gov-2'))}
+                  className="relative w-24 h-28 bg-slate-100 rounded-2xl overflow-hidden shadow-sm flex flex-col items-center justify-center shrink-0 float-avatar-2 cursor-pointer group hover:scale-105 transition-transform border border-slate-200/80"
+                  title="Nithya Rajasekar • VP, StartupTN"
+                >
+                  <img src="./images/mentors/nithya-rajasekar-startuptn.png" alt="Nithya Rajasekar" className="w-full h-full object-cover object-top" />
+                </div>
+
+                {/* Center Highlight Avatar */}
+                <div
+                  onClick={() => setSelectedMentor(MENTORS_DATA.find((m) => m.id === 'm-ai-1'))}
+                  className="relative w-32 h-36 bg-slate-100 rounded-3xl overflow-hidden shadow-md border border-gray-200/60 flex flex-col items-center justify-center shrink-0 ring-4 ring-blue-500/20 z-10 float-avatar-3 cursor-pointer group hover:scale-105 transition-transform"
+                  title="Senthilkumar Viswanathan • Ford Chief AI Architect"
+                >
+                  <img src="./images/mentors/senthilkumar-viswanathan.png" alt="Senthilkumar Viswanathan" className="w-full h-full object-cover object-top" />
+                </div>
+
+                <div
+                  onClick={() => setSelectedMentor(MENTORS_DATA.find((m) => m.id === 'm-ai-2'))}
+                  className="relative w-24 h-28 bg-slate-100 rounded-2xl overflow-hidden shadow-sm flex flex-col items-center justify-center shrink-0 float-avatar-4 cursor-pointer group hover:scale-105 transition-transform border border-slate-200/80"
+                  title="Bharathi Ravindran • Director AI Science, Verizon"
+                >
+                  <img src="./images/mentors/bharathi-ravindran.png" alt="Bharathi Ravindran" className="w-full h-full object-cover object-top" />
+                </div>
+
+                <div
+                  onClick={() => setSelectedMentor(MENTORS_DATA.find((m) => m.id === 'm-hr-1'))}
+                  className="relative w-16 h-20 bg-slate-100 rounded-2xl overflow-hidden shadow-sm flex flex-col items-center justify-center shrink-0 float-avatar-5 cursor-pointer group hover:scale-105 transition-transform border border-slate-200/80"
+                  title="Keerthana Arul • Senior HR Analyst, Deloitte"
+                >
+                  <img src="./images/mentors/keerthana-arul.png" alt="Keerthana Arul" className="w-full h-full object-cover object-top" />
+                </div>
+              </div>
+              <p className="text-[11px] text-gray-400 font-medium -mt-2">
+                Click any character card to view real industry mentor credentials
+              </p>
+            </div>
+
+            {/* Hero Copy (Exact Typography from Landing_page (1).html) */}
+            <div className="text-center max-w-5xl mx-auto flex flex-col items-center mt-2 px-4">
+              <p className="text-sm sm:text-base font-extrabold tracking-[0.25em] text-[#1961e6] uppercase mb-2">
+                WITH A VISION
+              </p>
+
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-gray-950 tracking-tight leading-[1.15] mb-4 text-center max-w-4xl mx-auto whitespace-normal">
+                <span className="block">The world is bigger than</span>
+                <span className="block text-[#2160DC] font-normal lowercase tracking-normal -mt-1 sm:-mt-2 relative inline-block font-handwritten" style={{ fontSize: '1.25em', lineHeight: 1.1 }}>
+                  your classroom.
+                  <svg className="absolute -bottom-2 left-0 w-full h-4 overflow-visible pointer-events-none" viewBox="0 0 300 20" fill="none">
+                    <path d="M5 14C80 4 220 5 295 12" stroke="#2160DC" strokeWidth="3.5" strokeLinecap="round" className="draw-underline" />
+                  </svg>
+                </span>
+              </h1>
+
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed mb-8 px-4">
+                Mentor Campus connects students with real people, real conversations and real-world exposure beyond the classroom.
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button
+                  onClick={() => setShowJoinModal(true)}
+                  className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-[#2160DC] text-white font-bold text-sm tracking-wider uppercase hover:bg-blue-700 transition-all duration-150 shadow-md shadow-blue-500/30 active:scale-95 cursor-pointer"
+                >
+                  <span>JOIN MENTORCAMPUS</span>
+                  <svg className="w-4 h-4 ml-0.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+                <a
+                  href="#mentors"
+                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white hover:bg-slate-50 border border-slate-200 text-gray-700 font-bold text-sm tracking-wider uppercase shadow-xs hover:border-blue-400 transition-all"
+                >
+                  EXPLORE MENTORS
+                </a>
+              </div>
+            </div>
+          </main>
+
+          {/* 2. ABOUT SECTION & CAMPUS CLUB */}
+          <section id="about" className="relative z-10 py-20 bg-white border-t border-slate-200/80">
+            <div className="max-w-7xl mx-auto px-6 sm:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <span className="text-xs font-bold text-[#2160dc] uppercase tracking-wider bg-blue-50 px-3 py-1 rounded-full">
+                  About Mentor Campus
+                </span>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-950 tracking-tight leading-tight mt-4">
+                  Bridging the chasm between classrooms and industry reality.
+                </h2>
+                <p className="mt-5 text-gray-600 text-sm sm:text-base leading-relaxed">
+                  MentorCampus brings leaders directly into colleges for interactive sessions — engineers, AI leads, founders, and clinicians speaking candidly about their work instead of standard lectures.
+                </p>
+              </div>
+
+              {/* Campus Club Card */}
+              <div className="bg-gradient-to-br from-[#0b192c] via-[#111827] to-[#1e293b] text-white rounded-3xl p-8 sm:p-10 shadow-2xl">
+                <div className="flex items-center justify-between pb-6 border-b border-white/10">
+                  <h3 className="text-xl font-bold">The Campus Club Framework</h3>
+                  <span className="text-xs font-bold bg-[#2160dc]/40 text-blue-300 border border-blue-400/30 px-3 py-1 rounded-full">Student-Led</span>
+                </div>
+                <div className="mt-6 space-y-4 text-xs">
+                  <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+                    <p className="font-bold text-white">01. Faculty Coordinator & Student Core Team</p>
+                    <p className="text-slate-300 mt-0.5">Empowers students with leadership experience managing events</p>
+                  </div>
+                  <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+                    <p className="font-bold text-white">02. Monthly Focus Tracks</p>
+                    <p className="text-slate-300 mt-0.5">Continuous cycles across AI, HR, Startups and Policy</p>
+                  </div>
+                  <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+                    <p className="font-bold text-white">03. Direct Mentorship & Referrals</p>
+                    <p className="text-slate-300 mt-0.5">Direct access to practitioners for portfolio reviews</p>
+                  </div>
+                </div>
+                <div className="mt-6 pt-4 border-t border-white/10 flex justify-end">
+                  <button onClick={() => setShowJoinModal(true)} className="px-5 py-2.5 rounded-full bg-white text-gray-900 text-xs font-bold hover:bg-slate-100 transition-colors cursor-pointer">
+                    Start a Chapter →
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 3. HOW SESSIONS WORK */}
+          <section id="sessions" className="relative z-10 py-20 max-w-7xl mx-auto px-6 sm:px-10">
+            <div className="text-center max-w-3xl mx-auto mb-14">
+              <p className="text-xs font-extrabold uppercase tracking-widest text-[#2160dc] mb-2">HOW THE SESSIONS WORK</p>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-950 tracking-tight">
+                Curated formats designed for honesty & impact
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {SESSION_FORMATS.map((format) => (
+                <div
+                  key={format.id}
+                  onClick={() => setActiveSessionTab(format.id)}
+                  className={`rounded-3xl p-8 border transition-all duration-300 flex flex-col justify-between cursor-pointer ${
+                    activeSessionTab === format.id
+                      ? 'bg-white border-[#2160dc] shadow-[0_16px_36px_rgba(33,96,220,0.1)] ring-2 ring-blue-500/20'
+                      : 'bg-white/80 border-slate-200 shadow-xs'
+                  }`}
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-5">
+                      <span className="text-xs font-bold text-[#2160dc] bg-blue-50 px-3 py-1 rounded-full">{format.badge}</span>
+                      <span className="text-[11px] font-semibold text-gray-400 bg-gray-100 px-2.5 py-0.5 rounded-full">{format.duration}</span>
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-950 mb-3 tracking-tight">{format.title}</h3>
+                    <p className="text-sm text-gray-600 leading-relaxed mb-6">{format.desc}</p>
+                  </div>
+                  <div className="pt-4 border-t border-slate-100 space-y-2 text-xs text-gray-600">
+                    {format.highlights.map((h, i) => (
+                      <div key={i} className="flex items-center gap-2">
+                        <span className="text-[#2160dc] font-bold">✓</span>
+                        <span>{h}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Philosophy Banner */}
+            <div className="mt-14 rounded-3xl bg-[#091528] text-white p-8 sm:p-14 shadow-2xl relative overflow-hidden">
+              <span className="text-blue-400 text-xs font-extrabold tracking-wider uppercase mb-3 block">
+                MENTOR CAMPUS, PROGRAM PHILOSOPHY
+              </span>
+              <blockquote className="text-xl sm:text-2xl md:text-3xl font-medium tracking-tight text-slate-100 leading-snug">
+                &ldquo;Students don't need another lecture about the industry — they need someone already in it, willing to answer the honest questions.&rdquo;
+              </blockquote>
+            </div>
+          </section>
+
+          {/* 4. TRUSTED PARTNERS */}
+          <section id="partners" className="relative z-10 py-12 border-y border-slate-200/80 bg-white/60">
+            <div className="max-w-7xl mx-auto px-6 text-center">
+              <p className="text-[11px] font-bold tracking-[0.2em] text-gray-400 uppercase mb-8">
+                Mentors & Industry Leaders Participating From Global Organizations
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-5 sm:gap-8 items-center justify-center">
+                {TRUSTED_COMPANIES.map((company, i) => (
+                  <div key={i} className="flex flex-col items-center justify-center py-2 px-3 text-gray-800 font-bold tracking-tight text-sm hover:text-[#2160dc] transition-colors cursor-default">
+                    <span>{company.logoText}</span>
+                    <span className="text-[10px] text-gray-400 font-normal">{company.count}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* 5. SCROLLING-ANIMATED MENTOR DETAILS */}
+          <section id="mentors" className="relative z-10 py-20 bg-slate-50/70 overflow-hidden">
+            <div className="max-w-7xl mx-auto px-6 mb-10 text-center">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-[#2160dc] text-xs font-bold uppercase tracking-wider mb-3">
+                <span>Featured Track Directory</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-950 tracking-tight">
+                Meet the leaders mentoring on campus
+              </h2>
+              <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto mt-3">
+                Real industry practitioners taking candid sessions through Mentor Campus.
+              </p>
+
+              {/* Track Segmented Pills */}
+              <div className="flex items-center justify-center gap-1.5 flex-wrap mt-7 p-1.5 bg-[#eaecef] rounded-2xl max-w-fit mx-auto border border-slate-300/50 shadow-inner">
+                {TRACK_CATEGORIES.map((cat) => {
+                  const active = selectedTrack === cat.id;
+                  return (
+                    <button
+                      key={cat.id}
+                      onClick={() => setSelectedTrack(cat.id)}
+                      className={`px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
+                        active ? 'bg-white text-gray-950 shadow-sm font-bold' : 'text-gray-600 hover:text-gray-950'
+                      }`}
+                    >
+                      {cat.label} ({cat.count})
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Marquee Row 1 */}
+            <div className="relative w-full overflow-hidden py-3">
+              <div className="absolute left-0 inset-y-0 w-28 bg-gradient-to-r from-[#FBFBFD] to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 inset-y-0 w-28 bg-gradient-to-l from-[#FBFBFD] to-transparent z-10 pointer-events-none" />
+              <div className="animate-mc-marquee gap-5">
+                {row1Mentors.map((mentor, index) => (
+                  <MentorMarqueeCard key={`r1-${mentor.id}-${index}`} mentor={mentor} onSelect={(m) => setSelectedMentor(m)} />
+                ))}
+              </div>
+            </div>
+
+            {/* Marquee Row 2 */}
+            <div className="relative w-full overflow-hidden py-3 mt-1">
+              <div className="absolute left-0 inset-y-0 w-28 bg-gradient-to-r from-[#FBFBFD] to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 inset-y-0 w-28 bg-gradient-to-l from-[#FBFBFD] to-transparent z-10 pointer-events-none" />
+              <div className="animate-mc-marquee-reverse gap-5">
+                {row2Mentors.map((mentor, index) => (
+                  <MentorMarqueeCard key={`r2-${mentor.id}-${index}`} mentor={mentor} onSelect={(m) => setSelectedMentor(m)} />
+                ))}
+              </div>
+            </div>
+
+            {/* 3 Metric Cards */}
+            <div className="max-w-4xl mx-auto px-6 mt-14 grid grid-cols-1 sm:grid-cols-3 gap-5">
+              <div className="bg-white rounded-3xl p-6 border border-slate-200 text-center shadow-xs soft-apple-hover">
+                <div className="text-4xl font-extrabold text-[#2160dc] tracking-tight">100+</div>
+                <p className="text-xs font-bold text-gray-800 uppercase tracking-wide mt-1.5">Leaders On This Track</p>
+                <p className="text-xs text-gray-500 mt-0.5">Enterprise directors & architects</p>
+              </div>
+              <div className="bg-white rounded-3xl p-6 border border-slate-200 text-center shadow-xs soft-apple-hover">
+                <div className="text-4xl font-extrabold text-gray-950 tracking-tight">10+</div>
+                <p className="text-xs font-bold text-gray-800 uppercase tracking-wide mt-1.5">Industry Tracks Overall</p>
+                <p className="text-xs text-gray-500 mt-0.5">AI, Startups, HR, Policy, Cyber</p>
+              </div>
+              <div className="bg-white rounded-3xl p-6 border border-slate-200 text-center shadow-xs soft-apple-hover">
+                <div className="text-4xl font-extrabold text-gray-950 tracking-tight">3</div>
+                <p className="text-xs font-bold text-gray-800 uppercase tracking-wide mt-1.5">Session Formats</p>
+                <p className="text-xs text-gray-500 mt-0.5">Built for student engagement</p>
+              </div>
+            </div>
+          </section>
+
+          {/* 7. TESTIMONIALS */}
+          <section id="testimonials" className="relative z-10 py-20 bg-slate-50/70 border-t border-slate-200">
+            <div className="max-w-7xl mx-auto px-6 sm:px-10">
+              <div className="text-center max-w-2xl mx-auto mb-10">
+                <p className="text-xs font-extrabold uppercase tracking-widest text-[#2160dc] mb-2">TESTIMONIALS</p>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-950 tracking-tight">
+                  Loved by students, faculty & mentors alike
+                </h2>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {filteredTestimonials.map((t, idx) => (
+                  <div key={idx} className="bg-white rounded-3xl p-7 border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                      <div className="text-amber-400 text-xs mb-3">★★★★★</div>
+                      <p className="text-gray-700 text-sm leading-relaxed italic">&ldquo;{t.quote}&rdquo;</p>
+                    </div>
+                    <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+                      <div>
+                        <h5 className="font-bold text-gray-900">{t.author}</h5>
+                        <p className="text-gray-500">{t.role}</p>
+                      </div>
+                      <span className="text-[#2160dc] font-semibold bg-blue-50 px-2.5 py-1 rounded">{t.institution}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* 8. CTA BANNER */}
+          <section id="contact" className="relative z-10 py-16 px-6 max-w-6xl mx-auto">
+            <div className="bg-gradient-to-r from-[#1961e6] via-[#2160dc] to-indigo-700 rounded-3xl p-8 sm:p-14 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className="max-w-xl text-center md:text-left">
+                <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-2">
+                  Bring Mentor Campus to your college
+                </h2>
+                <p className="text-blue-100 text-sm sm:text-base">
+                  Set up expert talks, panel discussions, and workshops for your students in any of our specialized industry tracks.
+                </p>
+              </div>
+              <button
+                onClick={() => setShowJoinModal(true)}
+                className="px-7 py-3.5 rounded-full bg-white text-[#2160dc] font-bold text-xs sm:text-sm hover:bg-blue-50 active:scale-95 shadow-md transition-all cursor-pointer"
+              >
+                Request a Session
+              </button>
+            </div>
+          </section>
+
+          {/* 9. FOOTER */}
+          <footer className="relative z-10 border-t border-slate-200 bg-white py-12 text-gray-500 text-xs">
+            <div className="max-w-7xl mx-auto px-6 sm:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
+              <MentorCampusLogo />
+              <p>© 2026 Mentor Campus (mentorcampus.in). All rights reserved.</p>
+            </div>
+          </footer>
+
+          {/* MODAL: SIGN IN */}
+          {showSignInModal && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md animate-backdrop">
+              <div className="relative w-full max-w-md bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-200 animate-modal-pop">
+                <button onClick={() => setShowSignInModal(false)} className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 text-gray-500 flex items-center justify-center text-xs font-bold cursor-pointer">✕</button>
+                <div className="text-center mb-6">
+                  <h3 className="text-2xl font-bold text-gray-950">Welcome back</h3>
+                  <p className="text-xs text-gray-500 mt-1">Sign in to your MentorCampus portal</p>
+                </div>
+                <form onSubmit={(e) => { e.preventDefault(); alert('Signed in!'); setShowSignInModal(false); }} className="space-y-3">
+                  <input type="email" required placeholder="your.email@college.edu.in" className="w-full px-3.5 py-2.5 rounded-xl text-xs bg-slate-50 border border-slate-200" />
+                  <input type="password" required placeholder="••••••••" className="w-full px-3.5 py-2.5 rounded-xl text-xs bg-slate-50 border border-slate-200" />
+                  <button type="submit" className="w-full py-3 rounded-full bg-[#2160DC] text-white font-bold text-xs uppercase tracking-wider shadow-md">Sign In</button>
+                </form>
+              </div>
+            </div>
+          )}
+
+          {/* MODAL: JOIN */}
+          {showJoinModal && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md animate-backdrop">
+              <div className="relative w-full max-w-lg bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-200 animate-modal-pop">
+                <button onClick={() => setShowJoinModal(false)} className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 text-gray-500 flex items-center justify-center text-xs font-bold cursor-pointer">✕</button>
+                {joinSubmitted ? (
+                  <div className="py-10 text-center">
+                    <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">✓</div>
+                    <h3 className="text-2xl font-bold text-gray-950">Application Received!</h3>
+                    <p className="text-gray-500 text-xs mt-2">We will reach out to you within 24 hours.</p>
+                  </div>
+                ) : (
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-950 mb-1">Bring Mentor Campus to Your College</h3>
+                    <p className="text-xs text-gray-500 mb-4">Connect with verified senior leaders for campus sessions.</p>
+                    <form onSubmit={handleJoinSubmit} className="space-y-3">
+                      <input type="text" required placeholder="Your Name" value={joinFormData.name} onChange={(e) => setJoinFormData({...joinFormData, name: e.target.value})} className="w-full px-3.5 py-2.5 rounded-xl text-xs bg-slate-50 border border-slate-200" />
+                      <input type="text" required placeholder="College / University Name" value={joinFormData.institution} onChange={(e) => setJoinFormData({...joinFormData, institution: e.target.value})} className="w-full px-3.5 py-2.5 rounded-xl text-xs bg-slate-50 border border-slate-200" />
+                      <input type="email" required placeholder="Official Email" value={joinFormData.email} onChange={(e) => setJoinFormData({...joinFormData, email: e.target.value})} className="w-full px-3.5 py-2.5 rounded-xl text-xs bg-slate-50 border border-slate-200" />
+                      <button type="submit" className="w-full py-3 rounded-full bg-[#2160DC] text-white font-bold text-xs uppercase tracking-wider shadow-md">Submit Request</button>
+                    </form>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* MODAL: MENTOR PROFILE */}
+          {selectedMentor && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md animate-backdrop">
+              <div className="relative w-full max-w-lg bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-200 animate-modal-pop">
+                <button onClick={() => setSelectedMentor(null)} className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 text-gray-500 flex items-center justify-center text-xs font-bold cursor-pointer">✕</button>
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-16 h-16 rounded-2xl overflow-hidden bg-slate-100 shadow-md shrink-0 border border-slate-200/80">
+                    {selectedMentor.image ? (
+                      <img src={selectedMentor.image} alt={selectedMentor.name} className="w-full h-full object-cover object-top" />
+                    ) : (
+                      <div className={`w-full h-full flex items-center justify-center text-white font-extrabold text-xl bg-gradient-to-br ${selectedMentor.color}`}>
+                        {selectedMentor.initials}
+                      </div>
+                    )}
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-bold text-[#2160dc] uppercase bg-blue-50 px-2 py-0.5 rounded">{selectedMentor.trackLabel}</span>
+                    <h3 className="text-xl font-bold text-gray-950 mt-1">{selectedMentor.name}</h3>
+                    <p className="text-xs text-gray-500">{selectedMentor.role} • <span className="font-semibold text-gray-800">{selectedMentor.company}</span></p>
+                  </div>
+                </div>
+                <p className="text-xs text-gray-600 bg-slate-50 p-3 rounded-xl border border-slate-100 mb-4">{selectedMentor.bio}</p>
+                <div className="mb-4">
+                  <h4 className="text-xs font-bold text-gray-800 uppercase mb-2">Session Topics</h4>
+                  <div className="flex flex-wrap gap-1.5">
+                    {selectedMentor.topics.map((t, idx) => (
+                      <span key={idx} className="text-xs bg-gray-100 px-3 py-1 rounded-full text-gray-700">• {t}</span>
+                    ))}
+                  </div>
+                </div>
+                <button onClick={() => { setSelectedMentor(null); setShowJoinModal(true); }} className="w-full py-2.5 rounded-full bg-[#2160dc] text-white font-bold text-xs shadow-md">
+                  Request Talk with {selectedMentor.name.split(' ')[0]}
+                </button>
+              </div>
+            </div>
+          )}
         </div>
-      `;
-      setTimeout(closeModal, 2000);
+      );
     }
 
-    renderCards();
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
   </script>
 </body>
 </html>
-

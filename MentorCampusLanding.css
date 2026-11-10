@@ -1,0 +1,273 @@
+/* ==========================================================================
+   MentorCampus - Soft Apple Style Design System & Keyframe Animations
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Color Variables */
+:root {
+  --mc-blue: #2160dc;
+  --mc-blue-dark: #1950b8;
+  --mc-blue-light: #eff5ff;
+  --mc-blue-glow: rgba(33, 96, 220, 0.25);
+  --mc-navy: #091528;
+  --mc-dark: #111827;
+  --mc-gray-bg: #fbfbfd;
+  --mc-pill-bg: #eaecef;
+  --mc-card-border: rgba(226, 232, 240, 0.8);
+}
+
+/* Typography Helpers */
+.font-sans {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.font-handwritten {
+  font-family: 'Caveat', cursive, sans-serif;
+  transform: rotate(-1.5deg);
+  display: inline-block;
+}
+
+/* --------------------------------------------------------------------------
+   Marquee Animations for Scrolling Mentor Details
+   -------------------------------------------------------------------------- */
+@keyframes mcMarquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes mcMarqueeReverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-mc-marquee {
+  display: flex;
+  width: max-content;
+  animation: mcMarquee 110s linear infinite;
+}
+
+.animate-mc-marquee-reverse {
+  display: flex;
+  width: max-content;
+  animation: mcMarqueeReverse 115s linear infinite;
+}
+
+/* --------------------------------------------------------------------------
+   Organic Floating & Bobbing for Hero Avatars
+   -------------------------------------------------------------------------- */
+@keyframes mcFloat1 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.8deg);
+  }
+}
+
+@keyframes mcFloat2 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(-1deg);
+  }
+}
+
+@keyframes mcFloat3 {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-14px) scale(1.02);
+  }
+}
+
+@keyframes mcBadgePulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(33, 96, 220, 0.4);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 0 6px rgba(33, 96, 220, 0);
+  }
+}
+
+.float-avatar-1 {
+  animation: mcFloat1 6s ease-in-out infinite;
+}
+
+.float-avatar-2 {
+  animation: mcFloat2 7s ease-in-out infinite 0.5s;
+}
+
+.float-avatar-3 {
+  animation: mcFloat3 5.5s ease-in-out infinite 1s;
+}
+
+.float-avatar-4 {
+  animation: mcFloat2 6.5s ease-in-out infinite 1.5s;
+}
+
+.float-avatar-5 {
+  animation: mcFloat1 7.2s ease-in-out infinite 0.8s;
+}
+
+.badge-pulse {
+  animation: mcBadgePulse 3s infinite;
+}
+
+/* --------------------------------------------------------------------------
+   Hand-Drawn Underline SVG Animation
+   -------------------------------------------------------------------------- */
+@keyframes drawStroke {
+  0% {
+    stroke-dashoffset: 350;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.draw-underline {
+  stroke-dasharray: 350;
+  stroke-dashoffset: 350;
+  animation: drawStroke 1.8s cubic-bezier(0.65, 0, 0.35, 1) forwards 0.4s;
+}
+
+/* --------------------------------------------------------------------------
+   Subtle Sheen & Glassmorphism Utilities
+   -------------------------------------------------------------------------- */
+.glass-header {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.glass-pill {
+  background: #eaecef;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Apple-style sliding nav pill indicator */
+.nav-pill-indicator {
+  will-change: transform, width, height;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.glass-modal {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.soft-apple-shadow {
+  box-shadow: 0 4px 24px -2px rgba(15, 23, 42, 0.05),
+              0 2px 8px -2px rgba(15, 23, 42, 0.03);
+}
+
+.soft-apple-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.soft-apple-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px -6px rgba(33, 96, 220, 0.12),
+              0 6px 16px -4px rgba(15, 23, 42, 0.04);
+}
+
+/* Card shimmer highlight on hover */
+.card-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-sheen::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 65%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.75s ease;
+  pointer-events: none;
+}
+
+.card-sheen:hover::after {
+  transform: translateX(100%);
+}
+
+/* --------------------------------------------------------------------------
+   Modal Fade In & Slide Up Animation
+   -------------------------------------------------------------------------- */
+@keyframes modalBackdropFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalContentPop {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-backdrop {
+  animation: modalBackdropFade 0.25s ease-out forwards;
+}
+
+.animate-modal-pop {
+  animation: modalContentPop 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* --------------------------------------------------------------------------
+   Scrollbar Aesthetics
+   -------------------------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
